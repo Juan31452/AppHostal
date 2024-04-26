@@ -16,15 +16,164 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="66dp" />
+        tools:layout_editor_absoluteY="66dp"
+    />
+    <EditText
+        android:id="@+id/editTextFecha"
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_marginEnd="2dp"
+        android:onClick="mostrarCalendario"
+        android:textSize="30sp"
+        android:textColor="#010000"
+        android:layout_marginStart="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        android:focusable="false"
+        android:background="@drawable/edit_text"
+        android:hint="Fecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+    />
+
+    <EditText
+        android:id="@+id/edhabitacion"
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/edit_text"
+        android:hint="Habitacion"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:layout_marginStart="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFecha"
+    />
+
+    <EditText
+        android:id="@+id/edestado"
+        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/edit_text"
+        android:hint="Estado"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:layout_marginStart="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edhabitacion"
+
+        />
+
+    <EditText
+        android:id="@+id/edbajeras"
+        style="@style/EditTextStyle"
+        android:hint="Bajeras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edestado"
+        />
+
+    <EditText
+        android:id="@+id/edencimeras"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Encimeras"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edbajeras"
+        />
+
+    <EditText
+        android:id="@+id/edfundalomohada"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Funda Almohada"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edencimeras"
+        />
+
+    <EditText
+        android:id="@+id/edprotectora"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Protector Almohada"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edfundalomohada"
+        />
+
+    <EditText
+        android:id="@+id/ednordica"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Nordica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edprotectora"
+        />
+
+    <EditText
+        android:id="@+id/edtoallaD"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Toalla Ducha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ednordica"
+        />
+
+    <EditText
+        android:id="@+id/edtoallaL"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Toalla Lavabo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtoallaD"
+        />
+
+    <EditText
+        android:id="@+id/edalfombrim"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Alfombrim"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtoallaL"
+        />
+
+    <EditText
+        android:id="@+id/paid"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Paid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edalfombrim"
+        />
+
+    <EditText
+        android:id="@+id/protectC"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:hint="Protector Colchon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paid"
+        />
 
     <Button
-        android:id="@+id/Menu"
+        android:id="@+id/btnMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:layout_constraintVertical_bias="0.988" />
 </androidx.constraintlayout.widget.ConstraintLayout>

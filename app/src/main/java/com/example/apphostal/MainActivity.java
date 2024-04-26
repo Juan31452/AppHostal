@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Este método se ejecutará cuando se haga clic en el botón btnAdicionar
-                // Aquí puedes agregar el código para manejar el evento de clic
-                // Por ejemplo, puedes abrir una nueva actividad
                 Intent intent = new Intent(MainActivity.this, AdicionarActivity.class);
                 startActivity(intent);
             }
