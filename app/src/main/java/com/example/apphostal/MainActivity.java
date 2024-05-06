@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Obtiene una referencia al botón btnAdicionar
         Button btnAdicionar = findViewById(R.id.btnAdicionar);
+        Button btnListar = findViewById(R.id.btnListar);
 
         // Configura un OnClickListener para el botón btnAdicionar
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
@@ -24,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Este método se ejecutará cuando se haga clic en el botón btnAdicionar
                 Intent intent = new Intent(MainActivity.this, AdicionarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Este método se ejecutará cuando se haga clic en el botón btnAdicionar
+                Intent intent = new Intent(MainActivity.this, ListarRegistrosActivity.class);
                 startActivity(intent);
             }
         });
