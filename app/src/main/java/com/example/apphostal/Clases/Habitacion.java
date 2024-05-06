@@ -6,6 +6,7 @@ public class Habitacion {
 
     // Método para obtener el array de habitaciones
     public static String[] obtenerHabitaciones() {
+
         return habitaciones;
     }
 }

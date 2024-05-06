@@ -12,12 +12,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
+import com.example.apphostal.Logica.AdicionarRegistros;
 
 public class AdicionarActivity extends AppCompatActivity {
     private EditText editTextFecha;
     private EditText edhabitacion;
     private EditText edestado;
+    private EditText edbajeras;
+    private EditText edencimeras;
+    private EditText edfundalomohada;
+    private EditText edprotectora;
+    private EditText ednordica;
+    private EditText edtoallaD;
+    private EditText edtoallaL;
+    private EditText edalfombrim;
+    private EditText edpaid;
+    private EditText edprotectC;
 
+    // Declara la variable adicionarRegistros aquí
+    private AdicionarRegistros adicionarRegistros;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +41,29 @@ public class AdicionarActivity extends AppCompatActivity {
         editTextFecha = findViewById(R.id.editTextFecha);
         edhabitacion = findViewById(R.id.edhabitacion);
         edestado = findViewById(R.id.edestado);
-
+        edbajeras = findViewById(R.id.edbajeras);
+        edencimeras = findViewById(R.id.edencimeras);
+        edfundalomohada = findViewById(R.id.edfundalomohada);
+        edprotectora = findViewById(R.id.edprotectora);
+        ednordica = findViewById(R.id.ednordica);
+        edtoallaD = findViewById(R.id.edtoallaD);
+        edtoallaL = findViewById(R.id.edtoallaL);
+        edalfombrim = findViewById(R.id.edalfombrim);
+        edpaid = findViewById(R.id.paid);
+        edprotectC = findViewById(R.id.protectC);
         // Obtiene una referencia al botón btnMenu
         Button btnMenu = findViewById(R.id.btnMenu);
+        // Asignar acción al botón "Enviar Datos"
+        Button btnEnviarDatos = findViewById(R.id.btnEnviarDatos);
+
+        // Inicializar la clase AdicionarRegistros
+        adicionarRegistros = new AdicionarRegistros(this);
+
 
         edhabitacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mostrarListaHabitaciones();
             }
         });
@@ -42,7 +71,16 @@ public class AdicionarActivity extends AppCompatActivity {
         edestado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mostrarListaEstado();
+            }
+        });
+
+
+        btnEnviarDatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                enviarDatos();
             }
         });
 
@@ -102,6 +140,26 @@ public class AdicionarActivity extends AppCompatActivity {
                 });
 
         builder.create().show();
+    }
+
+    // Método para enviar los datos ingresados
+    private void enviarDatos() {
+        String fecha = editTextFecha.getText().toString();
+        String habitacion = edhabitacion.getText().toString();
+        String estado = edestado.getText().toString();
+        String bajera = edbajeras.getText().toString();
+        String encimera = edencimeras.getText().toString();
+        String fundaA = edfundalomohada.getText().toString();
+        String protectorA = edprotectora.getText().toString();
+        String nordica = ednordica.getText().toString();
+        String toallaD = edtoallaD.getText().toString();
+        String toallaL = edtoallaL.getText().toString();
+        String alfombrin = edalfombrim.getText().toString();
+        String paid = edpaid.getText().toString();
+        String protectorC = edprotectC.getText().toString();
+
+        // Insertar el registro en la base de datos
+        adicionarRegistros.insertarRegistro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, toallaD, toallaL, alfombrin, paid, protectorC);
     }
 
 }
