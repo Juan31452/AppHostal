@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdicionarActivity">
+    tools:context=".DetalleRegistroActivity">
 
     <Button
         android:id="@+id/btnMenu"
@@ -23,13 +23,14 @@
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar"
+        android:text="Registro"
         android:textSize="24sp"
         android:layout_marginStart="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMenu"
         />
+
     <EditText
         android:id="@+id/editTextFecha"
         android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
         android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-    />
+        />
 
     <EditText
         android:id="@+id/edhabitacion"
@@ -62,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFecha"
-    />
+        />
 
     <EditText
         android:id="@+id/edestado"
@@ -188,15 +189,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paid"
-    />
+        />
 
     <Button
-        android:id="@+id/btnEnviarDatos"
+        android:id="@+id/btnModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar"
+        android:text="Modificar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/protectC"
-    />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

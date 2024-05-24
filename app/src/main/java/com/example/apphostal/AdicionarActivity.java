@@ -51,6 +51,7 @@ public class AdicionarActivity extends AppCompatActivity {
         edalfombrim = findViewById(R.id.edalfombrim);
         edpaid = findViewById(R.id.paid);
         edprotectC = findViewById(R.id.protectC);
+
         // Obtiene una referencia al botón btnMenu
         Button btnMenu = findViewById(R.id.btnMenu);
         // Asignar acción al botón "Enviar Datos"
@@ -84,7 +85,7 @@ public class AdicionarActivity extends AppCompatActivity {
             }
         });
 
-        // Configura un OnClickListener para el botón btnMenu
+       // Configura un OnClickListener para el botón btnMenu
         btnMenu.setOnClickListener(new View.OnClickListener() {
         @Override
             public void onClick(View v) {

@@ -32,10 +32,11 @@ public class MainActivity extends AppCompatActivity {
         btnListar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Este método se ejecutará cuando se haga clic en el botón btnAdicionar
+                // Este método se ejecutará cuando se haga clic en el botón btnlistnar
                 Intent intent = new Intent(MainActivity.this, ListarRegistrosActivity.class);
                 startActivity(intent);
             }
         });
     }
+
 }
