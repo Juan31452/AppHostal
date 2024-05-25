@@ -52,10 +52,9 @@ public class ListarRegistros {
                     String protectorC = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON));
 
                     // Construir una cadena con los valores obtenidos
-                    String registro =  "Fecha: " + fecha + ",Habitación: " + habitacion + ", Estado: " + estado + ", Bajera: " + bajera +
-                            ", Encimera: " + encimera + ", FundaAlmohada: " + fundaA + ", ProtectorAlmohada: " + protectorA +
-                            ",Nordica: " + nordica + "ToallaDucha: " + toallaD + ",ToallaLabavo: " + toallaL + ",Alfombrin: "
-                            + alfombrin + ",Paid: " + paid + "ProtectorColchon: " + protectorC;
+                    String registro = fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
+                            protectorA + "," + nordica + "," + toallaD + "," + toallaL + "," + alfombrin + "," +
+                            paid + "," + protectorC;
 
                     // Agregar el registro a la lista
                     listaRegistros.add(registro);
@@ -112,10 +111,9 @@ public class ListarRegistros {
                     String paid = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID));
                     String protectorC = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON));
 
-                    String registro = fecha + ", " + habitacion + ", " + estado + ", " + bajera +
-                            ", " + encimera + ", " + fundaA + ", " + protectorA +
-                            ", " + nordica + ", " + toallaD + ", " + toallaL + ", "
-                            + alfombrin + ", " + paid + ", " + protectorC;
+                    String registro = fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
+                            protectorA + "," + nordica + "," + toallaD + "," + toallaL + "," + alfombrin + "," +
+                            paid + "," + protectorC;
 
                     // Agregar el registro a la lista
                     listaRegistros.add(registro);
