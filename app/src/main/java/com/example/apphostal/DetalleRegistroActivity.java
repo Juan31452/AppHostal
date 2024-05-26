@@ -1,13 +1,15 @@
 package com.example.apphostal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
-    private EditText edfecha;
+
     private EditText edhabitacion;
     private EditText edestado;
     private EditText edbajeras;
@@ -20,14 +22,13 @@ public class DetalleRegistroActivity extends AppCompatActivity {
     private EditText edalfombrim;
     private EditText edpaid;
     private EditText edprotectC;
-    private Button btnEliminar, btnModificar;
-    private static final String TAG = "DetalleRegistroActivity"; // Definir el TAG
+    private Button btnMenu,btnEliminar, btnModificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_registro);
-        edfecha = findViewById(R.id.editTextFecha);
+        btnMenu = findViewById(R.id.btnMenu);
         edhabitacion = findViewById(R.id.edhabitacion);
         edestado = findViewById(R.id.edestado);
         edbajeras = findViewById(R.id.edbajeras);
@@ -40,27 +41,56 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         edalfombrim = findViewById(R.id.edalfombrim);
         edpaid = findViewById(R.id.paid);
         edprotectC = findViewById(R.id.protectC);
+        //btnEliminar = findViewById(R.id.btnEliminar);
         btnModificar = findViewById(R.id.btnModificar);
 
         // Obtener el registro pasado desde ListarRegistrosActivity
-        String registro = getIntent().getStringExtra("registro");
-        Log.d(TAG, "Registro recibido: " + registro); // Uso del TAG
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("registro")) {
+            String registro = intent.getStringExtra("registro");
 
-        if (registro != null) {
-            String[] partes = registro.split(",");
-            edfecha.setText(partes[0]);
-            edhabitacion.setText(partes[1]);
-            edestado.setText(partes[2]);
-            edbajeras.setText(partes[3]);
-            edencimeras.setText(partes[4]);
-            edfundalomohada.setText(partes[5]);
-            edprotectora.setText(partes[6]);
-            ednordica.setText(partes[7]);
-            edtoallaD.setText(partes[8]);
-            edtoallaL.setText(partes[9]);
-            edalfombrim.setText(partes[10]);
-            edpaid.setText(partes[11]);
-            edprotectC.setText(partes[12]);
+            // Verificar y mostrar los valores en el Log
+            Log.d("DetalleRegistroActivity", "Registro recibido: " + registro);
+
+            // Parsear el registro y establecer los valores en los EditText
+            if (registro != null) {
+                // Dividir el registro por comas
+                String[] partes = registro.split(",");
+                Log.d("DetalleRegistroActivity", "Número de partes: " + partes.length);
+                for (int i = 0; i < partes.length; i++) {
+                    Log.d("DetalleRegistroActivity", "Parte [" + i + "]: " + partes[i]);
+                }
+
+                // Comprobar que hay 13 partes antes de asignarlas
+                if (partes.length == 13) {
+                    // Asignar los valores a los EditText correspondientes
+                    edhabitacion.setText(partes[1].trim());
+                    edestado.setText(partes[2].trim());
+                    edbajeras.setText(partes[3].trim());
+                    edencimeras.setText(partes[4].trim());
+                    edfundalomohada.setText(partes[5].trim());
+                    edprotectora.setText(partes[6].trim());
+                    ednordica.setText(partes[7].trim());
+                    edtoallaD.setText(partes[8].trim());
+                    edtoallaL.setText(partes[9].trim());
+                    edalfombrim.setText(partes[10].trim());
+                    edpaid.setText(partes[11].trim());
+                    edprotectC.setText(partes[12].trim());
+                } else {
+                    Log.e("DetalleRegistroActivity", "El número de campos no es el esperado.");
+                }
+            } else {
+                Log.e("DetalleRegistroActivity", "Registro recibido es null");
+            }
+        } else {
+            Log.e("DetalleRegistroActivity", "Intent no contiene 'registro'");
         }
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetalleRegistroActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

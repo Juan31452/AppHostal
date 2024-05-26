@@ -47,18 +47,11 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         listViewRegistros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String registroSeleccionado = registros.get(position);
-                Log.d(TAG, "Registro seleccionado: " + registroSeleccionado);
+                String registroSeleccionado = (String) parent.getItemAtPosition(position);
 
-                Registro registro = convertirACadenaARegistro(registroSeleccionado);
-                if (registro != null) {
-                    Intent intent = new Intent(ListarRegistrosActivity.this, DetalleRegistroActivity.class);
-                    intent.putExtra("registro", registro);
-                    Log.d(TAG, "Intent creado, iniciando DetalleRegistroActivity");
-                    startActivity(intent);
-                } else {
-                    Log.e(TAG, "Error al convertir el registro");
-                }
+                Intent intent = new Intent(ListarRegistrosActivity.this, DetalleRegistroActivity.class);
+                intent.putExtra("registro", registroSeleccionado);
+                startActivity(intent);
             }
         });
 
