@@ -3,6 +3,7 @@ package com.example.apphostal.Logica;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Database.DatabaseHotel;
 
 public class AdicionarRegistros {
@@ -14,17 +15,8 @@ public class AdicionarRegistros {
         this.context = context;
     }
 
-    public void insertarRegistro(String fecha, String habitacion,
-                                 String estado, String bajera,
-                                 String encimera, String fundaA,
-                                 String protectorA, String nordica,
-                                 String toallaD, String toallaL,
-                                 String alfombrin, String paid,
-                                 String protectorC) {
-
+    public void insertarRegistro(Registro registro) {
         try {
-
-
             String query = "INSERT INTO " + DatabaseHotel.TABLE_REGISTROS + " (" +
                     DatabaseHotel.COLUMN_FECHA + ", " +
                     DatabaseHotel.COLUMN_HABITACION + ", " +
@@ -39,10 +31,13 @@ public class AdicionarRegistros {
                     DatabaseHotel.COLUMN_ALFOMBRIN + ", " +
                     DatabaseHotel.COLUMN_PAID + ", " +
                     DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
             dbHostal.getWritableDatabase().execSQL(query, new String[]{
-                    fecha, habitacion, estado, bajera, encimera, fundaA,
-                    protectorA, nordica, toallaD, toallaL, alfombrin, paid,
-                    protectorC});
+                    registro.getFecha(), registro.getHabitacion(), registro.getEstado(),
+                    registro.getBajera(), registro.getEncimera(), registro.getFundaAlmohada(),
+                    registro.getProtectorAlmohada(), registro.getNordica(), registro.getToallaDucha(),
+                    registro.getToallaLavabo(), registro.getAlfombrin(), registro.getPaid(),
+                    registro.getProtectorColchon()});
 
             mostrarMensaje("Registro guardado correctamente");
         } catch (Exception e) {

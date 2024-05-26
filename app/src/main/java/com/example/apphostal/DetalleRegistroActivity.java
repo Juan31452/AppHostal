@@ -1,5 +1,7 @@
 package com.example.apphostal;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.apphostal.Logica.EliminarRegistros;
 import com.example.apphostal.Logica.ModificarRegistros;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
@@ -35,7 +38,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         edalfombrim = findViewById(R.id.edalfombrim);
         edpaid = findViewById(R.id.paid);
         edprotectC = findViewById(R.id.protectC);
-        //btnEliminar = findViewById(R.id.btnEliminar);
+        btnEliminar = findViewById(R.id.btnEliminar);
         btnModificar = findViewById(R.id.btnModificar);
         btnMenu = findViewById(R.id.btnMenu);
 
@@ -102,6 +105,13 @@ public class DetalleRegistroActivity extends AppCompatActivity {
             }
         });
 
+        // Configurar el evento onClick para el botón de eliminar
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmarEliminarRegistro();
+            }
+        });
     }
 
     private void modificarRegistro() {
@@ -130,6 +140,39 @@ public class DetalleRegistroActivity extends AppCompatActivity {
             Toast.makeText(this, "Registro modificado con éxito", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Error al modificar el registro", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void confirmarEliminarRegistro() {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmar Eliminación")
+                .setMessage("¿Está seguro de que desea eliminar este registro?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminarRegistro();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+    private void eliminarRegistro() {
+        String fecha = edfecha.getText().toString().trim();
+        String habitacion = edhabitacion.getText().toString().trim();
+
+        if (!fecha.isEmpty() && !habitacion.isEmpty()) {
+            EliminarRegistros eliminarRegistros = new EliminarRegistros(this);
+            boolean resultado = eliminarRegistros.eliminarRegistro(fecha, habitacion);
+
+            if (resultado) {
+                Toast.makeText(this, "Registro eliminado con éxito", Toast.LENGTH_SHORT).show();
+                finish(); // Finalizar la actividad y volver a la anterior
+            } else {
+                Toast.makeText(this, "Error al eliminar el registro", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "No se puede eliminar un registro con datos vacíos", Toast.LENGTH_SHORT).show();
         }
     }
 

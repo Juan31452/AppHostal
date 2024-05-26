@@ -16,6 +16,7 @@ import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
+import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.AdicionarRegistros;
 
 public class AdicionarActivity extends AppCompatActivity {
@@ -188,9 +189,9 @@ public class AdicionarActivity extends AppCompatActivity {
         String protectorC = edprotectC.getText().toString();
 
 
-        // Insertar el registro en la base de datos
-        adicionarRegistros.insertarRegistro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, toallaD, toallaL, alfombrin, paid, protectorC);
-    }
+        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, toallaD, toallaL, alfombrin, paid, protectorC);
+
+        adicionarRegistros.insertarRegistro(registro);    }
 
 }
 

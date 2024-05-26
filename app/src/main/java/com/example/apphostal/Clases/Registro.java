@@ -36,6 +36,112 @@ public class Registro implements Serializable {
         this.protectorC = protectorC;
     }
 
-    // Getters y setters
-    // ...
+    // Constructor vacío
+    public Registro() {
+    }
+
+    // Getters and Setters
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(String habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getBajera() {
+        return bajera;
+    }
+
+    public void setBajera(String bajera) {
+        this.bajera = bajera;
+    }
+
+    public String getEncimera() {
+        return encimera;
+    }
+
+    public void setEncimera(String encimera) {
+        this.encimera = encimera;
+    }
+
+    public String getFundaAlmohada() {
+        return fundaA;
+    }
+
+    public void setFundaAlmohada(String fundaA) {
+        this.fundaA = fundaA;
+    }
+
+    public String getProtectorAlmohada() {
+        return protectorA;
+    }
+
+    public void setProtectorAlmohada(String protectorA) {
+        this.protectorA = protectorA;
+    }
+
+    public String getNordica() {
+        return nordica;
+    }
+
+    public void setNordica(String nordica) {
+        this.nordica = nordica;
+    }
+
+    public String getToallaDucha() {
+        return toallaD;
+    }
+
+    public void setToallaDucha(String toallaD) {
+        this.toallaD = toallaD;
+    }
+
+    public String getToallaLavabo() {
+        return toallaL;
+    }
+
+    public void setToallaLavabo(String toallaL) {
+        this.toallaL = toallaL;
+    }
+
+    public String getAlfombrin() {
+        return alfombrin;
+    }
+
+    public void setAlfombrin(String alfombrin) {
+        this.alfombrin = alfombrin;
+    }
+
+    public String getPaid() {
+        return paid;
+    }
+
+    public void setPaid(String paid) {
+        this.paid = paid;
+    }
+
+    public String getProtectorColchon() {
+        return protectorC;
+    }
+
+    public void setProtectorColchon(String protectorC) {
+        this.protectorC = protectorC;
+    }
 }
