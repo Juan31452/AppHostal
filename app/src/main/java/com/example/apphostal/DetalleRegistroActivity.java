@@ -15,7 +15,7 @@ import com.example.apphostal.Logica.ModificarRegistros;
 public class DetalleRegistroActivity extends AppCompatActivity {
 
     private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC;
-    private Button btnEliminar, btnModificar;
+    private Button btnMenu,btnEliminar, btnModificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,12 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         edprotectC = findViewById(R.id.protectC);
         //btnEliminar = findViewById(R.id.btnEliminar);
         btnModificar = findViewById(R.id.btnModificar);
+        btnMenu = findViewById(R.id.btnMenu);
+
+        // Inhabilitar edhabitacion y edfecha
+        edhabitacion.setEnabled(false);
+        edfecha.setEnabled(false);
+
 
         // Obtener el registro pasado desde ListarRegistrosActivity
         Intent intent = getIntent();
@@ -88,6 +94,14 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                 modificarRegistro();
             }
         });
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetalleRegistroActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void modificarRegistro() {
@@ -118,4 +132,6 @@ public class DetalleRegistroActivity extends AppCompatActivity {
             Toast.makeText(this, "Error al modificar el registro", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

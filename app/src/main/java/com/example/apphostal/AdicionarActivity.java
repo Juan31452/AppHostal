@@ -3,13 +3,17 @@ package com.example.apphostal;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.apphostal.Clases.Calendario;
+import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
 import com.example.apphostal.Logica.AdicionarRegistros;
@@ -81,7 +85,15 @@ public class AdicionarActivity extends AppCompatActivity {
         btnEnviarDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enviarDatos();
+
+                // Verificar si algún EditText está vacío
+                if (EditTextFocusHelper.isAnyEditTextEmpty(editTextFecha,edhabitacion,edestado, edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edtoallaD,edtoallaL, edalfombrim,edpaid,edprotectC/* otros EditText */)) {
+                    // Mostrar mensaje de error
+                    Toast.makeText(getApplicationContext(), "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+                    // Guardar los datos
+                } else {
+                    enviarDatos();
+                }
             }
         });
 
@@ -95,6 +107,20 @@ public class AdicionarActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        // Llama a EditTextFocusHelper.setupEditTextFocus() para configurar el comportamiento del EditText deseado
+        EditTextFocusHelper.setupEditTextFocus(edbajeras);
+        EditTextFocusHelper.setupEditTextFocus(edencimeras);
+        EditTextFocusHelper.setupEditTextFocus(edfundalomohada);
+        EditTextFocusHelper.setupEditTextFocus(edprotectora);
+        EditTextFocusHelper.setupEditTextFocus(ednordica);
+        EditTextFocusHelper.setupEditTextFocus(edtoallaD);
+        EditTextFocusHelper.setupEditTextFocus(edtoallaL);
+        EditTextFocusHelper.setupEditTextFocus(edalfombrim);
+        EditTextFocusHelper.setupEditTextFocus(edpaid);
+        EditTextFocusHelper.setupEditTextFocus(edprotectC);
+
     }
 
     public void mostrarCalendario(View view) {
@@ -143,6 +169,8 @@ public class AdicionarActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+
+
     // Método para enviar los datos ingresados
     private void enviarDatos() {
         String fecha = editTextFecha.getText().toString();
@@ -158,6 +186,7 @@ public class AdicionarActivity extends AppCompatActivity {
         String alfombrin = edalfombrim.getText().toString();
         String paid = edpaid.getText().toString();
         String protectorC = edprotectC.getText().toString();
+
 
         // Insertar el registro en la base de datos
         adicionarRegistros.insertarRegistro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, toallaD, toallaL, alfombrin, paid, protectorC);

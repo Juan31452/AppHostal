@@ -93,14 +93,13 @@
 
     <EditText
         android:id="@+id/edencimeras"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
+        android:layout_height="wrap_content"
         android:hint="Encimeras"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edbajeras"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edbajeras" />
 
     <EditText
         android:id="@+id/edfundalomohada"
@@ -115,14 +114,13 @@
 
     <EditText
         android:id="@+id/edprotectora"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
+        android:layout_height="wrap_content"
         android:hint="Protector Almohada"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edfundalomohada"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edfundalomohada" />
 
     <EditText
         android:id="@+id/ednordica"
