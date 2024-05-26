@@ -6,30 +6,24 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.apphostal.Logica.ModificarRegistros;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
 
-    private EditText edhabitacion;
-    private EditText edestado;
-    private EditText edbajeras;
-    private EditText edencimeras;
-    private EditText edfundalomohada;
-    private EditText edprotectora;
-    private EditText ednordica;
-    private EditText edtoallaD;
-    private EditText edtoallaL;
-    private EditText edalfombrim;
-    private EditText edpaid;
-    private EditText edprotectC;
-    private Button btnMenu,btnEliminar, btnModificar;
+    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC;
+    private Button btnEliminar, btnModificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_registro);
-        btnMenu = findViewById(R.id.btnMenu);
+
         edhabitacion = findViewById(R.id.edhabitacion);
+        edfecha = findViewById(R.id.editTextFecha); // Agregado
         edestado = findViewById(R.id.edestado);
         edbajeras = findViewById(R.id.edbajeras);
         edencimeras = findViewById(R.id.edencimeras);
@@ -64,6 +58,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                 // Comprobar que hay 13 partes antes de asignarlas
                 if (partes.length == 13) {
                     // Asignar los valores a los EditText correspondientes
+                    edfecha.setText(partes[0].trim());
                     edhabitacion.setText(partes[1].trim());
                     edestado.setText(partes[2].trim());
                     edbajeras.setText(partes[3].trim());
@@ -85,12 +80,42 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         } else {
             Log.e("DetalleRegistroActivity", "Intent no contiene 'registro'");
         }
-        btnMenu.setOnClickListener(new View.OnClickListener() {
+
+        // Configurar el botón de modificar
+        btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetalleRegistroActivity.this, MainActivity.class);
-                startActivity(intent);
+                modificarRegistro();
             }
         });
+    }
+
+    private void modificarRegistro() {
+        String fecha = edfecha.getText().toString().trim(); // Agregado
+        String habitacion = edhabitacion.getText().toString().trim();
+        String estado = edestado.getText().toString().trim();
+        String bajeras = edbajeras.getText().toString().trim();
+        String encimeras = edencimeras.getText().toString().trim();
+        String fundaAlmohada = edfundalomohada.getText().toString().trim();
+        String protectorAlmohada = edprotectora.getText().toString().trim();
+        String nordica = ednordica.getText().toString().trim();
+        String toallaDucha = edtoallaD.getText().toString().trim();
+        String toallaLavabo = edtoallaL.getText().toString().trim();
+        String alfombrin = edalfombrim.getText().toString().trim();
+        String paid = edpaid.getText().toString().trim();
+        String protectorColchon = edprotectC.getText().toString().trim();
+
+        // Crear una instancia de ModificarRegistros
+        ModificarRegistros modificarRegistros = new ModificarRegistros(this);
+
+        // Llamar al método modificarRegistro
+        boolean resultado = modificarRegistros.modificarRegistro(habitacion, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
+
+        // Mostrar un mensaje según el resultado
+        if (resultado) {
+            Toast.makeText(this, "Registro modificado con éxito", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error al modificar el registro", Toast.LENGTH_SHORT).show();
+        }
     }
 }
