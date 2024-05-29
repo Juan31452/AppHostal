@@ -5,179 +5,200 @@
     android:orientation="vertical"
     tools:context=".DetalleRegistroActivity">
 
-    <Button
-        android:id="@+id/btnMenu"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
-        android:text="Menu"
-        />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="97dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:text="Menu" />
+
+        <Button
+            android:id="@+id/btnExtras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extras" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registro"
-        android:textSize="24sp"
-        android:layout_marginStart="2dp"
         android:layout_gravity="center"
-        />
+        android:layout_marginStart="2dp"
+        android:text="Registro"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/edRegistro"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/edit_text"
+        android:enabled="false"
+        android:focusable="false"
+        android:hint="Registro"
+        android:textColor="#010000"
+        android:textColorHint="#000000"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/editTextFecha"
-        android:layout_height="wrap_content"
         android:layout_width="350dp"
-        android:layout_marginEnd="2dp"
-        android:textSize="30sp"
-        android:textColor="#010000"
-        android:layout_marginStart="2dp"
-        android:focusable="false"
-        android:background="@drawable/edit_text"
-        android:hint="Fecha"
-        android:textColorHint="#000000"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/edit_text"
+        android:focusable="false"
+        android:hint="Fecha"
+        android:textColor="#010000"
+        android:textColorHint="#000000"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/edhabitacion"
-        android:layout_height="wrap_content"
         android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/edit_text"
         android:hint="Habitacion"
-        android:textSize="30sp"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        android:layout_marginStart="2dp"
-        android:layout_gravity="center"
-        />
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/edestado"
-        android:layout_height="wrap_content"
         android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/edit_text"
         android:hint="Estado"
-        android:textSize="30sp"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        android:layout_marginStart="2dp"
-        android:layout_gravity="center"
+        android:textSize="30sp"
 
         />
 
     <EditText
         android:id="@+id/edbajeras"
         style="@style/EditTextStyle"
-        android:hint="Bajeras"
-        android:textColorHint="#000000"
         android:layout_gravity="center"
-        />
+        android:hint="Bajeras"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/edencimeras"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Encimeras"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Encimeras"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/edfundalomohada"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Funda Almohada"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Funda Almohada"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/edprotectora"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Protector Almohada"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Protector Almohada"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/ednordica"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Nordica"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-         />
+        android:hint="Nordica"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/edtoallaD"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Toalla Ducha"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:hint="Toalla Ducha"
+        android:textColorHint="#000000"
 
         />
 
     <EditText
         android:id="@+id/edtoallaL"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Toalla Lavabo"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Toalla Lavabo"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/edalfombrim"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Alfombrim"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Alfombrim"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/paid"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Paid"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Paid"
+        android:textColorHint="#000000" />
 
     <EditText
         android:id="@+id/protectC"
-        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Protector Colchon"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        />
+        android:hint="Protector Colchon"
+        android:textColorHint="#000000" />
 
     <!-- LinearLayout para los botones -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnModificar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Modificar"/>
+            android:text="Modificar" />
 
         <Button
             android:id="@+id/btnEliminar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eliminar"/>
+            android:text="Eliminar" />
     </LinearLayout>
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
 
 </LinearLayout>

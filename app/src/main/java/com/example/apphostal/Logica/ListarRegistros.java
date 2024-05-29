@@ -37,6 +37,7 @@ public class ListarRegistros {
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     // Obtener los valores de las columnas
+                    String idRegistro = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ID));
                     String fecha = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FECHA));
                     String habitacion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_HABITACION));
                     String estado = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ESTADO));
@@ -52,7 +53,7 @@ public class ListarRegistros {
                     String protectorC = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON));
 
                     // Construir una cadena con los valores obtenidos
-                    String registro = fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
+                    String registro = idRegistro + "," + fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
                             protectorA + "," + nordica + "," + toallaD + "," + toallaL + "," + alfombrin + "," +
                             paid + "," + protectorC;
 
@@ -97,6 +98,7 @@ public class ListarRegistros {
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     // Obtener los valores de las columnas
+                    String idRegistro = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ID));
                     fecha = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FECHA));
                     String habitacion = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_HABITACION));
                     String estado = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ESTADO));
@@ -111,7 +113,7 @@ public class ListarRegistros {
                     String paid = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID));
                     String protectorC = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON));
 
-                    String registro = fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
+                    String registro = idRegistro + "," + fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
                             protectorA + "," + nordica + "," + toallaD + "," + toallaL + "," + alfombrin + "," +
                             paid + "," + protectorC;
 

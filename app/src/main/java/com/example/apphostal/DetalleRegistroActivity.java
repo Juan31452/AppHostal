@@ -1,5 +1,6 @@
 package com.example.apphostal;
 
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,20 +12,23 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.apphostal.Logica.EliminarRegistros;
 import com.example.apphostal.Logica.ModificarRegistros;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
 
-    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC;
-    private Button btnMenu,btnEliminar, btnModificar;
+    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
+    private Button btnMenu,btnEliminar, btnModificar, btnExtras;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_registro);
-
+        edRegistro = findViewById(R.id.edRegistro);
         edhabitacion = findViewById(R.id.edhabitacion);
         edfecha = findViewById(R.id.editTextFecha); // Agregado
         edestado = findViewById(R.id.edestado);
@@ -41,6 +45,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         btnEliminar = findViewById(R.id.btnEliminar);
         btnModificar = findViewById(R.id.btnModificar);
         btnMenu = findViewById(R.id.btnMenu);
+        btnExtras = findViewById(R.id.btnExtras);
 
         // Inhabilitar edhabitacion y edfecha
         edhabitacion.setEnabled(false);
@@ -64,22 +69,23 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                     Log.d("DetalleRegistroActivity", "Parte [" + i + "]: " + partes[i]);
                 }
 
-                // Comprobar que hay 13 partes antes de asignarlas
-                if (partes.length == 13) {
+                // Comprobar que hay 14 partes antes de asignarlas
+                if (partes.length == 14) {
                     // Asignar los valores a los EditText correspondientes
-                    edfecha.setText(partes[0].trim());
-                    edhabitacion.setText(partes[1].trim());
-                    edestado.setText(partes[2].trim());
-                    edbajeras.setText(partes[3].trim());
-                    edencimeras.setText(partes[4].trim());
-                    edfundalomohada.setText(partes[5].trim());
-                    edprotectora.setText(partes[6].trim());
-                    ednordica.setText(partes[7].trim());
-                    edtoallaD.setText(partes[8].trim());
-                    edtoallaL.setText(partes[9].trim());
-                    edalfombrim.setText(partes[10].trim());
-                    edpaid.setText(partes[11].trim());
-                    edprotectC.setText(partes[12].trim());
+                    edRegistro.setText(partes[0].trim());
+                    edfecha.setText(partes[1].trim());
+                    edhabitacion.setText(partes[2].trim());
+                    edestado.setText(partes[3].trim());
+                    edbajeras.setText(partes[4].trim());
+                    edencimeras.setText(partes[5].trim());
+                    edfundalomohada.setText(partes[6].trim());
+                    edprotectora.setText(partes[7].trim());
+                    ednordica.setText(partes[8].trim());
+                    edtoallaD.setText(partes[9].trim());
+                    edtoallaL.setText(partes[10].trim());
+                    edalfombrim.setText(partes[11].trim());
+                    edpaid.setText(partes[12].trim());
+                    edprotectC.setText(partes[13].trim());
                 } else {
                     Log.e("DetalleRegistroActivity", "El número de campos no es el esperado.");
                 }
@@ -112,6 +118,31 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                 confirmarEliminarRegistro();
             }
         });
+
+        btnExtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener el valor de edRegistro
+                String registroId = edRegistro.getText().toString().trim();
+
+                // Crear una instancia del Fragment con el valor de edRegistro
+                Extras fragment = Extras.newInstance(registroId);
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
+            }
+        });
+
     }
 
     private void modificarRegistro() {

@@ -12,20 +12,17 @@ public class DatabaseHotel extends SQLiteOpenHelper {
 
     // Nombre y columnas de la tabla "registros"
     public static final String TABLE_REGISTROS = "registros";
-    public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_FECHA = "fecha";
-    public static final String COLUMN_HABITACION = "habitacion";
-    public static final String COLUMN_ESTADO = "estado";
-    public static final String COLUMN_BAJERAS = "bajeras";
-    public static final String COLUMN_ENCIMERAS = "encimeras";
-    public static final String COLUMN_FUNDA_ALMOHADA = "funda_almohada";
-    public static final String COLUMN_PROTECTOR_ALMOHADA = "protector_almohada";
-    public static final String COLUMN_NORDICA = "nordica";
-    public static final String COLUMN_TOALLA_DUCHA = "toalla_ducha";
-    public static final String COLUMN_TOALLA_LAVABO = "toalla_lavabo";
-    public static final String COLUMN_ALFOMBRIN = "alfombrin";
-    public static final String COLUMN_PAID = "paid";
-    public static final String COLUMN_PROTECTOR_COLCHON = "protector_colchon";
+    public static final String COLUMN_ID = "_id",COLUMN_FECHA = "fecha",COLUMN_HABITACION = "habitacion",COLUMN_ESTADO = "estado",
+                               COLUMN_BAJERAS = "bajeras",COLUMN_ENCIMERAS = "encimeras", COLUMN_FUNDA_ALMOHADA = "funda_almohada",
+                               COLUMN_PROTECTOR_ALMOHADA = "protector_almohada",COLUMN_NORDICA = "nordica",COLUMN_TOALLA_DUCHA = "toalla_ducha",
+                                COLUMN_TOALLA_LAVABO = "toalla_lavabo",COLUMN_ALFOMBRIN = "alfombrin",COLUMN_PAID = "paid",
+                                COLUMN_PROTECTOR_COLCHON = "protector_colchon";
+    public static final String TABLE_EXTRAS = "extras";
+    public static final String COLUMN_IDEXTRA = "_idextra",COLUMN_REGISTRO_ID="idregistro",COLUMN_AGUA = "agua",COLUMN_PAPELH = "papelH",COLUMN_CAFEN = "cafeN",
+            COLUMN_CAFEC = "cafe_c",COLUMN_LECHE = "leche", COLUMN_TE_MANZANILLA = "te_manzanilla",
+            COLUMN_TE_NEGRO = "te_negro",COLUMN_GALLETAS = "galletas",COLUMN_AZUCAR = "azucar",
+            COLUMN_SACARINA = "sacarina",COLUMN_MAQUILLAJE = "maquillaje",COLUMN_DULCE_EXTRA = "dulce_extra";
+
 
     // Sentencia SQL para crear la tabla "registros"
     private static final String SQL_CREATE_TABLE_REGISTROS =
@@ -45,6 +42,25 @@ public class DatabaseHotel extends SQLiteOpenHelper {
                     COLUMN_PAID + " INTEGER DEFAULT 0, " +
                     COLUMN_PROTECTOR_COLCHON + " INTEGER DEFAULT 0)";
 
+    // Sentencia SQL para crear la tabla "extras"
+    private static final String SQL_CREATE_TABLE_EXTRAS =
+            "CREATE TABLE " + TABLE_EXTRAS + " (" +
+                    COLUMN_IDEXTRA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_REGISTRO_ID + " INTEGER, " +
+                    COLUMN_AGUA + " INTEGER DEFAULT 0, " +
+                    COLUMN_PAPELH + " INTEGER DEFAULT 0, " +
+                    COLUMN_CAFEN + " INTEGER DEFAULT 0, " +
+                    COLUMN_CAFEC + " INTEGER DEFAULT 0, " +
+                    COLUMN_LECHE + " INTEGER DEFAULT 0, " +
+                    COLUMN_TE_MANZANILLA + " INTEGER DEFAULT 0, " +
+                    COLUMN_TE_NEGRO + " INTEGER DEFAULT 0, " +
+                    COLUMN_GALLETAS + " INTEGER DEFAULT 0, " +
+                    COLUMN_AZUCAR + " INTEGER DEFAULT 0, " +
+                    COLUMN_SACARINA + " INTEGER DEFAULT 0, " +
+                    COLUMN_MAQUILLAJE + " INTEGER DEFAULT 0, " +
+                    COLUMN_DULCE_EXTRA + " INTEGER DEFAULT 0, " +
+                    "FOREIGN KEY(" + COLUMN_REGISTRO_ID + ") REFERENCES " + TABLE_REGISTROS + "(" + COLUMN_ID + "))";
+
     // Constructor
     public DatabaseHotel(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,8 +68,9 @@ public class DatabaseHotel extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Crear la tabla "registros"
+        // Crear las tablas "registros" y "extras"
         db.execSQL(SQL_CREATE_TABLE_REGISTROS);
+        db.execSQL(SQL_CREATE_TABLE_EXTRAS);
     }
 
     @Override

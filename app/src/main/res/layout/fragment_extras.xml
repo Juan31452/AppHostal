@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Extras">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#092ADF"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/edRegistro"
+            style="@style/EditTextStyle"
+            android:enabled="false"
+            android:hint="Registro" />
+
+        <EditText
+            android:id="@+id/edagua"
+            style="@style/EditTextStyle"
+            android:hint="Agua"
+             />
+
+        <EditText
+            android:id="@+id/edpapleh"
+            style="@style/EditTextStyle"
+            android:hint="Papel Higienico"
+             />
+
+        <EditText
+            android:id="@+id/edcafen"
+            style="@style/EditTextStyle"
+            android:hint="Cafe Negro"
+             />
+
+        <EditText
+            android:id="@+id/edcafec"
+            style="@style/EditTextStyle"
+            android:hint="Cafe con Leche"
+            />
+
+        <EditText
+            android:id="@+id/idleche"
+            style="@style/EditTextStyle"
+            android:hint="Leche"
+             />
+
+        <EditText
+            android:id="@+id/edtem"
+            style="@style/EditTextStyle"
+            android:hint="Te Menta"
+             />
+
+        <EditText
+            android:id="@+id/edtenegro"
+            style="@style/EditTextStyle"
+            android:hint="Te Negro"
+             />
+
+        <EditText
+            android:id="@+id/edgalletas"
+            style="@style/EditTextStyle"
+            android:hint="Galletas"
+             />
+
+        <EditText
+            android:id="@+id/edzucar"
+            style="@style/EditTextStyle"
+            android:hint="Azucar"
+             />
+
+        <EditText
+            android:id="@+id/edsacarinas"
+            style="@style/EditTextStyle"
+            android:hint="Sacarinas"
+             />
+
+        <EditText
+            android:id="@+id/edmaquillaje"
+            style="@style/EditTextStyle"
+            android:hint="Desmaquillaje"
+             />
+
+        <EditText
+            android:id="@+id/eddulceextra"
+            style="@style/EditTextStyle"
+            android:hint="Dulce Extra"
+             />
+
+        <Button
+            android:id="@+id/btnFragmentCerrar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Cerrar Fragmento"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</FrameLayout>

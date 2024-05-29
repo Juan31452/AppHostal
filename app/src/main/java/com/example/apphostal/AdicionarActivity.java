@@ -1,5 +1,6 @@
 package com.example.apphostal;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,22 +21,10 @@ import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.AdicionarRegistros;
 
 public class AdicionarActivity extends AppCompatActivity {
-    private EditText editTextFecha;
-    private EditText edhabitacion;
-    private EditText edestado;
-    private EditText edbajeras;
-    private EditText edencimeras;
-    private EditText edfundalomohada;
-    private EditText edprotectora;
-    private EditText ednordica;
-    private EditText edtoallaD;
-    private EditText edtoallaL;
-    private EditText edalfombrim;
-    private EditText edpaid;
-    private EditText edprotectC;
-
+    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;
     // Declara la variable adicionarRegistros aquí
     private AdicionarRegistros adicionarRegistros;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +32,7 @@ public class AdicionarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adicionar);
 
         // Inicializar los EditText
+
         editTextFecha = findViewById(R.id.editTextFecha);
         edhabitacion = findViewById(R.id.edhabitacion);
         edestado = findViewById(R.id.edestado);
@@ -59,6 +49,8 @@ public class AdicionarActivity extends AppCompatActivity {
 
         // Obtiene una referencia al botón btnMenu
         Button btnMenu = findViewById(R.id.btnMenu);
+        //Obtiene una referencia al botón btnextras
+
         // Asignar acción al botón "Enviar Datos"
         Button btnEnviarDatos = findViewById(R.id.btnEnviarDatos);
 
@@ -191,7 +183,23 @@ public class AdicionarActivity extends AppCompatActivity {
 
         Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, toallaD, toallaL, alfombrin, paid, protectorC);
 
-        adicionarRegistros.insertarRegistro(registro);    }
+        adicionarRegistros.insertarRegistro(registro);
+
+        // Limpiar los campos después de guardar
+        editTextFecha.setText("");
+        edhabitacion.setText("");
+        edestado.setText("");
+        edbajeras.setText("");
+        edencimeras.setText("");
+        edfundalomohada.setText("");
+        edprotectora.setText("");
+        ednordica.setText("");
+        edtoallaD.setText("");
+        edtoallaL.setText("");
+        edalfombrim.setText("");
+        edpaid.setText("");
+        edprotectC.setText("");
+    }
 
 }
 
