@@ -2,6 +2,7 @@
 package com.example.apphostal;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,11 @@ public class Extras extends Fragment {
         // Inflar el layout para este Fragment
         View view = inflater.inflate(R.layout.fragment_extras, container, false);
 
+        // Recuperar el valor de registroId del Bundle de argumentos
+        String registroId = getArguments().getString("registroId");
+        // Imprimir el valor en el Log
+        Log.d("Valor de edRegistro", registroId);
+
         // Inicializar los EditText utilizando la vista inflada
         edRegistro = view.findViewById(R.id.edRegistro);
         edagua = view.findViewById(R.id.edagua);
@@ -39,6 +45,7 @@ public class Extras extends Fragment {
         // Encontrar el botón y establecer el listener de clic
         Button btnFragmentCerrar = view.findViewById(R.id.btnFragmentCerrar);
 
+        edRegistro.setText(registroId); // Establecer el texto en el EditText
         // Llama a EditTextFocusHelper.setupEditTextFocus() para configurar el comportamiento del EditText deseado
         EditTextFocusHelper.setupEditTextFocus(edagua);
         EditTextFocusHelper.setupEditTextFocus(edpapleh);

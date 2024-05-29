@@ -1,204 +1,249 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".DetalleRegistroActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:text="Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnMenu"
-            android:layout_width="97dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="16dp"
-            android:text="Menu" />
-
-        <Button
-            android:id="@+id/btnExtras"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Extras" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnExtras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="258dp"
+        android:layout_marginTop="56dp"
+        android:text="Extras"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="2dp"
         android:text="Registro"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_marginStart="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMenu"
+        />
 
     <EditText
         android:id="@+id/edRegistro"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/edit_text"
-        android:enabled="false"
         android:focusable="false"
         android:hint="Registro"
         android:textColor="#010000"
         android:textColorHint="#000000"
-        android:textSize="30sp" />
-
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
     <EditText
         android:id="@+id/editTextFecha"
-        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="2dp"
+        android:layout_width="350dp"
         android:layout_marginEnd="2dp"
-        android:background="@drawable/edit_text"
-        android:focusable="false"
-        android:hint="Fecha"
+        android:textSize="30sp"
         android:textColor="#010000"
+        android:layout_marginStart="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/edRegistro"
+        android:focusable="false"
+        android:background="@drawable/edit_text"
+        android:hint="Fecha"
         android:textColorHint="#000000"
-        android:textSize="30sp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <EditText
         android:id="@+id/edhabitacion"
-        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="2dp"
+        android:layout_width="350dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/edit_text"
         android:hint="Habitacion"
+        android:textSize="30sp"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        android:textSize="30sp" />
+        android:layout_marginStart="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFecha"
+        />
 
     <EditText
         android:id="@+id/edestado"
-        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="2dp"
+        android:layout_width="350dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/edit_text"
         android:hint="Estado"
+        android:textSize="30sp"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        android:textSize="30sp"
+        android:layout_marginStart="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edhabitacion"
 
         />
 
     <EditText
         android:id="@+id/edbajeras"
         style="@style/EditTextStyle"
-        android:layout_gravity="center"
         android:hint="Bajeras"
-        android:textColorHint="#000000" />
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edestado"
+        />
 
     <EditText
         android:id="@+id/edencimeras"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Encimeras"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edbajeras"
+        />
 
     <EditText
         android:id="@+id/edfundalomohada"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Funda Almohada"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edencimeras"
+        />
 
     <EditText
         android:id="@+id/edprotectora"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Protector Almohada"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edfundalomohada"
+        />
 
     <EditText
         android:id="@+id/ednordica"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Nordica"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edprotectora"
+        />
 
     <EditText
         android:id="@+id/edtoallaD"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Toalla Ducha"
+        style="@style/EditTextStyle"
         android:textColorHint="#000000"
-
+        android:hint="Toalla Ducha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ednordica"
         />
 
     <EditText
         android:id="@+id/edtoallaL"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Toalla Lavabo"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtoallaD"
+        />
 
     <EditText
         android:id="@+id/edalfombrim"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Alfombrim"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtoallaL"
+        />
 
     <EditText
         android:id="@+id/paid"
-        style="@style/EditTextStyle"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
         android:hint="Paid"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edalfombrim"
+        />
 
     <EditText
         android:id="@+id/protectC"
+        android:layout_height="wrap_content"
         style="@style/EditTextStyle"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:textColorHint="#000000"
         android:hint="Protector Colchon"
-        android:textColorHint="#000000" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paid"
+        />
 
-    <!-- LinearLayout para los botones -->
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:text="Modificar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintTop_toBottomOf="@+id/protectC"
+        />
 
-        <Button
-            android:id="@+id/btnModificar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Modificar" />
-
-        <Button
-            android:id="@+id/btnEliminar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Eliminar" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        android:layout_marginStart="258dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintTop_toBottomOf="@+id/protectC"
+        />
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        android:layout_height="match_parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

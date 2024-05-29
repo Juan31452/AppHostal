@@ -125,6 +125,9 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                 // Obtener el valor de edRegistro
                 String registroId = edRegistro.getText().toString().trim();
 
+                // Imprimir el valor en el Log
+                Log.d("Valor de edRegistro", registroId);
+
                 // Crear una instancia del Fragment con el valor de edRegistro
                 Extras fragment = Extras.newInstance(registroId);
 
