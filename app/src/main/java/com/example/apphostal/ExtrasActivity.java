@@ -1,6 +1,7 @@
 // ExtrasActivity.java
 package com.example.apphostal;
 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +16,13 @@ import androidx.fragment.app.FragmentManager;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Extras;
 import com.example.apphostal.Logica.AdicionarExtras;
+import com.example.apphostal.Logica.ListarExtras;
 
 public class ExtrasActivity extends Fragment {
     private EditText edRegistro, edagua, edpapleh, edcafen, edcafec, idleche, edtem, edtenegro, edgalletas, edzucar, edsacarinas, edmaquillaje, eddulceextra;
-    private Button btnFragmentCerrar, btnGuardar, btnModificar;
+    private Button btnFragmentCerrar, btnGuardar, btnConsultar,btnModificar;
     private AdicionarExtras adicionarExtras;
+    private ListarExtras listarExtras;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,13 +53,15 @@ public class ExtrasActivity extends Fragment {
         btnFragmentCerrar = view.findViewById(R.id.btnFragmentCerrar);
         btnGuardar = view.findViewById(R.id.btnGuardar);
         btnModificar = view.findViewById(R.id.btnModificar);
-
+        btnConsultar = view.findViewById(R.id.btnConsultar);
 
         edRegistro.setText(registroId); // Establecer el texto en el EditText
 
         // Inicializar AdicionarExtras con el contexto de la actividad
         Context context = getActivity();
         adicionarExtras = new AdicionarExtras(context);
+        listarExtras = new ListarExtras(context);
+
 
         // Llama a EditTextFocusHelper.setupEditTextFocus() para configurar el comportamiento del EditText deseado
         EditTextFocusHelper.setupEditTextFocus(edagua);
@@ -94,8 +99,25 @@ public class ExtrasActivity extends Fragment {
                 }
             }
         });
+        // Configurar el OnClickListener para el botón de consulta
+        btnConsultar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Consultar los datos de extras según el registroId
+                consultarDatosExtras();
+            }
+        });
+
 
         return view;
+    }
+
+    private void consultarDatosExtras() {
+        // Obtener el registroId del EditText
+        String registroId = String.valueOf(Integer.parseInt(edRegistro.getText().toString().trim()));
+
+        // Llamar al método de consulta en AdicionarExtras
+        listarExtras.consultarExtras(registroId);
     }
 
     public static ExtrasActivity newInstance(String registroId) {

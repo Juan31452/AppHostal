@@ -1,6 +1,7 @@
 package com.example.apphostal;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,14 +18,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.apphostal.Clases.Extras;
 import com.example.apphostal.Logica.EliminarRegistros;
+import com.example.apphostal.Logica.ListarExtras;
 import com.example.apphostal.Logica.ModificarRegistros;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
 
     private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
-    private Button btnMenu,btnEliminar, btnModificar, btnExtras;
+    private Button btnMenu,btnEliminar, btnModificar, btnExtras, btnConsultar;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         btnModificar = findViewById(R.id.btnModificar);
         btnMenu = findViewById(R.id.btnMenu);
         btnExtras = findViewById(R.id.btnExtras);
+
 
         // Inhabilitar edhabitacion y edfecha
         edhabitacion.setEnabled(false);
@@ -148,6 +152,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         });
 
     }
+
 
     private void modificarRegistro() {
         String fecha = edfecha.getText().toString().trim(); // Agregado
