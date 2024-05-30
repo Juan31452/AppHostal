@@ -13,13 +13,6 @@
         android:onClick="mostrarCalendario"
         android:text="Menu" />
 
-    <Button
-        android:id="@+id/btnExtras"
-        android:layout_width="141dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="258dp"
-        android:layout_marginTop="5dp"
-        android:text="Extras" />
 
     <LinearLayout
 

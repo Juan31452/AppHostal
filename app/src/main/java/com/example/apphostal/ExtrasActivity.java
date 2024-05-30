@@ -53,7 +53,7 @@ public class ExtrasActivity extends Fragment {
         btnFragmentCerrar = view.findViewById(R.id.btnFragmentCerrar);
         btnGuardar = view.findViewById(R.id.btnGuardar);
         btnModificar = view.findViewById(R.id.btnModificar);
-        btnConsultar = view.findViewById(R.id.btnConsultar);
+
 
         edRegistro.setText(registroId); // Establecer el texto en el EditText
 
@@ -77,6 +77,7 @@ public class ExtrasActivity extends Fragment {
         EditTextFocusHelper.setupEditTextFocus(edmaquillaje);
         EditTextFocusHelper.setupEditTextFocus(eddulceextra);
 
+        consultarDatosExtras();
         btnFragmentCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,14 +100,6 @@ public class ExtrasActivity extends Fragment {
                 }
             }
         });
-        // Configurar el OnClickListener para el botón de consulta
-        btnConsultar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Consultar los datos de extras según el registroId
-                consultarDatosExtras();
-            }
-        });
 
 
         return view;
@@ -117,9 +110,35 @@ public class ExtrasActivity extends Fragment {
         String registroId = String.valueOf(Integer.parseInt(edRegistro.getText().toString().trim()));
 
         // Llamar al método de consulta en AdicionarExtras
-        listarExtras.consultarExtras(registroId);
+        Extras extras = listarExtras.consultarExtras(registroId);
+        // Manejar el caso donde no se encontraron datos
+        if (extras != null) {
+            // Llenar los EditText con los datos obtenidos
+            edagua.setText(String.valueOf(extras.getAgua()));
+            edpapleh.setText(String.valueOf(extras.getPapleh()));
+            edcafen.setText(String.valueOf(extras.getCafen()));
+            edcafec.setText(String.valueOf(extras.getCafec()));
+            idleche.setText(String.valueOf(extras.getLeche()));
+            edtem.setText(String.valueOf(extras.getTem()));
+            edtenegro.setText(String.valueOf(extras.getTenegro()));
+            edgalletas.setText(String.valueOf(extras.getGalletas()));
+            edzucar.setText(String.valueOf(extras.getAzucar()));
+            edsacarinas.setText(String.valueOf(extras.getSacarinas()));
+            edmaquillaje.setText(String.valueOf(extras.getMaquillaje()));
+            eddulceextra.setText(String.valueOf(extras.getDulceextra()));
+            btnGuardar.setEnabled(false);
+            btnModificar.setEnabled(true);
+        } else {
+            mostrarMensaje("No se encontraron datos para el registroId: " + registroId);
+            btnGuardar.setEnabled(true);
+            btnModificar.setEnabled(false);
+        }
+
     }
 
+    private void mostrarMensaje(String mensaje) {
+      //  Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+    }
     public static ExtrasActivity newInstance(String registroId) {
         ExtrasActivity fragment = new ExtrasActivity();
         Bundle args = new Bundle();
@@ -161,5 +180,21 @@ public class ExtrasActivity extends Fragment {
         edsacarinas.setText("");
         edmaquillaje.setText("");
         eddulceextra.setText("");
+    }
+    
+    private void ModificarRegistros(){
+        String agua = edagua.getText().toString().trim(); // Agregado
+        String papelh = edpapleh.getText().toString().trim();
+        String cafen = edcafen.getText().toString().trim();
+        String cafec = edcafec.getText().toString().trim();
+        String leche = idleche.getText().toString().trim();
+        String temanzanilla = edtem.getText().toString().trim();
+        String tenegro = edtenegro.getText().toString().trim();
+        String galletas = edgalletas.getText().toString().trim();
+        String azucar = edzucar.getText().toString().trim();
+        String sacarinas = edsacarinas.getText().toString().trim();
+        String maquillaje = edmaquillaje.getText().toString().trim();
+        String dulceextra = eddulceextra.getText().toString().trim();
+
     }
 }

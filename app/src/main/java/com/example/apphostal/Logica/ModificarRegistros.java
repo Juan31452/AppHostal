@@ -10,6 +10,7 @@ public class ModificarRegistros {
     private DatabaseHotel dbHostal;
 
     public ModificarRegistros(Context context) {
+
         dbHostal = new DatabaseHotel(context);
     }
 
