@@ -3,6 +3,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.apphostal.ExtrasActivity;
+
 public class DatabaseHotel extends SQLiteOpenHelper {
 
     // Nombre de la base de datos
@@ -12,16 +14,16 @@ public class DatabaseHotel extends SQLiteOpenHelper {
 
     // Nombre y columnas de la tabla "registros"
     public static final String TABLE_REGISTROS = "registros";
-    public static final String COLUMN_ID = "_id",COLUMN_FECHA = "fecha",COLUMN_HABITACION = "habitacion",COLUMN_ESTADO = "estado",
-                               COLUMN_BAJERAS = "bajeras",COLUMN_ENCIMERAS = "encimeras", COLUMN_FUNDA_ALMOHADA = "funda_almohada",
-                               COLUMN_PROTECTOR_ALMOHADA = "protector_almohada",COLUMN_NORDICA = "nordica",COLUMN_TOALLA_DUCHA = "toalla_ducha",
-                                COLUMN_TOALLA_LAVABO = "toalla_lavabo",COLUMN_ALFOMBRIN = "alfombrin",COLUMN_PAID = "paid",
-                                COLUMN_PROTECTOR_COLCHON = "protector_colchon";
+    public static final String COLUMN_ID = "_id", COLUMN_FECHA = "fecha", COLUMN_HABITACION = "habitacion", COLUMN_ESTADO = "estado",
+            COLUMN_BAJERAS = "bajeras", COLUMN_ENCIMERAS = "encimeras", COLUMN_FUNDA_ALMOHADA = "funda_almohada",
+            COLUMN_PROTECTOR_ALMOHADA = "protector_almohada", COLUMN_NORDICA = "nordica", COLUMN_TOALLA_DUCHA = "toalla_ducha",
+            COLUMN_TOALLA_LAVABO = "toalla_lavabo", COLUMN_ALFOMBRIN = "alfombrin", COLUMN_PAID = "paid",
+            COLUMN_PROTECTOR_COLCHON = "protector_colchon";
     public static final String TABLE_EXTRAS = "extras";
-    public static final String COLUMN_IDEXTRA = "_idextra",COLUMN_REGISTRO_ID="idregistro",COLUMN_AGUA = "agua",COLUMN_PAPELH = "papelH",COLUMN_CAFEN = "cafeN",
-            COLUMN_CAFEC = "cafe_c",COLUMN_LECHE = "leche", COLUMN_TE_MANZANILLA = "te_manzanilla",
-            COLUMN_TE_NEGRO = "te_negro",COLUMN_GALLETAS = "galletas",COLUMN_AZUCAR = "azucar",
-            COLUMN_SACARINA = "sacarina",COLUMN_MAQUILLAJE = "maquillaje",COLUMN_DULCE_EXTRA = "dulce_extra";
+    public static final String COLUMN_IDEXTRA = "_idextra", COLUMN_REGISTRO_ID = "idregistro", COLUMN_AGUA = "agua", COLUMN_PAPELH = "papelH", COLUMN_CAFEN = "cafeN",
+            COLUMN_CAFEC = "cafe_c", COLUMN_LECHE = "leche", COLUMN_TE_MANZANILLA = "te_manzanilla",
+            COLUMN_TE_NEGRO = "te_negro", COLUMN_GALLETAS = "galletas", COLUMN_AZUCAR = "azucar",
+            COLUMN_SACARINA = "sacarina", COLUMN_MAQUILLAJE = "maquillaje", COLUMN_DULCE_EXTRA = "dulce_extra";
 
 
     // Sentencia SQL para crear la tabla "registros"
@@ -77,4 +79,11 @@ public class DatabaseHotel extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // No se requiere actualización para esta versión
     }
+
+    // Método para borrar la base de datos
+    public void borrarBaseDatos(Context context) {
+        context.deleteDatabase(DATABASE_NAME);
+    }
+
+
 }

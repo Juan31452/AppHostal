@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.Registro;
@@ -21,7 +23,7 @@ public class ListarRegistrosActivity extends AppCompatActivity {
     private ListView listViewRegistros;
     private ListarRegistros listarRegistros;
     private List<String> registros;
-    private Button btnMenu, btnBuscar;
+    private Button btnMenu, btnBuscar, btnExtras;
     private static final String TAG = "ListarRegistrosActivity";
 
     @Override
@@ -33,9 +35,10 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         listViewRegistros = findViewById(R.id.listViewRegistros);
         btnMenu = findViewById(R.id.btnMenu);
         btnBuscar = findViewById(R.id.btnBuscar);
+        btnExtras = findViewById(R.id.btnExtras);
         listarRegistros = new ListarRegistros(this);
         registros = listarRegistros.obtenerRegistros();
-
+        String registroId= "";
         // Log the initial registros data
         for (String registro : registros) {
             Log.d(TAG, "Registro inicial: " + registro);
@@ -52,6 +55,28 @@ public class ListarRegistrosActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListarRegistrosActivity.this, DetalleRegistroActivity.class);
                 intent.putExtra("registro", registroSeleccionado);
                 startActivity(intent);
+            }
+        });
+
+        btnExtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear una instancia del Fragment con el valor de edRegistro
+                ExtrasActivity fragment = ExtrasActivity.newInstance(registroId);
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
+
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.apphostal.Logica;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.apphostal.Database.DatabaseHotel;
 
@@ -28,7 +29,9 @@ public class ListarRegistros {
             db = dbHostal.getReadableDatabase();
 
             // Definir la consulta SQL
-            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_REGISTROS;
+            String consulta = "SELECT r.*, e.* FROM " + DatabaseHotel.TABLE_REGISTROS + " r LEFT JOIN " + DatabaseHotel.TABLE_EXTRAS +
+                    " e ON r." + DatabaseHotel.COLUMN_ID + " = e." + DatabaseHotel.COLUMN_REGISTRO_ID;
+
 
             // Ejecutar la consulta
             cursor = db.rawQuery(consulta, null);
@@ -51,6 +54,26 @@ public class ListarRegistros {
                     String alfombrin = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN));
                     String paid = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID));
                     String protectorC = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON));
+
+                    // Datos de la tabla "extras"
+                    String registroid = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_REGISTRO_ID));
+                    String agua = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_AGUA));
+                    String papelH = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAPELH));
+                    String cafeN = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_CAFEN));
+                    String cafeC = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_CAFEC));
+                    String leche = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_LECHE));
+                    String teManzanilla = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TE_MANZANILLA));
+                    String teNegro = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TE_NEGRO));
+                    String galletas = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_GALLETAS));
+                    String azucar = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_AZUCAR));
+                    String sacarina = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_SACARINA));
+                    String maquillaje = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_MAQUILLAJE));
+                    String dulceExtra = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_DULCE_EXTRA));
+
+                    // Imprimir los valores de ambas tablas
+                    Log.d("Datos del registro y extras", registroid + ", " + agua + ", " + papelH + ", " + cafeN + ", " + cafeC + ", " + leche + ", " +
+                            teManzanilla + ", " + teNegro + ", " + galletas + ", " + azucar + ", " + sacarina + ", " +
+                            maquillaje + ", " + dulceExtra);
 
                     // Construir una cadena con los valores obtenidos
                     String registro = idRegistro + "," + fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +

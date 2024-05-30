@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.apphostal.Database.DatabaseHotel;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
         // Obtiene una referencia al botón btnAdicionar
         Button btnAdicionar = findViewById(R.id.btnAdicionar);
         Button btnListar = findViewById(R.id.btnListar);
-        Button btnExtras = findViewById(R.id.btnExtras);
+
+        // Crear una instancia de DatabaseHotel para llamar al método borrarBaseDatos
+
+        //DatabaseHotel databaseHotel = new DatabaseHotel(this);
+        //databaseHotel.borrarBaseDatos(this);
 
         // Configura un OnClickListener para el botón btnAdicionar
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
@@ -41,26 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnExtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crear una instancia del Fragment
-                Extras fragment = new Extras();
 
-                // Obtener el FragmentManager y comenzar una transacción
-                FragmentManager fragmentManager  = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-
-                // Añadir la transacción al back stack (opcional)
-                fragmentTransaction.addToBackStack(null);
-
-                // Commit de la transacción
-                fragmentTransaction.commit();
-            }
-        });
     }
 
 }

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.apphostal.Clases.Extras;
 import com.example.apphostal.Logica.EliminarRegistros;
 import com.example.apphostal.Logica.ModificarRegistros;
 
@@ -129,7 +130,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                 Log.d("Valor de edRegistro", registroId);
 
                 // Crear una instancia del Fragment con el valor de edRegistro
-                Extras fragment = Extras.newInstance(registroId);
+                ExtrasActivity fragment = ExtrasActivity.newInstance(registroId);
 
                 // Obtener el FragmentManager y comenzar una transacción
                 FragmentManager fragmentManager = getSupportFragmentManager();
