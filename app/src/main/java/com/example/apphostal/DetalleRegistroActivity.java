@@ -24,10 +24,10 @@ import com.example.apphostal.Logica.ModificarRegistros;
 public class DetalleRegistroActivity extends AppCompatActivity {
 
     private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
-    private Button btnMenu,btnEliminar, btnModificar, btnExtras, btnConsultar;
+    private Button btnMenu,btnEliminar, btnModificar, btnExtras;
 
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -36,6 +36,7 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         btnBuscar = findViewById(R.id.btnBuscar);
         btnExtras = findViewById(R.id.btnExtras);
+        
         listarRegistros = new ListarRegistros(this);
         registros = listarRegistros.obtenerRegistros();
         String registroId= "";
