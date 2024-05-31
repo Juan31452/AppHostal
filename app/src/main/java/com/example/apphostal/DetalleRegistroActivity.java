@@ -16,14 +16,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.apphostal.Clases.Calendario;
+import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Extras;
+import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.EliminarRegistros;
 import com.example.apphostal.Logica.ListarExtras;
 import com.example.apphostal.Logica.ModificarRegistros;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
 
-    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
+    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
     private Button btnMenu,btnEliminar, btnModificar, btnExtras;
 
 
@@ -41,6 +44,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         edfundalomohada = findViewById(R.id.edfundalomohada);
         edprotectora = findViewById(R.id.edprotectora);
         ednordica = findViewById(R.id.ednordica);
+        edcolchav = findViewById(R.id.edcolchav);
         edtoallaD = findViewById(R.id.edtoallaD);
         edtoallaL = findViewById(R.id.edtoallaL);
         edalfombrim = findViewById(R.id.edalfombrim);
@@ -60,43 +64,32 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         // Obtener el registro pasado desde ListarRegistrosActivity
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("registro")) {
-            String registro = intent.getStringExtra("registro");
+            Registro registro = (Registro) intent.getSerializableExtra("registro");
+
+            //String registro = intent.getStringExtra("registro");
 
             // Verificar y mostrar los valores en el Log
             Log.d("DetalleRegistroActivity", "Registro recibido: " + registro);
 
-            // Parsear el registro y establecer los valores en los EditText
-            if (registro != null) {
-                // Dividir el registro por comas
-                String[] partes = registro.split(",");
-                Log.d("DetalleRegistroActivity", "Número de partes: " + partes.length);
-                for (int i = 0; i < partes.length; i++) {
-                    Log.d("DetalleRegistroActivity", "Parte [" + i + "]: " + partes[i]);
-                }
 
-                // Comprobar que hay 14 partes antes de asignarlas
-                if (partes.length == 14) {
-                    // Asignar los valores a los EditText correspondientes
-                    edRegistro.setText(partes[0].trim());
-                    edfecha.setText(partes[1].trim());
-                    edhabitacion.setText(partes[2].trim());
-                    edestado.setText(partes[3].trim());
-                    edbajeras.setText(partes[4].trim());
-                    edencimeras.setText(partes[5].trim());
-                    edfundalomohada.setText(partes[6].trim());
-                    edprotectora.setText(partes[7].trim());
-                    ednordica.setText(partes[8].trim());
-                    edtoallaD.setText(partes[9].trim());
-                    edtoallaL.setText(partes[10].trim());
-                    edalfombrim.setText(partes[11].trim());
-                    edpaid.setText(partes[12].trim());
-                    edprotectC.setText(partes[13].trim());
-                } else {
-                    Log.e("DetalleRegistroActivity", "El número de campos no es el esperado.");
-                }
-            } else {
-                Log.e("DetalleRegistroActivity", "Registro recibido es null");
-            }
+            // Asignar los valores a los EditText correspondientes
+            edRegistro.setText(String.valueOf(registro.getId()));
+            edfecha.setText(registro.getFecha());
+            edhabitacion.setText(registro.getHabitacion());
+            edestado.setText(registro.getEstado());
+            edbajeras.setText(registro.getBajera());
+            edencimeras.setText(registro.getEncimera());
+            edfundalomohada.setText(registro.getFundaA());
+            edprotectora.setText(registro.getProtectorA());
+            ednordica.setText(registro.getNordica());
+            edcolchav.setText(registro.getColchav());
+            edtoallaD.setText(registro.getToallaD());
+            edtoallaL.setText(registro.getToallaL());
+            edalfombrim.setText(registro.getAlfombrin());
+            edpaid.setText(registro.getPaid());
+            edprotectC.setText(registro.getProtectorC());
+
+
         } else {
             Log.e("DetalleRegistroActivity", "Intent no contiene 'registro'");
         }
@@ -151,8 +144,12 @@ public class DetalleRegistroActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+    }
+    public void mostrarListaEstado(View view) {
+
+        Estado.mostrarListaEstado(this, edestado);
+    }
 
     private void modificarRegistro() {
         String fecha = edfecha.getText().toString().trim(); // Agregado
@@ -163,6 +160,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         String fundaAlmohada = edfundalomohada.getText().toString().trim();
         String protectorAlmohada = edprotectora.getText().toString().trim();
         String nordica = ednordica.getText().toString().trim();
+        String colchav = edcolchav.getText().toString().trim();
         String toallaDucha = edtoallaD.getText().toString().trim();
         String toallaLavabo = edtoallaL.getText().toString().trim();
         String alfombrin = edalfombrim.getText().toString().trim();
@@ -173,7 +171,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         ModificarRegistros modificarRegistros = new ModificarRegistros(this);
 
         // Llamar al método modificarRegistro
-        boolean resultado = modificarRegistros.modificarRegistro(habitacion, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
+        boolean resultado = modificarRegistros.modificarRegistro(habitacion, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
 
         // Mostrar un mensaje según el resultado
         if (resultado) {

@@ -105,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edhabitacion"
-
+        android:onClick="mostrarListaEstado"
         />
 
     <EditText
@@ -151,6 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edfundalomohada"
         />
 
+
     <EditText
         android:id="@+id/ednordica"
         android:layout_height="wrap_content"
@@ -161,6 +162,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edprotectora"
         />
+    <EditText
+        android:id="@+id/edcolchav"
+        android:layout_height="wrap_content"
+        style="@style/EditTextStyle"
+        android:textColorHint="#000000"
+        android:hint="ColchaV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ednordica"
+        />
 
     <EditText
         android:id="@+id/edtoallaD"
@@ -170,7 +181,7 @@
         android:hint="Toalla Ducha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ednordica"
+        app:layout_constraintTop_toBottomOf="@+id/edcolchav"
         />
 
     <EditText

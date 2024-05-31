@@ -19,7 +19,8 @@ import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.AdicionarRegistros;
 
 public class AdicionarActivity extends AppCompatActivity {
-    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;
+    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;
+
     // Declara la variable adicionarRegistros aquí
     private AdicionarRegistros adicionarRegistros;
     @Override
@@ -38,6 +39,7 @@ public class AdicionarActivity extends AppCompatActivity {
         edfundalomohada = findViewById(R.id.edfundalomohada);
         edprotectora = findViewById(R.id.edprotectora);
         ednordica = findViewById(R.id.ednordica);
+        edcolchav = findViewById(R.id.edcolchav);
         edtoallaD = findViewById(R.id.edtoallaD);
         edtoallaL = findViewById(R.id.edtoallaL);
         edalfombrim = findViewById(R.id.edalfombrim);
@@ -46,7 +48,6 @@ public class AdicionarActivity extends AppCompatActivity {
 
         // Obtiene una referencia al botón btnMenu
         Button btnMenu = findViewById(R.id.btnMenu);
-        //Obtiene una referencia al botón btnextras
 
         // Asignar acción al botón "Enviar Datos"
         Button btnEnviarDatos = findViewById(R.id.btnEnviarDatos);
@@ -105,6 +106,7 @@ public class AdicionarActivity extends AppCompatActivity {
         EditTextFocusHelper.setupEditTextFocus(edfundalomohada);
         EditTextFocusHelper.setupEditTextFocus(edprotectora);
         EditTextFocusHelper.setupEditTextFocus(ednordica);
+        EditTextFocusHelper.setupEditTextFocus(edcolchav);
         EditTextFocusHelper.setupEditTextFocus(edtoallaD);
         EditTextFocusHelper.setupEditTextFocus(edtoallaL);
         EditTextFocusHelper.setupEditTextFocus(edalfombrim);
@@ -171,6 +173,7 @@ public class AdicionarActivity extends AppCompatActivity {
         String fundaA = edfundalomohada.getText().toString();
         String protectorA = edprotectora.getText().toString();
         String nordica = ednordica.getText().toString();
+        String colchav = edcolchav.getText().toString();
         String toallaD = edtoallaD.getText().toString();
         String toallaL = edtoallaL.getText().toString();
         String alfombrin = edalfombrim.getText().toString();
@@ -178,7 +181,7 @@ public class AdicionarActivity extends AppCompatActivity {
         String protectorC = edprotectC.getText().toString();
 
 
-        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, toallaD, toallaL, alfombrin, paid, protectorC);
+        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC);
 
         adicionarRegistros.insertarRegistro(registro);
 
@@ -191,6 +194,7 @@ public class AdicionarActivity extends AppCompatActivity {
         edfundalomohada.setText("");
         edprotectora.setText("");
         ednordica.setText("");
+        edcolchav.setText("");
         edtoallaD.setText("");
         edtoallaL.setText("");
         edalfombrim.setText("");

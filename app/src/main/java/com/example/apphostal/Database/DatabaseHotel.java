@@ -16,7 +16,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
     public static final String TABLE_REGISTROS = "registros";
     public static final String COLUMN_ID = "_id", COLUMN_FECHA = "fecha", COLUMN_HABITACION = "habitacion", COLUMN_ESTADO = "estado",
             COLUMN_BAJERAS = "bajeras", COLUMN_ENCIMERAS = "encimeras", COLUMN_FUNDA_ALMOHADA = "funda_almohada",
-            COLUMN_PROTECTOR_ALMOHADA = "protector_almohada", COLUMN_NORDICA = "nordica", COLUMN_TOALLA_DUCHA = "toalla_ducha",
+            COLUMN_PROTECTOR_ALMOHADA = "protector_almohada", COLUMN_NORDICA = "nordica", COLUMN_COLCHA_VERANO = "colchav",  COLUMN_TOALLA_DUCHA = "toalla_ducha",
             COLUMN_TOALLA_LAVABO = "toalla_lavabo", COLUMN_ALFOMBRIN = "alfombrin", COLUMN_PAID = "paid",
             COLUMN_PROTECTOR_COLCHON = "protector_colchon";
     public static final String TABLE_EXTRAS = "extras";
@@ -38,6 +38,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
                     COLUMN_FUNDA_ALMOHADA + " INTEGER DEFAULT 0, " +
                     COLUMN_PROTECTOR_ALMOHADA + " INTEGER DEFAULT 0, " +
                     COLUMN_NORDICA + " INTEGER DEFAULT 0, " +
+                    COLUMN_COLCHA_VERANO + " INTEGER DEFAULT 0, " +
                     COLUMN_TOALLA_DUCHA + " INTEGER DEFAULT 0, " +
                     COLUMN_TOALLA_LAVABO + " INTEGER DEFAULT 0, " +
                     COLUMN_ALFOMBRIN + " INTEGER DEFAULT 0, " +

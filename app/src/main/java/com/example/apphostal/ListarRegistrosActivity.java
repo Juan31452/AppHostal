@@ -9,19 +9,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.ListarRegistros;
+import com.example.apphostal.Logica.ListarRegistros1;
+
 import java.util.List;
 
 public class ListarRegistrosActivity extends AppCompatActivity {
     private EditText editTextFecha;
     private ListView listViewRegistros;
     private ListarRegistros listarRegistros;
+    private ListarRegistros1 listarRegistros1;
     private List<String> registros;
     private Button btnMenu, btnBuscar, btnExtras;
     private static final String TAG = "ListarRegistrosActivity";
@@ -39,19 +41,32 @@ public class ListarRegistrosActivity extends AppCompatActivity {
 
         listarRegistros = new ListarRegistros(this);
         registros = listarRegistros.obtenerRegistros();
+        // Crear una instancia de ListarRegistros1
+        listarRegistros1 = new ListarRegistros1(this);
+
+        // Consultar los registros
+        listarRegistros1.consultarRegistros();
+
+        // Obtener la lista de registros
+        List<Registro> registros = listarRegistros1.getRegistros();
+
+
         String registroId= "";
         // Log the initial registros data
-        for (String registro : registros) {
+        for (Registro registro : registros) {
             Log.d(TAG, "Registro inicial: " + registro);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, registros);
+        // Crear un adaptador para mostrar los registros en el ListView
+        ArrayAdapter<Registro> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, registros);
         listViewRegistros.setAdapter(adapter);
 
         listViewRegistros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String registroSeleccionado = (String) parent.getItemAtPosition(position);
+                // Obtener el objeto Registro en la posición seleccionada
+                Registro registroSeleccionado = registros.get(position);
 
                 Intent intent = new Intent(ListarRegistrosActivity.this, DetalleRegistroActivity.class);
                 intent.putExtra("registro", registroSeleccionado);
@@ -63,7 +78,8 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buscarRegistro();
+
+                consultarPorFecha();
             }
         });
 
@@ -90,37 +106,26 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         listViewRegistros.setAdapter(adapter);
     }
 
-    private Registro convertirACadenaARegistro(String cadena) {
-        Log.d(TAG, "Convirtiendo cadena a registro: " + cadena);
-        String[] partes = cadena.split(",");
-        Log.d(TAG, "Número de partes: " + partes.length);
-
-        if (partes.length == 13) { // Verificamos que tenemos exactamente 13 partes
-            for (int i = 0; i < partes.length; i++) {
-                Log.d(TAG, "Parte " + i + ": " + partes[i]);
-            }
-            try {
-                return new Registro(
-                        partes[0], // fecha
-                        partes[1], // habitacion
-                        partes[2], // estado
-                        partes[3], // bajera
-                        partes[4], // encimera
-                        partes[5], // fundaA
-                        partes[6], // protectorA
-                        partes[7], // nordica
-                        partes[8], // toallaD
-                        partes[9], // toallaL
-                        partes[10], // alfombrin
-                        partes[11], // paid
-                        partes[12]  // protectorC
-                );
-            } catch (Exception e) {
-                Log.e(TAG, "Error al crear el objeto Registro: " + e.getMessage());
-            }
-        } else {
-            Log.e(TAG, "Error: se esperaban 13 partes pero se encontraron " + partes.length);
+    private void consultarPorFecha() {
+        String fecha = editTextFecha.getText().toString().trim();
+        if (fecha.isEmpty()) {
+            Toast.makeText(this, "Por favor ingrese una fecha.", Toast.LENGTH_SHORT).show();
+            return;
         }
-        return null;
+
+        // Consultar los registros por fecha
+        listarRegistros1.consultarRegistrosPorFecha(fecha);
+
+        // Obtener la lista de registros filtrados por fecha
+        List<Registro> registros = listarRegistros1.getRegistros();
+
+        // Mostrar los registros en el ListView
+        if (!registros.isEmpty()) {
+            ArrayAdapter<Registro> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, registros);
+            listViewRegistros.setAdapter(adapter);
+        } else {
+            Toast.makeText(this, "No se encontraron registros para la fecha: " + fecha, Toast.LENGTH_SHORT).show();
+            listViewRegistros.setAdapter(null); // Limpiar el ListView si no hay resultados
+        }
     }
 }

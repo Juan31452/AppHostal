@@ -15,7 +15,7 @@ public class ModificarRegistros {
     }
 
     public boolean modificarRegistro(String habitacion,  String estado, String bajeras, String encimeras,
-                                     String fundaAlmohada, String protectorAlmohada, String nordica, String toallaDucha,
+                                     String fundaAlmohada, String protectorAlmohada, String nordica, String colchav, String toallaDucha,
                                      String toallaLavabo, String alfombrin, String paid, String protectorColchon) {
         SQLiteDatabase db = null;
         boolean resultado = false;
@@ -30,6 +30,7 @@ public class ModificarRegistros {
             values.put(DatabaseHotel.COLUMN_FUNDA_ALMOHADA, fundaAlmohada);
             values.put(DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA, protectorAlmohada);
             values.put(DatabaseHotel.COLUMN_NORDICA, nordica);
+            values.put(DatabaseHotel.COLUMN_COLCHA_VERANO, colchav);
             values.put(DatabaseHotel.COLUMN_TOALLA_DUCHA, toallaDucha);
             values.put(DatabaseHotel.COLUMN_TOALLA_LAVABO, toallaLavabo);
             values.put(DatabaseHotel.COLUMN_ALFOMBRIN, alfombrin);

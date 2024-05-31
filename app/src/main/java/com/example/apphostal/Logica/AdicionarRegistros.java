@@ -26,18 +26,19 @@ public class AdicionarRegistros {
                     DatabaseHotel.COLUMN_FUNDA_ALMOHADA + ", " +
                     DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA + ", " +
                     DatabaseHotel.COLUMN_NORDICA + ", " +
+                    DatabaseHotel.COLUMN_COLCHA_VERANO + ", " +
                     DatabaseHotel.COLUMN_TOALLA_DUCHA + ", " +
                     DatabaseHotel.COLUMN_TOALLA_LAVABO + ", " +
                     DatabaseHotel.COLUMN_ALFOMBRIN + ", " +
                     DatabaseHotel.COLUMN_PAID + ", " +
-                    DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
             dbHostal.getWritableDatabase().execSQL(query, new String[]{
                     registro.getFecha(), registro.getHabitacion(), registro.getEstado(),
-                    registro.getBajera(), registro.getEncimera(), registro.getFundaAlmohada(),
-                    registro.getProtectorAlmohada(), registro.getNordica(), registro.getToallaDucha(),
-                    registro.getToallaLavabo(), registro.getAlfombrin(), registro.getPaid(),
-                    registro.getProtectorColchon()});
+                    registro.getBajera(), registro.getEncimera(), registro.getFundaA(),
+                    registro.getProtectorA(), registro.getNordica(), registro.getColchav(), registro.getToallaD(),
+                    registro.getToallaL(), registro.getAlfombrin(), registro.getPaid(),
+                    registro.getProtectorC()});
 
             mostrarMensaje("Registro guardado correctamente");
         } catch (Exception e) {

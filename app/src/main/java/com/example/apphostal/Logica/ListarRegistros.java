@@ -49,6 +49,7 @@ public class ListarRegistros {
                     String fundaA = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FUNDA_ALMOHADA));
                     String protectorA = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA));
                     String nordica = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_NORDICA));
+                    String colchav = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_COLCHA_VERANO));
                     String toallaD = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_DUCHA));
                     String toallaL = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_LAVABO));
                     String alfombrin = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN));
@@ -76,9 +77,9 @@ public class ListarRegistros {
                             maquillaje + ", " + dulceExtra);
 
                     // Construir una cadena con los valores obtenidos
-                    String registro = idRegistro + "," + fecha + "," + habitacion + "," + estado + "," + bajera + "," + encimera + "," + fundaA + "," +
-                            protectorA + "," + nordica + "," + toallaD + "," + toallaL + "," + alfombrin + "," +
-                            paid + "," + protectorC;
+                    String registro =  "Id:" + idRegistro + ", Fecha:" + fecha + ", Habitacion:" + habitacion + ", Estado:" + estado + ", Bajera:" + bajera + ", Encimera:" + encimera + ", Funda Almohada:" + fundaA +
+                            ", Protector Almohada:" + protectorA + ", Nordica" + nordica + ", Colcha Verano" + colchav + ", Toalla Ducha" + toallaD + ", Toalla Lavabo" + toallaL + ", Alfombrib" + alfombrin +
+                            ", Paid" + paid + ", Protector Colchon" + protectorC;
 
                     // Agregar el registro a la lista
                     listaRegistros.add(registro);
@@ -160,4 +161,6 @@ public class ListarRegistros {
         // Retornar la lista de registros
         return listaRegistros;
     }
+
+
 }

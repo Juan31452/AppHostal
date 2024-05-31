@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         // Crear una instancia de DatabaseHotel para llamar al método borrarBaseDatos
 
         //DatabaseHotel databaseHotel = new DatabaseHotel(this);
-        //databaseHotel.borrarBaseDatos(this);
+        //atabaseHotel.borrarBaseDatos(this);
 
         // Configura un OnClickListener para el botón btnAdicionar
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
