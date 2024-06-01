@@ -120,27 +120,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         btnExtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obtener el valor de edRegistro
-                String registroId = edRegistro.getText().toString().trim();
 
-                // Imprimir el valor en el Log
-                Log.d("Valor de edRegistro", registroId);
-
-                // Crear una instancia del Fragment con el valor de edRegistro
-                ExtrasActivity fragment = ExtrasActivity.newInstance(registroId);
-
-                // Obtener el FragmentManager y comenzar una transacción
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-
-                // Añadir la transacción al back stack (opcional)
-                fragmentTransaction.addToBackStack(null);
-
-                // Commit de la transacción
-                fragmentTransaction.commit();
             }
         });
 

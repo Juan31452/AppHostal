@@ -3,109 +3,252 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="1dp"
     tools:context=".ExtrasActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#092ADF"
+        android:background="#BB8FCE"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        android:layout_marginTop="16dp">
 
-
-
-    <Button
+        <Button
             android:id="@+id/btnFragmentCerrar"
             android:layout_width="200dp"
+            android:layout_height="61dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="0dp"
+            android:text="Cerrar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="1dp"
-            android:text="Cerrar"
-            android:layout_gravity="center"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/tregistro"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Id" />
 
+            <EditText
+                android:id="@+id/edRegistro"
+                style="@style/EditTextStyle"
+                android:enabled="false"
 
+                />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edRegistro"
-            style="@style/EditTextStyle"
-            android:enabled="false"
-            android:hint="Registro" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edagua"
-            style="@style/EditTextStyle"
-            android:hint="Agua"
-             />
+            <TextView
+                android:id="@+id/tagua"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Agua" />
 
-        <EditText
-            android:id="@+id/edpapleh"
-            style="@style/EditTextStyle"
-            android:hint="Papel Higienico"
-             />
+            <EditText
+                android:id="@+id/edagua"
+                style="@style/EditTextStyle" />
 
-        <EditText
-            android:id="@+id/edcafen"
-            style="@style/EditTextStyle"
-            android:hint="Cafe Negro"
-             />
+            <TextView
+                android:id="@+id/tpapelh"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Papel H." />
 
-        <EditText
-            android:id="@+id/edcafec"
-            style="@style/EditTextStyle"
-            android:hint="Cafe con Leche"
-            />
+            <EditText
+                android:id="@+id/edpapleh"
+                style="@style/EditTextStyle" />
 
-        <EditText
-            android:id="@+id/idleche"
-            style="@style/EditTextStyle"
-            android:hint="Leche"
-             />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/edtem"
-            style="@style/EditTextStyle"
-            android:hint="Te Menta"
-             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/edtenegro"
-            style="@style/EditTextStyle"
-            android:hint="Te Negro"
-             />
+            <TextView
+                android:id="@+id/tcafen"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Cafe C." />
 
-        <EditText
-            android:id="@+id/edgalletas"
-            style="@style/EditTextStyle"
-            android:hint="Galletas"
-             />
+            <EditText
+                android:id="@+id/edcafen"
+                style="@style/EditTextStyle" />
 
-        <EditText
-            android:id="@+id/edzucar"
-            style="@style/EditTextStyle"
-            android:hint="Azucar"
-             />
+            <TextView
+                android:id="@+id/tcafec"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Cafe C." />
 
-        <EditText
-            android:id="@+id/edsacarinas"
-            style="@style/EditTextStyle"
-            android:hint="Sacarinas"
-             />
+            <EditText
+                android:id="@+id/edcafec"
+                style="@style/EditTextStyle"
 
-        <EditText
-            android:id="@+id/edmaquillaje"
-            style="@style/EditTextStyle"
-            android:hint="Desmaquillaje"
-             />
+                />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/eddulceextra"
-            style="@style/EditTextStyle"
-            android:hint="Dulce Extra"
-             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tleche"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Leche" />
+
+            <EditText
+                android:id="@+id/idleche"
+                style="@style/EditTextStyle"
+
+                />
+
+            <TextView
+                android:id="@+id/ttem"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Leche" />
+
+            <EditText
+                android:id="@+id/edtem"
+                style="@style/EditTextStyle"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ttenegro"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Te Negro" />
+
+            <EditText
+                android:id="@+id/edtenegro"
+                style="@style/EditTextStyle"
+
+                />
+
+            <TextView
+                android:id="@+id/tgalletas"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Te Negro" />
+
+            <EditText
+                android:id="@+id/edgalletas"
+                style="@style/EditTextStyle"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tzucar"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Azucar" />
+
+            <EditText
+                android:id="@+id/edzucar"
+                style="@style/EditTextStyle"
+
+                />
+
+            <TextView
+                android:id="@+id/tsacarinas"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Sacarinas" />
+
+            <EditText
+                android:id="@+id/edsacarinas"
+                style="@style/EditTextStyle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tmaquillaje"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Maquillaje" />
+
+            <EditText
+                android:id="@+id/edmaquillaje"
+                style="@style/EditTextStyle"
+
+                />
+
+            <TextView
+                android:id="@+id/tdulceextra"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Dulce E." />
+
+            <EditText
+                android:id="@+id/eddulceextra"
+                style="@style/EditTextStyle"
+
+                />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,20 +260,20 @@
                 android:id="@+id/btnGuardar"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"
-                android:text="Guardar"
-                android:layout_gravity="center"/>
+                android:text="Guardar" />
 
             <!-- Botón Modificar -->
             <Button
                 android:id="@+id/btnModificar"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"
-                android:text="Modificar"
-                android:layout_gravity="center"/>
+                android:text="Modificar" />
 
         </LinearLayout>
 

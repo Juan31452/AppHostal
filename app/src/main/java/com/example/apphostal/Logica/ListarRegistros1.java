@@ -1,5 +1,6 @@
 package com.example.apphostal.Logica;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -125,6 +126,70 @@ public class ListarRegistros1 {
             mostrarMensaje("Error al consultar datos de los registros por fecha: " + e.getMessage());
         } finally {
             // Cerrar el cursor y la base de datos
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+    }
+    @SuppressLint("Range")
+    public void consultarRecuentoPorRangoDeFecha(String fechaInicio, String fechaFin) {
+        SQLiteDatabase db = dbHostal.getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            // Consulta para obtener el recuento de cada columna dentro del rango de fechas
+            String consulta = "SELECT " +
+                    "COUNT(" + DatabaseHotel.COLUMN_BAJERAS + ") AS count_bajeras, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_ENCIMERAS + ") AS count_encimeras, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_FUNDA_ALMOHADA + ") AS count_funda_alomohada, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA + ") AS count_protector_alomohada, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_NORDICA + ") AS count_nordica, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_COLCHA_VERANO + ") AS count_colcha_verano, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_TOALLA_DUCHA + ") AS count_toalla_ducha, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_TOALLA_LAVABO + ") AS count_toalla_lavabo, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_ALFOMBRIN + ") AS count_alfombrin, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_PAID + ") AS count_paid, " +
+                    "COUNT(" + DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") AS count_protector_colchon " +
+                    "FROM " + DatabaseHotel.TABLE_REGISTROS +
+                    " WHERE " + DatabaseHotel.COLUMN_FECHA + " >= ?" +
+                    " AND " + DatabaseHotel.COLUMN_FECHA + " <= ?";
+            cursor = db.rawQuery(consulta, new String[]{fechaInicio, fechaFin});
+
+            // Verificar si se encontraron resultados
+            if (cursor != null && cursor.moveToFirst()) {
+                // Obtener el recuento de cada columna
+                int countBajeras = cursor.getInt(cursor.getColumnIndex("count_bajeras"));
+                int countEncimeras = cursor.getInt(cursor.getColumnIndex("count_encimeras"));
+                int countFundaAlmohada = cursor.getInt(cursor.getColumnIndex("count_funda_alomohada"));
+                int countProtectorAlmohada = cursor.getInt(cursor.getColumnIndex("count_protector_alomohada"));
+                int countNordica = cursor.getInt(cursor.getColumnIndex("count_nordica"));
+                int countColchaVerano = cursor.getInt(cursor.getColumnIndex("count_colcha_verano"));
+                int countToallaDucha = cursor.getInt(cursor.getColumnIndex("count_toalla_ducha"));
+                int countToallaLavabo = cursor.getInt(cursor.getColumnIndex("count_toalla_lavabo"));
+                int countAlfombrin = cursor.getInt(cursor.getColumnIndex("count_alfombrin"));
+                int countPaid = cursor.getInt(cursor.getColumnIndex("count_paid"));
+                int countProtectorColchon = cursor.getInt(cursor.getColumnIndex("count_protector_colchon"));
+
+                // Mostrar los resultados
+                mostrarMensaje("Recuento de registros por rango de fechas:\n" +
+                        "Bajeras: " + countBajeras + "\n" +
+                        "Encimeras: " + countEncimeras + "\n" +
+                        "Funda Almohada: " + countFundaAlmohada + "\n" +
+                        "Protector Almohada: " + countProtectorAlmohada + "\n" +
+                        "Nórdica: " + countNordica + "\n" +
+                        "Colcha Verano: " + countColchaVerano + "\n" +
+                        "Toalla Ducha: " + countToallaDucha + "\n" +
+                        "Toalla Lavabo: " + countToallaLavabo + "\n" +
+                        "Alfombrin: " + countAlfombrin + "\n" +
+                        "Paid: " + countPaid + "\n" +
+                        "Protector Colchón: " + countProtectorColchon);
+            } else {
+                mostrarMensaje("No se encontraron registros para el rango de fechas.");
+            }
+        } catch (Exception e) {
+            mostrarMensaje("Error al consultar el recuento de registros por rango de fechas: " + e.getMessage());
+        } finally {
             if (cursor != null) {
                 cursor.close();
             }

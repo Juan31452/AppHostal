@@ -128,6 +128,7 @@ public class ExtrasActivity extends Fragment {
             eddulceextra.setText(String.valueOf(extras.getDulceextra()));
             btnGuardar.setEnabled(false);
             btnModificar.setEnabled(true);
+
         } else {
             mostrarMensaje("No se encontraron datos para el registroId: " + registroId);
             btnGuardar.setEnabled(true);

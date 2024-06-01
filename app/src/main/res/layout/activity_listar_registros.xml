@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#BB8FCE"
     android:padding="10dp">
 
     <Button
@@ -47,6 +48,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/searchLayout"
         android:layout_marginTop="11dp"
-        android:background="#729A43" />
+        android:background="#58D68D"
+        android:textColor="#000000"
+        style="@style/ListViewTextStyle"
+        />
 
 </RelativeLayout>

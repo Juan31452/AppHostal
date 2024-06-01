@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#BB8FCE"
     tools:context=".DetalleRegistroActivity">
 
     <Button
@@ -43,58 +44,129 @@
         app:layout_constraintTop_toBottomOf="@+id/btnMenu"
         />
 
-    <EditText
-        android:id="@+id/edRegistro"
-        android:layout_width="350dp"
+    <LinearLayout
+        android:id="@+id/linea1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:background="@drawable/edit_text"
-        android:focusable="false"
-        android:hint="Registro"
-        android:textColor="#010000"
-        android:textColorHint="#000000"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo" />
-    <EditText
-        android:id="@+id/editTextFecha"
-        android:layout_height="wrap_content"
-        android:layout_width="350dp"
-        android:layout_marginEnd="2dp"
-        android:textSize="30sp"
-        android:textColor="#010000"
-        android:layout_marginStart="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/edRegistro"
-        android:focusable="false"
-        android:background="@drawable/edit_text"
-        android:hint="Fecha"
-        android:textColorHint="#000000"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        android:layout_marginTop="1dp"
+        >
+
+        <TextView
+            android:id="@+id/tregistro"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Id" />
+
+        <EditText
+            android:id="@+id/edRegistro"
+            style="@style/EditTextStyle"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/edit_text"
+            android:focusable="false"
+            android:hint="Registro" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linea2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linea1"
+        android:layout_marginTop="1dp">
+
+        <TextView
+            android:id="@+id/tfecha"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="1dp"
+            android:text="Fecha"
         />
 
-    <EditText
-        android:id="@+id/edhabitacion"
+            <EditText
+                android:id="@+id/editTextFecha"
+                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_marginEnd="2dp"
+                android:textSize="30sp"
+                android:textColor="#010000"
+                android:layout_marginStart="2dp"
+                android:focusable="false"
+                android:background="@drawable/edit_text"
+                android:hint="Fecha"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+           />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linea3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_width="350dp"
-        android:layout_marginEnd="2dp"
-        android:background="@drawable/edit_text"
-        android:hint="Habitacion"
-        android:textSize="30sp"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:layout_marginStart="2dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFecha"
+        app:layout_constraintTop_toBottomOf="@+id/linea2"
+        android:layout_marginTop="1dp">
+
+        <TextView
+            android:id="@+id/thabitacion"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="8dp"
+            android:text="Habitacion"
         />
 
+            <EditText
+                android:id="@+id/edhabitacion"
+                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/edit_text"
+                android:hint="Habitacion"
+                android:textSize="30sp"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:layout_marginStart="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextFecha"
+           />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linea4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linea3"
+        android:layout_marginTop="1dp"
+        >
+
+    <TextView
+        android:id="@+id/thestado"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="8dp"
+        android:text="Estado"
+
+        />
     <EditText
         android:id="@+id/edestado"
         android:layout_height="wrap_content"
-        android:layout_width="350dp"
+        android:layout_width="250dp"
         android:layout_marginEnd="2dp"
         android:background="@drawable/edit_text"
         android:hint="Estado"
@@ -104,130 +176,315 @@
         android:layout_marginStart="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edhabitacion"
         android:onClick="mostrarListaEstado"
         />
 
-    <EditText
-        android:id="@+id/edbajeras"
-        style="@style/EditTextStyle"
-        android:hint="Bajeras"
-        android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edestado"
-        />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/edencimeras"
+    <LinearLayout
+        android:id="@+id/lineaDetalles"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Encimeras"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edbajeras"
-        />
+        android:background="@drawable/cuadro_fondo"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/linea4">
 
-    <EditText
-        android:id="@+id/edfundalomohada"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Funda Almohada"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edencimeras"
-        />
+        <LinearLayout
+            android:id="@+id/linea5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linea4">
 
-    <EditText
-        android:id="@+id/edprotectora"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Protector Almohada"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edfundalomohada"
-        />
+            <TextView
+                android:id="@+id/tbajeras"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Bajeras"
+
+                />
+
+            <EditText
+                android:id="@+id/edbajeras"
+                style="@style/EditTextStyle"
+                android:hint="Bajeras"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tencimeras"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+
+                android:text="Encimeras" />
+
+            <EditText
+                android:id="@+id/edencimeras"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Encimeras"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linea6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linea5">
+
+            <TextView
+                android:id="@+id/tfundaa"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Funda A."
+
+                />
+
+            <EditText
+                android:id="@+id/edfundalomohada"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Funda Almohada"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+            <TextView
+                android:id="@+id/tprotect"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+
+                android:text="Protect. A." />
+
+            <EditText
+                android:id="@+id/edprotectora"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Protector Almohada"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linea7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linea6">
+
+            <TextView
+                android:id="@+id/tnordica"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Nordica"
+
+                />
+
+            <EditText
+                android:id="@+id/ednordica"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Nordica"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+            <TextView
+                android:id="@+id/tcolchav"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Colcha V."
+
+                />
+
+            <EditText
+                android:id="@+id/edcolchav"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="ColchaV"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linea8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linea7">
+
+            <TextView
+                android:id="@+id/ttoallaD"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Toalla D."
+
+                />
+
+            <EditText
+                android:id="@+id/edtoallaD"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Toalla Ducha"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+            <TextView
+                android:id="@+id/ttoallaL"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Toalla L."
+
+                />
+
+            <EditText
+                android:id="@+id/edtoallaL"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Toalla Lavabo"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
 
 
-    <EditText
-        android:id="@+id/ednordica"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Nordica"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edprotectora"
-        />
-    <EditText
-        android:id="@+id/edcolchav"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="ColchaV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ednordica"
-        />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/edtoallaD"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Toalla Ducha"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edcolchav"
-        />
+        <LinearLayout
+            android:id="@+id/linea9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linea8">
 
-    <EditText
-        android:id="@+id/edtoallaL"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Toalla Lavabo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtoallaD"
-        />
+            <TextView
+                android:id="@+id/talfombrim"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Alfonbrim"
 
-    <EditText
-        android:id="@+id/edalfombrim"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Alfombrim"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtoallaL"
-        />
+                />
 
-    <EditText
-        android:id="@+id/paid"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Paid"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edalfombrim"
-        />
+            <EditText
+                android:id="@+id/edalfombrim"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Alfombrim"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
 
-    <EditText
-        android:id="@+id/protectC"
-        android:layout_height="wrap_content"
-        style="@style/EditTextStyle"
-        android:textColorHint="#000000"
-        android:hint="Protector Colchon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paid"
-        />
+                />
 
+            <TextView
+                android:id="@+id/tpaid"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:text="Paid"
+
+                />
+
+            <EditText
+                android:id="@+id/paid"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Paid"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linea10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linea9">
+
+            <TextView
+                android:id="@+id/tprotectC"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Protect. C."
+
+                />
+
+            <EditText
+                android:id="@+id/protectC"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content"
+                android:hint="Protector Colchon"
+                android:textColorHint="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
     <Button
         android:id="@+id/btnModificar"
         android:layout_width="wrap_content"
@@ -237,7 +494,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintTop_toBottomOf="@+id/protectC"
+        app:layout_constraintTop_toBottomOf="@+id/lineaDetalles"
         />
 
     <Button
@@ -249,12 +506,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintTop_toBottomOf="@+id/protectC"
+        app:layout_constraintTop_toBottomOf="@+id/lineaDetalles"
         />
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
