@@ -1,5 +1,5 @@
 // ExtrasActivity.java
-package com.example.apphostal;
+package com.example.apphostal.Fragments;
 
 
 import android.content.Context;
@@ -17,8 +17,10 @@ import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Extras;
 import com.example.apphostal.Logica.AdicionarExtras;
 import com.example.apphostal.Logica.ListarExtras;
+import com.example.apphostal.Logica.ModificarExtras;
+import com.example.apphostal.R;
 
-public class ExtrasActivity extends Fragment {
+public class ExtrasFragment extends Fragment {
     private EditText edRegistro, edagua, edpapleh, edcafen, edcafec, idleche, edtem, edtenegro, edgalletas, edzucar, edsacarinas, edmaquillaje, eddulceextra;
     private Button btnFragmentCerrar, btnGuardar, btnConsultar,btnModificar;
     private AdicionarExtras adicionarExtras;
@@ -83,10 +85,15 @@ public class ExtrasActivity extends Fragment {
             public void onClick(View v) {
                 // Obtener el FragmentManager y quitar el fragment actual
                 FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction().remove(ExtrasActivity.this).commit();
+                fragmentManager.beginTransaction().remove(ExtrasFragment.this).commit();
             }
         });
-
+        btnModificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModificarRegistros();
+            }
+        });
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,8 +147,8 @@ public class ExtrasActivity extends Fragment {
     private void mostrarMensaje(String mensaje) {
       //  Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
     }
-    public static ExtrasActivity newInstance(String registroId) {
-        ExtrasActivity fragment = new ExtrasActivity();
+    public static ExtrasFragment newInstance(String registroId) {
+        ExtrasFragment fragment = new ExtrasFragment();
         Bundle args = new Bundle();
         args.putString("registroId", registroId);
         fragment.setArguments(args);
@@ -184,7 +191,8 @@ public class ExtrasActivity extends Fragment {
     }
     
     private void ModificarRegistros(){
-        String agua = edagua.getText().toString().trim(); // Agregado
+        int registro = Integer.parseInt(edRegistro.getText().toString().trim());
+        String agua = edagua.getText().toString().trim();
         String papelh = edpapleh.getText().toString().trim();
         String cafen = edcafen.getText().toString().trim();
         String cafec = edcafec.getText().toString().trim();
@@ -197,5 +205,24 @@ public class ExtrasActivity extends Fragment {
         String maquillaje = edmaquillaje.getText().toString().trim();
         String dulceextra = eddulceextra.getText().toString().trim();
 
+        Extras extras = new Extras(registro, Integer.parseInt(agua), Integer.parseInt(papelh),
+                Integer.parseInt(cafen), Integer.parseInt(cafec), Integer.parseInt(leche),
+                Integer.parseInt(temanzanilla), Integer.parseInt(tenegro), Integer.parseInt(galletas),
+                Integer.parseInt(azucar), Integer.parseInt(sacarinas), Integer.parseInt(maquillaje),
+                Integer.parseInt(dulceextra));
+
+        // Crear una instancia de la clase Modificar
+        Log.d("Datos Extras ", extras.toString());
+        ModificarExtras modificarextras = new ModificarExtras(getActivity());
+
+// Llamar al método para modificar y actualizar los datos, pasando el objeto extras
+        boolean resultado = modificarextras.modificarDatos(extras);
+
+        // Mostrar un mensaje según el resultado
+        if (resultado) {
+            Toast.makeText(getContext(), "Registro modificado con éxito", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Error al modificar el registro", Toast.LENGTH_SHORT).show();
+        }
     }
 }

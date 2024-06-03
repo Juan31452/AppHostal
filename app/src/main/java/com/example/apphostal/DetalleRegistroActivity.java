@@ -1,7 +1,6 @@
 package com.example.apphostal;
 
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.apphostal.Clases.Estado;
-import com.example.apphostal.Clases.Extras;
 import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Fragments.ExtrasFragment;
 import com.example.apphostal.Logica.EliminarRegistros;
 ;
 import com.example.apphostal.Logica.ModificarRegistros;
@@ -121,7 +120,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
                 String registroId = edRegistro.getText().toString().trim();
 
                 // Crear una instancia del Fragment con el valor de edRegistro
-                ExtrasActivity fragment = ExtrasActivity.newInstance(registroId);
+                ExtrasFragment fragment = ExtrasFragment.newInstance(registroId);
 
                 // Obtener el FragmentManager y comenzar una transacción
                 FragmentManager fragmentManager = getSupportFragmentManager();

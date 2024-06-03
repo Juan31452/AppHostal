@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="1dp"
-    tools:context=".ExtrasActivity">
+    tools:context=".Fragments.ExtrasFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

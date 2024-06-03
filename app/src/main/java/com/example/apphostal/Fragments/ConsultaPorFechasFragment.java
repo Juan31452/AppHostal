@@ -1,4 +1,4 @@
-package com.example.apphostal;
+package com.example.apphostal.Fragments;
 
 
 
@@ -16,13 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.ConteoRegistros;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.ListarRegistros1;
+import com.example.apphostal.R;
 
 import java.util.ArrayList;
 import java.util.List;

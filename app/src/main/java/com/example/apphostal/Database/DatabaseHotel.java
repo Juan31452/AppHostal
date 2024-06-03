@@ -1,9 +1,8 @@
 package com.example.apphostal.Database;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import com.example.apphostal.ExtrasActivity;
 
 public class DatabaseHotel extends SQLiteOpenHelper {
 
@@ -87,4 +86,8 @@ public class DatabaseHotel extends SQLiteOpenHelper {
     }
 
 
+    public void update(String extras, ContentValues values, String s, String[] strings) {
+
+
+    }
 }
