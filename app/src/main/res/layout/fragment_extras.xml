@@ -17,7 +17,7 @@
 
         <Button
             android:id="@+id/btnFragmentCerrar"
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="61dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
                 android:layout_marginEnd="1dp"
-                android:text="Leche" />
+                android:text="Te Manz." />
 
             <EditText
                 android:id="@+id/edtem"
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
                 android:layout_marginEnd="1dp"
-                android:text="Te Negro" />
+                android:text="Galletas" />
 
             <EditText
                 android:id="@+id/edgalletas"

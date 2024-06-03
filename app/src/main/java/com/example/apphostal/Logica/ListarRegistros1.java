@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.apphostal.Clases.ConteoRegistros;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Database.DatabaseHotel;
 
@@ -15,9 +16,9 @@ import java.util.List;
 
 public class ListarRegistros1 {
 
-    private DatabaseHotel dbHostal;
-    private Context context;
-    private List<Registro> registros;
+    private static DatabaseHotel dbHostal;
+    private static Context context;
+    private static List<Registro> registros;
 
     public ListarRegistros1(Context context) {
         dbHostal = new DatabaseHotel(context);
@@ -133,57 +134,44 @@ public class ListarRegistros1 {
         }
     }
     @SuppressLint("Range")
-    public void consultarRecuentoPorRangoDeFecha(String fechaInicio, String fechaFin) {
+    public static ConteoRegistros consultarRecuentoPorRangoDeFecha(String fechaInicio, String fechaFin) {
         SQLiteDatabase db = dbHostal.getReadableDatabase();
         Cursor cursor = null;
+        ConteoRegistros conteoregistros = null;
 
         try {
             // Consulta para obtener el recuento de cada columna dentro del rango de fechas
             String consulta = "SELECT " +
-                    "COUNT(" + DatabaseHotel.COLUMN_BAJERAS + ") AS count_bajeras, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_ENCIMERAS + ") AS count_encimeras, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_FUNDA_ALMOHADA + ") AS count_funda_alomohada, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA + ") AS count_protector_alomohada, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_NORDICA + ") AS count_nordica, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_COLCHA_VERANO + ") AS count_colcha_verano, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_TOALLA_DUCHA + ") AS count_toalla_ducha, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_TOALLA_LAVABO + ") AS count_toalla_lavabo, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_ALFOMBRIN + ") AS count_alfombrin, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_PAID + ") AS count_paid, " +
-                    "COUNT(" + DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") AS count_protector_colchon " +
+                    "SUM(" + DatabaseHotel.COLUMN_BAJERAS + ") AS count_bajeras, " +
+                    "SUM(" + DatabaseHotel.COLUMN_ENCIMERAS + ") AS count_encimeras, " +
+                    "SUM(" + DatabaseHotel.COLUMN_FUNDA_ALMOHADA + ") AS count_funda_alomohada, " +
+                    "SUM(" + DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA + ") AS count_protector_alomohada, " +
+                    "SUM(" + DatabaseHotel.COLUMN_NORDICA + ") AS count_nordica, " +
+                    "SUM(" + DatabaseHotel.COLUMN_COLCHA_VERANO + ") AS count_colcha_verano, " +
+                    "SUM(" + DatabaseHotel.COLUMN_TOALLA_DUCHA + ") AS count_toalla_ducha, " +
+                    "SUM(" + DatabaseHotel.COLUMN_TOALLA_LAVABO + ") AS count_toalla_lavabo, " +
+                    "SUM(" + DatabaseHotel.COLUMN_ALFOMBRIN + ") AS count_alfombrin, " +
+                    "SUM(" + DatabaseHotel.COLUMN_PAID + ") AS count_paid, " +
+                    "SUM(" + DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") AS count_protector_colchon " +
                     "FROM " + DatabaseHotel.TABLE_REGISTROS +
-                    " WHERE " + DatabaseHotel.COLUMN_FECHA + " >= ?" +
-                    " AND " + DatabaseHotel.COLUMN_FECHA + " <= ?";
+                    " WHERE " + DatabaseHotel.COLUMN_FECHA + " BETWEEN ? AND ?";
             cursor = db.rawQuery(consulta, new String[]{fechaInicio, fechaFin});
 
             // Verificar si se encontraron resultados
             if (cursor != null && cursor.moveToFirst()) {
                 // Obtener el recuento de cada columna
-                int countBajeras = cursor.getInt(cursor.getColumnIndex("count_bajeras"));
-                int countEncimeras = cursor.getInt(cursor.getColumnIndex("count_encimeras"));
-                int countFundaAlmohada = cursor.getInt(cursor.getColumnIndex("count_funda_alomohada"));
-                int countProtectorAlmohada = cursor.getInt(cursor.getColumnIndex("count_protector_alomohada"));
-                int countNordica = cursor.getInt(cursor.getColumnIndex("count_nordica"));
-                int countColchaVerano = cursor.getInt(cursor.getColumnIndex("count_colcha_verano"));
-                int countToallaDucha = cursor.getInt(cursor.getColumnIndex("count_toalla_ducha"));
-                int countToallaLavabo = cursor.getInt(cursor.getColumnIndex("count_toalla_lavabo"));
-                int countAlfombrin = cursor.getInt(cursor.getColumnIndex("count_alfombrin"));
-                int countPaid = cursor.getInt(cursor.getColumnIndex("count_paid"));
-                int countProtectorColchon = cursor.getInt(cursor.getColumnIndex("count_protector_colchon"));
-
-                // Mostrar los resultados
-                mostrarMensaje("Recuento de registros por rango de fechas:\n" +
-                        "Bajeras: " + countBajeras + "\n" +
-                        "Encimeras: " + countEncimeras + "\n" +
-                        "Funda Almohada: " + countFundaAlmohada + "\n" +
-                        "Protector Almohada: " + countProtectorAlmohada + "\n" +
-                        "Nórdica: " + countNordica + "\n" +
-                        "Colcha Verano: " + countColchaVerano + "\n" +
-                        "Toalla Ducha: " + countToallaDucha + "\n" +
-                        "Toalla Lavabo: " + countToallaLavabo + "\n" +
-                        "Alfombrin: " + countAlfombrin + "\n" +
-                        "Paid: " + countPaid + "\n" +
-                        "Protector Colchón: " + countProtectorColchon);
+                conteoregistros = new ConteoRegistros();
+                conteoregistros.setCountBajeras(cursor.getInt(cursor.getColumnIndex("count_bajeras")));
+                conteoregistros.setCountEncimeras(cursor.getInt(cursor.getColumnIndex("count_encimeras")));
+                conteoregistros.setCountFundaAlmohada(cursor.getInt(cursor.getColumnIndex("count_funda_alomohada")));
+                conteoregistros.setCountProtectorAlmohada(cursor.getInt(cursor.getColumnIndex("count_protector_alomohada")));
+                conteoregistros.setCountNordica(cursor.getInt(cursor.getColumnIndex("count_nordica")));
+                conteoregistros.setCountColchaVerano(cursor.getInt(cursor.getColumnIndex("count_colcha_verano")));
+                conteoregistros.setCountToallaDucha(cursor.getInt(cursor.getColumnIndex("count_toalla_ducha")));
+                conteoregistros.setCountToallaLavabo(cursor.getInt(cursor.getColumnIndex("count_toalla_lavabo")));
+                conteoregistros.setCountAlfombrin(cursor.getInt(cursor.getColumnIndex("count_alfombrin")));
+                conteoregistros.setCountPaid(cursor.getInt(cursor.getColumnIndex("count_paid")));
+                conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndex("count_protector_colchon")));
             } else {
                 mostrarMensaje("No se encontraron registros para el rango de fechas.");
             }
@@ -195,13 +183,16 @@ public class ListarRegistros1 {
             }
             db.close();
         }
+        return conteoregistros;
     }
 
     public List<Registro> getRegistros() {
+
         return registros;
     }
 
-    private void mostrarMensaje(String mensaje) {
+
+    private static void mostrarMensaje(String mensaje) {
         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
     }
 }

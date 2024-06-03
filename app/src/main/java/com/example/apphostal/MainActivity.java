@@ -1,6 +1,5 @@
 package com.example.apphostal;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +8,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.example.apphostal.Database.DatabaseHotel;
-import com.example.apphostal.Logica.ConsultaPorFechas;
 
 public class MainActivity extends AppCompatActivity {
    private Button btnropasucia,btnAdicionar,btnListar;
@@ -53,7 +49,21 @@ public class MainActivity extends AppCompatActivity {
         btnropasucia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                // Crear una instancia del Fragment con el valor de edRegistro
+                ConsultaPorFechasFragment fragment = ConsultaPorFechasFragment.newInstance();
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
             }
         });
 

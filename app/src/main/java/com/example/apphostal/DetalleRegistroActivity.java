@@ -11,17 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Extras;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.EliminarRegistros;
-import com.example.apphostal.Logica.ListarExtras;
+;
 import com.example.apphostal.Logica.ModificarRegistros;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
@@ -120,7 +117,24 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         btnExtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Obtener el valor de edRegistro
+                String registroId = edRegistro.getText().toString().trim();
 
+                // Crear una instancia del Fragment con el valor de edRegistro
+                ExtrasActivity fragment = ExtrasActivity.newInstance(registroId);
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
             }
         });
 

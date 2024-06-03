@@ -1,62 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Logica.ConsultaPorFechas">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:background="#E794DD"
+    tools:context=".ConsultaPorFechasFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/principal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:background="#E794DD"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
+            android:id="@+id/linea1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FECHA INICIAL" />
+            android:layout_marginTop="20dp"
+            android:background="#E794DD"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edfechainicial"
+            <TextView
+                android:id="@+id/ttitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:text="ROPA SUCIA" />
+
+            <TextView
+                android:id="@+id/tfechaini"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="FECHA INICIAL" />
+
+            <EditText
+                android:id="@+id/edfechainicial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textColor="#3D27A9"
+                android:freezesText="true" />
+
+            <TextView
+                android:id="@+id/tfecha2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="FECHA FINAL" />
+
+            <EditText
+                android:id="@+id/edfechafinal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#3D27A9"
+                android:ems="10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lista2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
-        <TextView
-            android:id="@+id/tfecha2"
+            <Button
+                android:id="@+id/btnbuscar"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="1"
+                android:text="Consultar" />
+
+            <Button
+                android:id="@+id/btnFragmentCerrar"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="1"
+                android:text="Cerrar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lista3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FECHA FINAL" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edfechafinal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="BUSCAR" />
-
-        <Button
-            android:id="@+id/btnbuscar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <ListView
-            android:id="@+id/listViewConsulta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/searchLayout"
-            android:layout_marginTop="11dp"
-            android:background="#58D68D"
-            android:textColor="#000000"
-            style="@style/ListViewTextStyle"
-            />
-
+            <TextView
+                android:id="@+id/txtLista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Lista : "
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

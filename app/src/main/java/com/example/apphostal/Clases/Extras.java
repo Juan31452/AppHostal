@@ -1,10 +1,11 @@
 package com.example.apphostal.Clases;
 
+
 import androidx.fragment.app.Fragment;
 
 import java.io.Serializable;
 
-public class Extras implements Serializable {
+public class Extras extends Fragment implements Serializable {
     private int registro;
     private int agua;
     private int papleh;

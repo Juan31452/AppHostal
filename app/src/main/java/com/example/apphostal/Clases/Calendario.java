@@ -18,9 +18,14 @@ public class Calendario {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        editTextFecha.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                        // Asegurarse de que el mes y el día tengan siempre dos dígitos
+                        String month = String.format("%02d", monthOfYear + 1);
+                        String day = String.format("%02d", dayOfMonth);
+                        String date = year + "-" + month + "-" + day;
+                        editTextFecha.setText(date);
                     }
                 }, year, month, day);
         datePickerDialog.show();
     }
+
 }
