@@ -145,8 +145,9 @@ public class DetalleRegistroActivity extends AppCompatActivity {
     }
 
     private void modificarRegistro() {
+        int id = Integer.parseInt(edRegistro.getText().toString().trim());
         String fecha = edfecha.getText().toString().trim(); // Agregado
-        String habitacion = edhabitacion.getText().toString().trim();
+       // String habitacion = edhabitacion.getText().toString().trim();
         String estado = edestado.getText().toString().trim();
         String bajeras = edbajeras.getText().toString().trim();
         String encimeras = edencimeras.getText().toString().trim();
@@ -164,7 +165,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         ModificarRegistros modificarRegistros = new ModificarRegistros(this);
 
         // Llamar al método modificarRegistro
-        boolean resultado = modificarRegistros.modificarRegistro(habitacion, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
+        boolean resultado = modificarRegistros.modificarRegistro(id, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
 
         // Mostrar un mensaje según el resultado
         if (resultado) {

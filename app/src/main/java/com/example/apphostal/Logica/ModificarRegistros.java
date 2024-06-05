@@ -14,7 +14,7 @@ public class ModificarRegistros {
         dbHostal = new DatabaseHotel(context);
     }
 
-    public boolean modificarRegistro(String habitacion,  String estado, String bajeras, String encimeras,
+    public boolean modificarRegistro(int id, String estado, String bajeras, String encimeras,
                                      String fundaAlmohada, String protectorAlmohada, String nordica, String colchav, String toallaDucha,
                                      String toallaLavabo, String alfombrin, String paid, String protectorColchon) {
         SQLiteDatabase db = null;
@@ -38,7 +38,7 @@ public class ModificarRegistros {
             values.put(DatabaseHotel.COLUMN_PROTECTOR_COLCHON, protectorColchon);
 
             // Actualizar la fila correspondiente a la habitación especificada
-            int rows = db.update(DatabaseHotel.TABLE_REGISTROS, values, DatabaseHotel.COLUMN_HABITACION + " = ?", new String[]{habitacion});
+            int rows = db.update(DatabaseHotel.TABLE_REGISTROS, values, DatabaseHotel.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
             if (rows > 0) {
                 resultado = true;
             }
