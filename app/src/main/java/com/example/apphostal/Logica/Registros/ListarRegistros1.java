@@ -1,4 +1,4 @@
-package com.example.apphostal.Logica;
+package com.example.apphostal.Logica.Registros;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

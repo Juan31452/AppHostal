@@ -1,4 +1,4 @@
-package com.example.apphostal.Logica;
+package com.example.apphostal.Logica.Registros;
 
 import android.content.Context;
 import android.database.Cursor;

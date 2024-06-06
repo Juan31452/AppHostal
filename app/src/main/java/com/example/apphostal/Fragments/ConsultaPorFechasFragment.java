@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.ConteoRegistros;
 import com.example.apphostal.Clases.Registro;
-import com.example.apphostal.Logica.ListarRegistros1;
+import com.example.apphostal.Logica.Registros.ListarRegistros1;
 import com.example.apphostal.R;
 
 import java.util.ArrayList;

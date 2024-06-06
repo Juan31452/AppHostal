@@ -16,7 +16,7 @@ import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
 import com.example.apphostal.Clases.Registro;
-import com.example.apphostal.Logica.AdicionarRegistros;
+import com.example.apphostal.Logica.Registros.AdicionarRegistros;
 
 public class AdicionarActivity extends AppCompatActivity {
     private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;

@@ -14,8 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.Registro;
-import com.example.apphostal.Logica.ListarRegistros;
-import com.example.apphostal.Logica.ListarRegistros1;
+import com.example.apphostal.Logica.Registros.ListarRegistros;
+import com.example.apphostal.Logica.Registros.ListarRegistros1;
 
 import java.util.List;
 
