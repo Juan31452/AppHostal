@@ -1,6 +1,5 @@
 package com.example.apphostal.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.apphostal.AdicionarActivity;
-import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
 
 public class LavanderiaFragment extends Fragment {

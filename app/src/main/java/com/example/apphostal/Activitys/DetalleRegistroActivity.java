@@ -1,4 +1,4 @@
-package com.example.apphostal;
+package com.example.apphostal.Activitys;
 
 
 import android.app.AlertDialog;
@@ -19,6 +19,8 @@ import com.example.apphostal.Fragments.ExtrasFragment;
 import com.example.apphostal.Logica.Registros.EliminarRegistros;
 ;
 import com.example.apphostal.Logica.Registros.ModificarRegistros;
+import com.example.apphostal.MainActivity;
+import com.example.apphostal.R;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
 

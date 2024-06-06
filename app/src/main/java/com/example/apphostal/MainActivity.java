@@ -9,8 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.apphostal.Activitys.AdicionarActivity;
+import com.example.apphostal.Activitys.LavanderiaActivity;
+import com.example.apphostal.Activitys.ListarRegistrosActivity;
 import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
-import com.example.apphostal.Fragments.LavanderiaFragment;
+
 
 public class MainActivity extends AppCompatActivity {
    private Button btnropasucia,btnAdicionar,btnListar, btnLavanderia;
@@ -74,20 +77,8 @@ public class MainActivity extends AppCompatActivity {
         btnLavanderia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LavanderiaFragment fragment = LavanderiaFragment.newInstance();
-
-                // Obtener el FragmentManager y comenzar una transacción
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-
-                // Añadir la transacción al back stack (opcional)
-                fragmentTransaction.addToBackStack(null);
-
-                // Commit de la transacción
-                fragmentTransaction.commit();
+                Intent intent = new Intent(MainActivity.this, LavanderiaActivity.class);
+                startActivity(intent);
             }
         });
 

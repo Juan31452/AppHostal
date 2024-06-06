@@ -1,4 +1,4 @@
-package com.example.apphostal;
+package com.example.apphostal.Activitys;
 
 
 import android.content.DialogInterface;
@@ -17,6 +17,8 @@ import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.Registros.AdicionarRegistros;
+import com.example.apphostal.MainActivity;
+import com.example.apphostal.R;
 
 public class AdicionarActivity extends AppCompatActivity {
     private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;
