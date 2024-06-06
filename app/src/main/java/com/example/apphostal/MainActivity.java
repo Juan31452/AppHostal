@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.apphostal.Activitys.AdicionarActivity;
 import com.example.apphostal.Activitys.LavanderiaActivity;
 import com.example.apphostal.Activitys.ListarRegistrosActivity;
+import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
 
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Este método se ejecutará cuando se haga clic en el botón btnlistnar
-                Intent intent = new Intent(MainActivity.this, ListarRegistrosActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegistrosActivity.class);
                 startActivity(intent);
             }
         });

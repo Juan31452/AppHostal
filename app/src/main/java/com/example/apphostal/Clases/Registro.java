@@ -56,6 +56,10 @@ public class Registro implements Serializable {
         this.protectorC = protectorC;
     }
 
+    public Registro() {
+
+    }
+
     // Getters y Setters
     public int getId() {
         return id;
@@ -71,6 +75,66 @@ public class Registro implements Serializable {
 
     public String getEstado() {
         return estado;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHabitacion(String habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setBajera(String bajera) {
+        this.bajera = bajera;
+    }
+
+    public void setEncimera(String encimera) {
+        this.encimera = encimera;
+    }
+
+    public void setFundaA(String fundaA) {
+        this.fundaA = fundaA;
+    }
+
+    public void setProtectorA(String protectorA) {
+        this.protectorA = protectorA;
+    }
+
+    public void setNordica(String nordica) {
+        this.nordica = nordica;
+    }
+
+    public void setColchav(String colchav) {
+        this.colchav = colchav;
+    }
+
+    public void setToallaD(String toallaD) {
+        this.toallaD = toallaD;
+    }
+
+    public void setToallaL(String toallaL) {
+        this.toallaL = toallaL;
+    }
+
+    public void setAlfombrin(String alfombrin) {
+        this.alfombrin = alfombrin;
+    }
+
+    public void setPaid(String paid) {
+        this.paid = paid;
+    }
+
+    public void setProtectorC(String protectorC) {
+        this.protectorC = protectorC;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBajera() {

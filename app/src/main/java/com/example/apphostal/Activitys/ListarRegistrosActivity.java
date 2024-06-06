@@ -46,10 +46,8 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         registros = listarRegistros.obtenerRegistros();
         // Crear una instancia de ListarRegistros1
         listarRegistros1 = new ListarRegistros1(this);
-
         // Consultar los registros
         listarRegistros1.consultarRegistros();
-
         // Obtener la lista de registros
         List<Registro> registros = listarRegistros1.getRegistros();
 

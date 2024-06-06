@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BB8FCE"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+
+        android:id="@+id/Linea1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BB8FCE"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:text="Menu" />
+
+        <Button
+            android:id="@+id/btnExtras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@id/btnMenu"
+            android:text="Extras" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/Linea2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/Linea1"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/tfecha"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="1dp"
+            android:text="Fecha"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/thabitacion"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="1dp"
+            android:text="Habitacion"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/testado"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="1dp"
+            android:text="Estado"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/linea3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/Linea1"
+        android:layout_marginTop="16dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:clipToPadding="false" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
