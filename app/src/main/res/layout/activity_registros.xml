@@ -28,8 +28,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_toStartOf="@id/btnMenu"
             android:text="Nuevo" />
+
+        <Button
+            android:id="@+id/btnModificar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@id/btnNuevo"
+            android:text="Modificar" />
 
     </LinearLayout>
 
@@ -47,7 +56,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="mostrarCalendario"
             android:background="@drawable/edit_text"
             android:textColorHint="#000000"
             android:hint="Fecha" />
@@ -70,10 +78,18 @@
         android:layout_marginTop="16dp">
 
         <TextView
-            android:id="@+id/tfecha"
-            android:layout_width="100dp"
+            android:id="@+id/tid"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="1dp"
+            android:text="ID"
+            android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/tfecha"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="1dp"
             android:text="Fecha"
             android:textColor="@android:color/black" />
@@ -82,7 +98,7 @@
             android:id="@+id/thabitacion"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="1dp"
             android:text="Habitacion"
             android:textColor="@android:color/black" />
@@ -91,7 +107,7 @@
             android:id="@+id/testado"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="1dp"
             android:text="Estado"
             android:textColor="@android:color/black" />
