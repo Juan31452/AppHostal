@@ -42,6 +42,33 @@
         android:layout_below="@id/Linea1"
         android:layout_marginTop="16dp">
 
+        <EditText
+            android:id="@+id/editTextFecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="mostrarCalendario"
+            android:background="@drawable/edit_text"
+            android:textColorHint="#000000"
+            android:hint="Fecha" />
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/Linea3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/Linea2"
+        android:layout_marginTop="16dp">
+
         <TextView
             android:id="@+id/tfecha"
             android:layout_width="100dp"
@@ -72,11 +99,11 @@
 
     <LinearLayout
 
-        android:id="@+id/linea3"
+        android:id="@+id/linea4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/Linea1"
+        android:layout_below="@id/Linea3"
         android:layout_marginTop="16dp">
 
         <androidx.recyclerview.widget.RecyclerView
