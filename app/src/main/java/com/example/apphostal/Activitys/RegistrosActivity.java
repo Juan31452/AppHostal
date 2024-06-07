@@ -7,11 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apphostal.Clases.DetallesAdapter;
 import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Fragments.AdicionarFragment;
+import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
@@ -25,7 +29,7 @@ public class RegistrosActivity extends AppCompatActivity {
     private DetallesAdapter adapter;
     private List<Registro> dataList;
     private ListarRegistros1 listarRegistros1;
-    private Button btnMenu;
+    private Button btnMenu, btnNuevo;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class RegistrosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registros);
 
         btnMenu = findViewById(R.id.btnMenu);
+        btnNuevo = findViewById(R.id.btnNuevo);
 
         // Vincula el RecyclerView con el ID definido en el archivo de diseño
         recyclerView = findViewById(R.id.recyclerView);
@@ -66,6 +71,28 @@ public class RegistrosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegistrosActivity.this, MainActivity.class);
                 startActivity(intent);
+
+            }
+        });
+
+        btnNuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear una instancia del Fragment con el valor de edRegistro
+                AdicionarFragment fragment = AdicionarFragment.newInstance();
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
 
             }
         });
