@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,6 +24,7 @@ import com.example.apphostal.Fragments.ModificarFragment;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrosActivity extends AppCompatActivity implements OnItemClickListener {
@@ -32,11 +32,11 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     private RecyclerView recyclerView;
     private DetallesAdapter adapter;
     private List<Registro> dataList;
+    private List<Registro> registroEnviar;
     private ListarRegistros1 listarRegistros1;
-    private Button btnMenu, btnNuevo, btnBuscar;
+    private Button btnMenu, btnNuevo, btnBuscar, btnModificar;
     private EditText editTextFecha;
 
-   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +46,12 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
         btnMenu = findViewById(R.id.btnMenu);
         btnNuevo = findViewById(R.id.btnNuevo);
         btnBuscar = findViewById(R.id.btnBuscar);
+        btnModificar = findViewById(R.id.btnModificar); // Obtener referencia del botón
 
         listarRegistros1 = new ListarRegistros1(this);
         listarRegistros1.consultarRegistros();
         dataList = listarRegistros1.getRegistros();
+
 
 
         adapter = new DetallesAdapter(dataList, this);
@@ -67,30 +69,37 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
             startActivity(intent);
         });
 
-        btnNuevo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AdicionarFragment fragment = AdicionarFragment.newInstance();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+        btnNuevo.setOnClickListener(v -> {
+            AdicionarFragment fragment = AdicionarFragment.newInstance();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         });
 
-        editTextFecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mostrarCalendario();
-            }
-        });
+        editTextFecha.setOnClickListener(v -> mostrarCalendario());
         btnBuscar.setOnClickListener(v -> consultarPorFecha());
 
+        btnModificar.setOnClickListener(v -> {
+
+                // Obtener el ID del registro seleccionado del adaptador
+                int selectedId = adapter.getSelectedId();
+                Log.d("ItemId", String.valueOf(selectedId));
+
+                // Crear un nuevo fragmento para modificar el registro
+                ModificarFragment fragment = ModificarFragment.newInstance(selectedId);
+
+                // Reemplazar el fragmento actual con el fragmento de modificación
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+
+        });
     }
 
     public void mostrarCalendario() {
-
         Calendario.mostrarCalendario(this, editTextFecha);
     }
 
@@ -110,16 +119,10 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     }
 
     @Override
-    public void onItemClick(int itemId) {
-        ModificarFragment fragment = new ModificarFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("itemId", itemId);
-        Log.d("Datos del registro", String.valueOf(itemId));
-        fragment.setArguments(bundle);
+    public void onItemClick(int id) {
+        // Puedes utilizar id y fecha aquí según sea necesario
+    //    Log.d("Bajera", String.valueOf(bajera));
+        Log.d("Id", String.valueOf(id));
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
     }
 }

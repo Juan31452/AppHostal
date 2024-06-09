@@ -61,8 +61,8 @@ public class Registro implements Serializable {
     }
 
     // Getters y Setters
-    public int getId() {
-        return id;
+    public int getId(){
+            return id;
     }
 
     public String getFecha() {
@@ -138,6 +138,7 @@ public class Registro implements Serializable {
     }
 
     public String getBajera() {
+
         return bajera;
     }
 

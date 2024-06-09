@@ -10,16 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Clases.OnItemClickListener;
 import com.example.apphostal.R;
 
 import java.util.List;
 
 public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyViewHolder> {
+
     private Context context;
     private List<Registro> dataList;
-    private int selectedPosition = -1;
     private OnItemClickListener onItemClickListener;
+    private int selectedPosition = -1;
+    private int selectedId = -1; // ID seleccionado
 
     public DetallesAdapter(List<Registro> dataList, Context context) {
         this.dataList = dataList;
@@ -28,6 +31,16 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
+    }
+
+    // Método para obtener el ID seleccionado
+    public int getSelectedId() {
+        return selectedId;
+    }
+
+    // Método para establecer el ID seleccionado
+    public void setSelectedId(int id) {
+        selectedId = id;
     }
 
     @NonNull
@@ -45,8 +58,10 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
         holder.habitacion.setText(data.getHabitacion());
         holder.estado.setText(data.getEstado());
 
+        // Establecer el color de fondo del elemento seleccionado
         if (selectedPosition == position) {
             holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.selected_item));
+            setSelectedId(data.getId()); // Establecer el ID seleccionado
         } else {
             holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.default_item));
         }
@@ -55,9 +70,7 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
             notifyItemChanged(selectedPosition);
             selectedPosition = position;
             notifyItemChanged(selectedPosition);
-            if (onItemClickListener != null) {
-                onItemClickListener.onItemClick(data.getId());
-            }
+            notifyDataSetChanged(); // Notificar cambios en el adaptador
         });
     }
 

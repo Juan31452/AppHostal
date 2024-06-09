@@ -79,6 +79,58 @@ public class ListarRegistros1 {
         }
     }
 
+    public void consultarRegistroPorId(int itemId) {
+        SQLiteDatabase db = dbHostal.getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_REGISTROS + " WHERE " + DatabaseHotel.COLUMN_ID + " = ?";
+
+            // Ejecutar la consulta con el ID como argumento
+            cursor = db.rawQuery(consulta, new String[]{String.valueOf(itemId)});
+
+            // Verificar si se encontraron resultados
+            if (cursor != null && cursor.moveToFirst()) {
+                // Crear una instancia del objeto Registro con los datos obtenidos
+                Registro registro = new Registro(
+                        cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FECHA)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_HABITACION)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ESTADO)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_BAJERAS)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ENCIMERAS)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FUNDA_ALMOHADA)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_NORDICA)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_COLCHA_VERANO)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_DUCHA)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_LAVABO)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON))
+                );
+                // Añadir el registro a la lista
+                registros.add(registro);
+
+                // Mostrar los valores en Log para depuración
+                Log.d("Datos del registro", registro.toString());
+
+                // Aquí puedes hacer lo que necesites con el registro obtenido
+            } else {
+                // No se encontraron resultados
+                mostrarMensaje("No se encontraron datos para el registro con ID: " + itemId);
+            }
+        } catch (Exception e) {
+            mostrarMensaje("Error al consultar datos del registro con ID " + itemId + ": " + e.getMessage());
+        } finally {
+            // Cerrar el cursor y la base de datos
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+    }
+
     public void consultarRegistrosPorFecha(String fecha) {
         SQLiteDatabase db = dbHostal.getReadableDatabase();
         Cursor cursor = null;

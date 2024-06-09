@@ -43,7 +43,22 @@
             android:layout_marginEnd="1dp"
             android:text="Estado"
             android:textColor="@android:color/black" />
-</LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Linea2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+
+
+
+    </LinearLayout>
 
     <!-- Add more TextViews as needed for other fields -->
 
