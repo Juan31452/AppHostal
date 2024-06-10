@@ -19,6 +19,8 @@ import com.example.apphostal.Clases.OnItemClickListener;
 import com.example.apphostal.Clases.DetallesAdapter;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Fragments.AdicionarFragment;
+import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
+import com.example.apphostal.Fragments.ExtrasFragment;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
 import com.example.apphostal.Fragments.ModificarFragment;
 import com.example.apphostal.MainActivity;
@@ -34,7 +36,7 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     private List<Registro> dataList;
     private List<Registro> registroEnviar;
     private ListarRegistros1 listarRegistros1;
-    private Button btnMenu, btnNuevo, btnBuscar, btnModificar;
+    private Button btnMenu, btnNuevo, btnBuscar, btnModificar,btnExtras,btnRopaSucia;
     private EditText editTextFecha;
 
     @Override
@@ -46,7 +48,9 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
         btnMenu = findViewById(R.id.btnMenu);
         btnNuevo = findViewById(R.id.btnNuevo);
         btnBuscar = findViewById(R.id.btnBuscar);
-        btnModificar = findViewById(R.id.btnModificar); // Obtener referencia del botón
+        btnModificar = findViewById(R.id.btnModificar);
+        btnExtras = findViewById(R.id.btnExtras);
+        btnRopaSucia = findViewById(R.id.btnRopaSucia);
 
         listarRegistros1 = new ListarRegistros1(this);
         listarRegistros1.consultarRegistros();
@@ -97,6 +101,53 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
                         .commit();
 
         });
+
+        btnExtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener el ID del registro seleccionado del adaptador
+                int selectedId = adapter.getSelectedId();
+
+                // Crear una instancia del Fragment con el valor de edRegistro
+                ExtrasFragment fragment = ExtrasFragment.newInstance(String.valueOf(selectedId));
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
+            }
+        });
+
+        btnRopaSucia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear una instancia del Fragment con el valor de edRegistro
+                ConsultaPorFechasFragment fragment = ConsultaPorFechasFragment.newInstance();
+
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
+            }
+        });
+
+
     }
 
     public void mostrarCalendario() {

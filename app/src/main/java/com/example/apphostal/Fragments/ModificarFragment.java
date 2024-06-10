@@ -2,6 +2,7 @@ package com.example.apphostal.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import com.example.apphostal.Activitys.RegistrosActivity;
+import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.Registros.EliminarRegistros;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
@@ -26,7 +30,7 @@ public class ModificarFragment extends Fragment {
     private Registro registro;
     private List<Registro> dataList;
     private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
-    private Button btnMenu,btnEliminar, btnModificar, btnExtras;
+    private Button btnFragmentCerrar,btnEliminar, btnModificar, btnExtras;
 
 
     // Constante para la clave del argumento
@@ -75,8 +79,7 @@ public class ModificarFragment extends Fragment {
         edprotectC = view.findViewById(R.id.protectC);
         btnEliminar = view.findViewById(R.id.btnEliminar);
         btnModificar = view.findViewById(R.id.btnModificar);
-        btnMenu = view.findViewById(R.id.btnMenu);
-        btnExtras = view.findViewById(R.id.btnExtras);
+        btnFragmentCerrar = view.findViewById(R.id.btnFragmentCerrar);
 
         // Crear una instancia de ListarRegistros1
         listarRegistros1 = new ListarRegistros1(getContext());
@@ -119,6 +122,29 @@ public class ModificarFragment extends Fragment {
                 confirmarEliminarRegistro();
             }
         });
+
+        btnFragmentCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Cerrar la actividad actual y volver a abrirla
+                getActivity().finish();
+                startActivity(new Intent(getActivity(), RegistrosActivity.class));
+            }
+        });
+
+        // Llama a EditTextFocusHelper.setupEditTextFocus() para configurar el comportamiento del EditText deseado
+        EditTextFocusHelper.setupEditTextFocus(edbajeras);
+        EditTextFocusHelper.setupEditTextFocus(edencimeras);
+        EditTextFocusHelper.setupEditTextFocus(edfundalomohada);
+        EditTextFocusHelper.setupEditTextFocus(edprotectora);
+        EditTextFocusHelper.setupEditTextFocus(ednordica);
+        EditTextFocusHelper.setupEditTextFocus(edcolchav);
+        EditTextFocusHelper.setupEditTextFocus(edtoallaD);
+        EditTextFocusHelper.setupEditTextFocus(edtoallaL);
+        EditTextFocusHelper.setupEditTextFocus(edalfombrim);
+        EditTextFocusHelper.setupEditTextFocus(edpaid);
+        EditTextFocusHelper.setupEditTextFocus(edprotectC);
 
         return view;
     }

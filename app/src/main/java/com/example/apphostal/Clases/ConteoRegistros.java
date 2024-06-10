@@ -8,9 +8,9 @@ public class ConteoRegistros {
     private int countNordica;
     private int countColchaVerano;
     private int countToallaDucha;
+    private int countToallaLavabo;
     private int countAlfombrin;
-    private int countPaid;    private int countToallaLavabo;
-
+    private int countPaid;
     private int countProtectorColchon;
 
     public static void add(ConteoRegistros registros) {

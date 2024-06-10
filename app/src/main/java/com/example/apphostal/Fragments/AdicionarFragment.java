@@ -58,6 +58,7 @@ public class AdicionarFragment extends Fragment {
         editTextFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mostrarCalendario(v);
             }
         });

@@ -12,33 +12,61 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#BB8FCE"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <Button
             android:id="@+id/btnMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_alignParentEnd="true"
             android:text="Menu" />
 
         <Button
             android:id="@+id/btnNuevo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="23sp"
+            android:padding="1dp"
             android:layout_toStartOf="@id/btnMenu"
-            android:text="Nuevo" />
+            android:text="+" />
 
         <Button
             android:id="@+id/btnModificar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="23sp"
+            android:padding="1dp"
             android:layout_toStartOf="@id/btnNuevo"
-            android:text="Detalles" />
+            android:text="D." />
+
+        <Button
+            android:id="@+id/btnExtras"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="23sp"
+            android:padding="1dp"
+            android:layout_toStartOf="@id/btnModificar"
+            android:text="E." />
+
+        <Button
+            android:id="@+id/btnRopaSucia"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="23sp"
+            android:padding="1dp"
+            android:layout_toStartOf="@id/btnExtras"
+            android:text="R." />
+
 
     </LinearLayout>
 
@@ -49,7 +77,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/Linea1"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="5dp">
 
         <EditText
             android:id="@+id/editTextFecha"
@@ -126,8 +154,8 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:padding="16dp" />
 
     </LinearLayout>
 

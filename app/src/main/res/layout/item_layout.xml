@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#D8A9D4"
+    android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/linea1"
@@ -19,21 +20,22 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="1dp"
             android:textColor="@android:color/black" />
-    <TextView
-        android:id="@+id/item_fecha"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="3dp"
-        android:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/item_habitacion"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="1dp"
-        android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/item_fecha"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="3dp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/item_habitacion"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="1dp"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/item_estado"

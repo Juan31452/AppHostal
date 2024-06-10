@@ -49,7 +49,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:textColor="#3D27A9"
+                android:background="@drawable/edit_text"
+                android:focusable="false"
+                android:onClick="mostrarCalendario"
+                android:textColor="#010000"
+                android:textColorHint="#000000"
+                android:textSize="25sp"
                 android:freezesText="true" />
 
             <TextView
@@ -63,8 +68,15 @@
                 android:id="@+id/edfechafinal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#3D27A9"
-                android:ems="10" />
+                android:ems="10"
+                android:background="@drawable/edit_text"
+                android:focusable="false"
+                android:onClick="mostrarCalendario"
+                android:textColor="#010000"
+                android:textColorHint="#000000"
+                android:textSize="25sp"
+                android:freezesText="true" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -105,5 +117,227 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineaDetalles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_bajeras"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Bajeras "
+                android:textColor="@android:color/black" />
+            <TextView
+                android:id="@+id/item_bajera1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="3dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_encimeras"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Encimeras"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_encimeras1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="1dp"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineaDetalles1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_FundaA"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Funda A "
+                android:textColor="@android:color/black" />
+            <TextView
+                android:id="@+id/item_FundaA1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="3dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ProtectorA"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Protector A."
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ProtectorA1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="1dp"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineaDetalles2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_Nordicas"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Nordicas "
+                android:textColor="@android:color/black" />
+            <TextView
+                android:id="@+id/item_Nordicas1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="3dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ColchaVerano"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Colcha V."
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ColchaVerano1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="1dp"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineaDetalles3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_ToallaDucha"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Toalla D. "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ToallaDucha1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="3dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ToallaLavabo"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Toalla L."
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ToallaLavabo1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="1dp"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineaDetalles4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_Alfombrin"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Alfombrin "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_Alfombrin1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="3dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ProtectorColchon"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="1dp"
+                android:text="Protector C."
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/item_ProtectorColchon1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="1dp"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+
+
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
