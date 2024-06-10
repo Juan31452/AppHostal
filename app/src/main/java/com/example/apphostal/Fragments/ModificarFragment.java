@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Clases.EditTextFocusHelper;
+import com.example.apphostal.Clases.Opciones;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.Registros.EliminarRegistros;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
@@ -81,10 +82,17 @@ public class ModificarFragment extends Fragment {
         btnModificar = view.findViewById(R.id.btnModificar);
         btnFragmentCerrar = view.findViewById(R.id.btnFragmentCerrar);
 
+        // Inhabilitar edhabitacion y edfecha
+        edhabitacion.setEnabled(false);
+        edfecha.setEnabled(false);
+
+
         // Crear una instancia de ListarRegistros1
         listarRegistros1 = new ListarRegistros1(getContext());
         listarRegistros1.consultarRegistroPorId(selectedId);
         dataList = listarRegistros1.getRegistros();
+        // Crea una instancia de Opciones
+        Opciones opciones = new Opciones(getContext(), edhabitacion, edestado);
 
         // Verificar si dataList no es nulo y si contiene al menos un elemento
         if (dataList != null && !dataList.isEmpty()) {
@@ -107,6 +115,13 @@ public class ModificarFragment extends Fragment {
         } else {
             // Manejar el caso donde dataList está vacía
         }
+        edestado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crea una instancia de Opciones y muestra la lista de habitaciones
+                opciones.mostrarListaEstado();
+            }
+        });
 
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,6 +7,6 @@ public class Habitacion {
     // Método para obtener el array de habitaciones
     public static String[] obtenerHabitaciones() {
 
-        return habitaciones;
+        return new String[]{"002", "101", "102", "201", "202", "203"};
     }
 }

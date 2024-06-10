@@ -13,7 +13,7 @@ public class Estado  {
 
     public static String[] obtenerEstado() {
 
-        return estados;
+        return new String[]{"Salida", "Estancia", "Repaso", "SalidaEntrada", "NoMolestar"};
     }
 
     // Método para mostrar el diálogo de selección de estados

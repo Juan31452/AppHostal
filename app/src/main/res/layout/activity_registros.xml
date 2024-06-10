@@ -80,13 +80,15 @@
         android:layout_marginTop="5dp">
 
         <EditText
-            android:id="@+id/editTextFecha"
+            android:id="@+id/editTextFechaConsulta"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/edit_text"
+            android:hint="Fecha"
+            android:onClick="mostrarCalendario"
             android:textColorHint="#000000"
-            android:hint="Fecha" />
+            tools:ignore="OnClick" />
 
         <Button
             android:id="@+id/btnBuscar"

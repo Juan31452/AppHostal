@@ -27,8 +27,6 @@ public class DetalleRegistroActivity extends AppCompatActivity {
     private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
     private Button btnMenu,btnEliminar, btnModificar, btnExtras;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

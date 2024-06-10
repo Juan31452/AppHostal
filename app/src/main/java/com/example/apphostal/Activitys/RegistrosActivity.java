@@ -37,14 +37,14 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     private List<Registro> registroEnviar;
     private ListarRegistros1 listarRegistros1;
     private Button btnMenu, btnNuevo, btnBuscar, btnModificar,btnExtras,btnRopaSucia;
-    private EditText editTextFecha;
+    private EditText editTextFechaConsulta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registros);
 
-        editTextFecha = findViewById(R.id.editTextFecha);
+        editTextFechaConsulta = findViewById(R.id.editTextFechaConsulta);
         btnMenu = findViewById(R.id.btnMenu);
         btnNuevo = findViewById(R.id.btnNuevo);
         btnBuscar = findViewById(R.id.btnBuscar);
@@ -82,7 +82,14 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
             fragmentTransaction.commit();
         });
 
-        editTextFecha.setOnClickListener(v -> mostrarCalendario());
+
+        editTextFechaConsulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarCalendario();
+            }
+        });
+
         btnBuscar.setOnClickListener(v -> consultarPorFecha());
 
         btnModificar.setOnClickListener(v -> {
@@ -151,11 +158,12 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     }
 
     public void mostrarCalendario() {
-        Calendario.mostrarCalendario(this, editTextFecha);
+
+        Calendario.mostrarCalendario(this, editTextFechaConsulta);
     }
 
     private void consultarPorFecha() {
-        String fecha = editTextFecha.getText().toString().trim();
+        String fecha = editTextFechaConsulta.getText().toString().trim();
         if (fecha.isEmpty()) {
             Toast.makeText(this, "Por favor ingrese una fecha.", Toast.LENGTH_SHORT).show();
             return;
