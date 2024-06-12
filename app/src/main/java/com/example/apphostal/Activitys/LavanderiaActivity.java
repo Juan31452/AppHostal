@@ -18,7 +18,7 @@ import java.util.Base64;
 
 
 public class LavanderiaActivity extends AppCompatActivity {
-    private Button btnMenu,btnNuevo;
+    private Button btnMenu,btnEntrega;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class LavanderiaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lavanderia);
 
         btnMenu = findViewById(R.id.btnMenu);
-        btnNuevo = findViewById(R.id.btnNuevo);
+        btnEntrega = findViewById(R.id.btnEntrega);
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,7 @@ public class LavanderiaActivity extends AppCompatActivity {
             }
         });
 
-        btnNuevo.setOnClickListener(new View.OnClickListener() {
+        btnEntrega.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LavanderiaFragment fragment = LavanderiaFragment.newInstance();

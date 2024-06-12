@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 
 public class Estado  {
-    private static String[] estados = {"Salida", "Estancia", "Repaso", "SalidaEntrada", "NoMolestar"};
+
 
     // Método para obtener el array de estado
 

@@ -34,7 +34,6 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     private RecyclerView recyclerView;
     private DetallesAdapter adapter;
     private List<Registro> dataList;
-    private List<Registro> registroEnviar;
     private ListarRegistros1 listarRegistros1;
     private Button btnMenu, btnNuevo, btnBuscar, btnModificar,btnExtras,btnRopaSucia;
     private EditText editTextFechaConsulta;

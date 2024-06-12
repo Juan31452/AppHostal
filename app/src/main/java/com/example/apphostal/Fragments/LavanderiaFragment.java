@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.R;
 
@@ -43,6 +44,13 @@ public class LavanderiaFragment extends Fragment {
         edalfombrim = view.findViewById(R.id.edalfombrim);
         edpaid = view.findViewById(R.id.paid);
         edprotectC = view.findViewById(R.id.protectC);
+
+        editTextFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarCalendario(v);
+            }
+        });
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +93,10 @@ public class LavanderiaFragment extends Fragment {
         return view;
 
 
+    }
+
+    public void mostrarCalendario(View view) {
+        Calendario.mostrarCalendario(requireContext(), editTextFecha);
     }
 
     public static LavanderiaFragment newInstance() {

@@ -14,10 +14,11 @@ import com.example.apphostal.Activitys.LavanderiaActivity;
 import com.example.apphostal.Activitys.ListarRegistrosActivity;
 import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
+import com.example.apphostal.Fragments.UtlidadesFragment;
 
 
 public class MainActivity extends AppCompatActivity {
-   private Button btnropasucia,btnAdicionar,btnListar, btnLavanderia;
+   private Button btnUtilidades,btnAdicionar,btnListar, btnLavanderia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // Obtiene una referencia al botón btnAdicionar
         btnAdicionar = findViewById(R.id.btnAdicionar);
         btnListar = findViewById(R.id.btnListar);
-        btnropasucia = findViewById(R.id.btnropasucia);
+        btnUtilidades = findViewById(R.id.btnUtilidades);
         btnLavanderia =findViewById(R.id.btnLavanderia);
 
         // Crear una instancia de DatabaseHotel para llamar al método borrarBaseDatos
@@ -54,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnropasucia.setOnClickListener(new View.OnClickListener() {
+        btnUtilidades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Crear una instancia del Fragment con el valor de edRegistro
-                ConsultaPorFechasFragment fragment = ConsultaPorFechasFragment.newInstance();
+                UtlidadesFragment fragment = UtlidadesFragment.newInstance();
 
                 // Obtener el FragmentManager y comenzar una transacción
                 FragmentManager fragmentManager = getSupportFragmentManager();

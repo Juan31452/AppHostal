@@ -8,10 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.apphostal.Clases.Registro;
-import com.example.apphostal.Clases.OnItemClickListener;
+import com.example.apphostal.Clases.Opciones;
 import com.example.apphostal.R;
 
 import java.util.List;
@@ -24,9 +23,11 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
     private int selectedPosition = -1;
     private int selectedId = -1; // ID seleccionado
 
+
     public DetallesAdapter(List<Registro> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
+
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -52,6 +53,7 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // Crea una instancia de Opciones
         Registro data = dataList.get(position);
         holder.id.setText(String.valueOf(data.getId()));
         holder.fecha.setText(data.getFecha());
@@ -71,7 +73,12 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
             selectedPosition = position;
             notifyItemChanged(selectedPosition);
             notifyDataSetChanged(); // Notificar cambios en el adaptador
+            // Mostrar OpcionesFragment
+           // OpcionesFragment opcionesFragment = new OpcionesFragment();
+            //opcionesFragment.show(((FragmentActivity) context).getSupportFragmentManager(), "OpcionesFragment");
         });
+
+
     }
 
     @Override
@@ -90,4 +97,6 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
             estado = itemView.findViewById(R.id.item_estado);
         }
     }
+
+
 }

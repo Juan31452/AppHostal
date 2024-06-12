@@ -47,6 +47,22 @@ public class DatabaseHotel extends SQLiteOpenHelper {
             COLUMN_MAQUILLAJE = "maquillaje",
             COLUMN_DULCE_EXTRA = "dulce_extra";
 
+    public static final String TABLE_LAVANDERIA = "lavanderia";
+    public static final String
+            LAVANDERIA_ID = "_id_lavanderia",
+            LAVANDERIA_FECHA = "fecha_lavanderia",
+            LAVANDERIA_BAJERAS = "bajeras_lavanderia",
+            LAVANDERIA_ENCIMERAS = "encimeras_lavanderia",
+            LAVANDERIA_FUNDA_ALMOHADA = "funda_almohada_lavanderia",
+            LAVANDERIA_PROTECTOR_ALMOHADA = "protector_almohada_lavanderia",
+            LAVANDERIA_NORDICA = "nordica_lavanderia",
+            LAVANDERIA_COLCHA_VERANO = "colchav_lavanderia",
+            LAVANDERIA_TOALLA_DUCHA = "toalla_ducha_lavanderia",
+            LAVANDERIA_TOALLA_LAVABO = "toalla_lavabo_lavanderia",
+            LAVANDERIA_ALFOMBRIN = "alfombrin_lavanderia",
+            LAVANDERIA_PAID = "paid_lavanderia",
+            LAVANDERIA_PROTECTOR_COLCHON = "protector_colchon_lavanderia";
+
 
     // Sentencia SQL para crear la tabla "registros"
     private static final String SQL_CREATE_TABLE_REGISTROS =
@@ -86,6 +102,22 @@ public class DatabaseHotel extends SQLiteOpenHelper {
                     COLUMN_DULCE_EXTRA + " INTEGER DEFAULT 0, " +
                     "FOREIGN KEY(" + COLUMN_REGISTRO_ID + ") REFERENCES " + TABLE_REGISTROS + "(" + COLUMN_ID + "))";
 
+            // Sentencia SQL para crear la tabla "lavanderia"
+            private static final String SQL_CREATE_TABLE_LAVANDERIA =
+                    "CREATE TABLE " + TABLE_REGISTROS + " (" +
+                            LAVANDERIA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            LAVANDERIA_FECHA + " TEXT, " +
+                            LAVANDERIA_BAJERAS + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_ENCIMERAS + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_FUNDA_ALMOHADA + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_PROTECTOR_ALMOHADA + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_NORDICA + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_COLCHA_VERANO + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_TOALLA_DUCHA + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_TOALLA_LAVABO + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_ALFOMBRIN + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_PAID + " INTEGER DEFAULT 0, " +
+                            LAVANDERIA_PROTECTOR_COLCHON + " INTEGER DEFAULT 0)";
     // Constructor
     public DatabaseHotel(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -96,6 +128,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
         // Crear las tablas "registros" y "extras"
         db.execSQL(SQL_CREATE_TABLE_REGISTROS);
         db.execSQL(SQL_CREATE_TABLE_EXTRAS);
+        //db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
     }
 
     @Override

@@ -1,47 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BB8FCE"
-    android:padding="20dp">
-
-    <Button
-        android:id="@+id/btnMenu"
-        android:layout_width="141dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="220dp"
-        android:text="Menu" />
-
-    <Button
-        android:id="@+id/btnNuevo"
-        android:layout_width="141dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Nuevo" />
-
+    android:padding="5dp"
+    tools:context=".Activitys.LavanderiaActivity">
 
     <LinearLayout
 
-        android:id="@+id/searchLayout"
+        android:id="@+id/Linea1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BB8FCE"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="10sp"
+            android:padding="1dp"
+            android:text="Menu" />
+
+        <Button
+            android:id="@+id/btnEntrega"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="10sp"
+            android:padding="1dp"
+            android:layout_toStartOf="@id/btnMenu"
+            android:text="Entrega" />
+
+        <Button
+            android:id="@+id/btnModificar"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="10sp"
+            android:padding="1dp"
+            android:layout_toStartOf="@id/btnNuevo"
+            android:text="Detalles." />
+
+        <Button
+            android:id="@+id/btnExtras"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:enabled="false"
+            android:textSize="10sp"
+            android:padding="1dp"
+            android:layout_toStartOf="@id/btnModificar"
+            android:text="Extras." />
+
+        <Button
+            android:id="@+id/btnRopaSucia"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:enabled="false"
+            android:textSize="10sp"
+            android:padding="1dp"
+            android:layout_toStartOf="@id/btnExtras"
+            android:text="Ropa S." />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/Linea2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/btnMenu"
-        android:layout_marginTop="16dp">
+        android:layout_below="@id/Linea1"
+        android:layout_marginTop="5dp">
 
         <EditText
-            android:id="@+id/editTextFecha"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="mostrarCalendario"
-            android:background="@drawable/edit_text"
-            android:textColorHint="#000000"
-            android:hint="Fecha" />
+            android:id="@+id/editTextFechaConsulta"
+            style="@style/EditTextStyleFecha"
+            />
 
         <Button
             android:id="@+id/btnBuscar"
@@ -51,20 +96,66 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listViewRegistros"
+    <LinearLayout
+
+        android:id="@+id/Linea3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchLayout"
-        android:layout_marginTop="11dp"
-        android:background="#58D68D"
-        android:textColor="#000000"
-        style="@style/ListViewTextStyle"
-        />
+        android:orientation="horizontal"
+        android:layout_below="@id/Linea2"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/tid"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="1dp"
+            android:text="ID"
+            android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/tfechasalida"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="1dp"
+            android:text="Fecha Salida"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tfechaentrega"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="1dp"
+            android:text="Fecha Entrega"
+            android:textColor="@android:color/black" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/linea4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/Linea3"
+        android:layout_marginTop="16dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="16dp" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </RelativeLayout>

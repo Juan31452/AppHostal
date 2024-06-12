@@ -15,6 +15,7 @@ import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
+import com.example.apphostal.Clases.Opciones;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Logica.Registros.AdicionarRegistros;
 import com.example.apphostal.MainActivity;
@@ -56,13 +57,15 @@ public class AdicionarActivity extends AppCompatActivity {
 
         // Inicializar la clase AdicionarRegistros
         adicionarRegistros = new AdicionarRegistros(this);
+        // Crea una instancia de Opciones
+        Opciones opciones = new Opciones(this, edhabitacion, edestado);
 
 
         edhabitacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mostrarListaHabitaciones();
+                opciones.mostrarListaHabitaciones();
             }
         });
 
@@ -70,7 +73,7 @@ public class AdicionarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mostrarListaEstado();
+                opciones.mostrarListaEstado();
             }
         });
 
@@ -121,49 +124,6 @@ public class AdicionarActivity extends AppCompatActivity {
 
         Calendario.mostrarCalendario(this, editTextFecha);
     }
-
-    // Método para mostrar la lista de habitaciones en un diálogo de selección
-    private void mostrarListaHabitaciones() {
-        // Obtén la lista de habitaciones desde la clase Habitacion
-        String[] habitaciones = Habitacion.obtenerHabitaciones();
-
-        // Crea un diálogo de selección con la lista de habitaciones
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Lista de Habitaciones")
-                .setItems(habitaciones, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Maneja la selección de una habitación (puedes hacer lo que necesites con ella)
-                        String habitacionSeleccionada = habitaciones[which];
-                        // Por ejemplo, puedes establecer la habitación seleccionada en el EditText
-                        edhabitacion.setText(habitacionSeleccionada);
-                    }
-                });
-        builder.create().show();
-    }
-
-    // Método para mostrar la lista de estados
-    private void mostrarListaEstado() {
-        // Obtén la lista de estados desde la clase Estado
-        String[] estado = Estado.obtenerEstado();
-
-        // Crea un diálogo de selección con la lista de estado
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Lista de Estados")
-                .setItems(Estado.obtenerEstado(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Maneja la selección de un estado (puedes hacer lo que necesites con él)
-                        String estadoSeleccionado = Estado.obtenerEstado()[which];
-                        // Por ejemplo, puedes establecer el estado seleccionado en el EditText
-                        edestado.setText(estadoSeleccionado);
-                    }
-                });
-
-        builder.create().show();
-    }
-
-
 
     // Método para enviar los datos ingresados
     private void enviarDatos() {

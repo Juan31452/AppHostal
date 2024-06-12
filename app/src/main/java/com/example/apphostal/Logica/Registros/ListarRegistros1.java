@@ -11,8 +11,11 @@ import com.example.apphostal.Clases.ConteoRegistros;
 import com.example.apphostal.Clases.Registro;
 import com.example.apphostal.Database.DatabaseHotel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ListarRegistros1 {
 
@@ -31,10 +34,18 @@ public class ListarRegistros1 {
         Cursor cursor = null;
 
         try {
-            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_REGISTROS;
+
+            // Obtén la fecha actual en el formato adecuado para la consulta SQL
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            String fechaActual = dateFormat.format(new Date());
+            Log.d("Fecha Actual", fechaActual);
+
+            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_REGISTROS +
+                    " WHERE fecha = ?"; // Filtra registros anteriores o iguales a la fecha actual
+
 
             // Ejecutar la consulta
-            cursor = db.rawQuery(consulta, null);
+            cursor = db.rawQuery(consulta, new String[]{fechaActual});
 
             // Verificar si se encontraron resultados
             if (cursor != null && cursor.moveToFirst()) {

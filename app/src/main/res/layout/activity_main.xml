@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BB8FCE"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -34,12 +35,12 @@
 
 
     <Button
-        android:id="@+id/btnropasucia"
+        android:id="@+id/btnUtilidades"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:enabled="false"
-        android:text="Ropa Sucia"
+        android:text="Utlidades"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,12 +51,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:enabled="true"
+        android:enabled="false"
         android:text="Lavanderia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnropasucia" />
+        app:layout_constraintTop_toBottomOf="@id/btnUtilidades" />
 
     <Button
         android:id="@+id/btnListar"

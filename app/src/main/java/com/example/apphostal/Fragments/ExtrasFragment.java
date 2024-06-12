@@ -36,6 +36,7 @@ public class ExtrasFragment extends Fragment {
         // Imprimir el valor en el Log
         Log.d("Valor de edRegistro", registroId);
 
+
         // Inicializar los EditText utilizando la vista inflada
         edRegistro = view.findViewById(R.id.edRegistro);
         edagua = view.findViewById(R.id.edagua);
@@ -104,6 +105,10 @@ public class ExtrasFragment extends Fragment {
                 } else {
                     // Guardar los datos
                     enviarDatos();
+
+                    // Obtener el FragmentManager y quitar el fragment actual
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction().remove(ExtrasFragment.this).commit();
                 }
             }
         });
