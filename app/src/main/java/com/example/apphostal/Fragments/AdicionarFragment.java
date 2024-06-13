@@ -8,6 +8,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +24,7 @@ import com.example.apphostal.Clases.Estado;
 import com.example.apphostal.Clases.Habitacion;
 import com.example.apphostal.Clases.Opciones;
 import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Clases.ValorPredeterminado;
 import com.example.apphostal.Logica.Registros.AdicionarRegistros;
 import com.example.apphostal.R;
 
@@ -76,10 +80,30 @@ public class AdicionarFragment extends Fragment {
             }
         });
 
+        // Añadir un TextWatcher para actualizar los campos cuando cambia edestado
+        edestado.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No se necesita implementar este método para este caso
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Verificar y actualizar los campos cuando edestado cambia
+                String estado = edestado.getText().toString();
+                ValorPredeterminado.actualizarCampos(estado, edbajeras, edencimeras, edfundalomohada,
+                        edprotectora, ednordica, edcolchav, edtoallaD, edtoallaL, edalfombrim,
+                        edpaid, edprotectC);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No se necesita implementar este método para este caso
+            }
+        });
+
         edestado.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 opciones.mostrarListaEstado();
             }
         });
@@ -121,7 +145,6 @@ public class AdicionarFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
 
     public void mostrarCalendario(View view) {
         Calendario.mostrarCalendario(requireContext(), editTextFecha);
