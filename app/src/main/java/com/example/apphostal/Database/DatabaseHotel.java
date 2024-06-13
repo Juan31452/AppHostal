@@ -28,7 +28,8 @@ public class DatabaseHotel extends SQLiteOpenHelper {
             COLUMN_TOALLA_LAVABO = "toalla_lavabo",
             COLUMN_ALFOMBRIN = "alfombrin",
             COLUMN_PAID = "paid",
-            COLUMN_PROTECTOR_COLCHON = "protector_colchon";
+            COLUMN_PROTECTOR_COLCHON = "protector_colchon",
+            COLUMN_RELLENO_NORDICO = "relleno_nordico";
 
     public static final String TABLE_EXTRAS = "extras";
     public static final String
@@ -64,7 +65,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
             LAVANDERIA_PROTECTOR_COLCHON = "protector_colchon_lavanderia";
 
 
-    // Sentencia SQL para crear la tabla "registros"
+    // Sentencia SQL corregida para crear la tabla "registros"
     private static final String SQL_CREATE_TABLE_REGISTROS =
             "CREATE TABLE " + TABLE_REGISTROS + " (" +
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -81,7 +82,10 @@ public class DatabaseHotel extends SQLiteOpenHelper {
                     COLUMN_TOALLA_LAVABO + " INTEGER DEFAULT 0, " +
                     COLUMN_ALFOMBRIN + " INTEGER DEFAULT 0, " +
                     COLUMN_PAID + " INTEGER DEFAULT 0, " +
-                    COLUMN_PROTECTOR_COLCHON + " INTEGER DEFAULT 0)";
+                    COLUMN_PROTECTOR_COLCHON + " INTEGER DEFAULT 0, " +
+                    COLUMN_RELLENO_NORDICO + " INTEGER DEFAULT 0" +
+                    ")";
+
 
     // Sentencia SQL para crear la tabla "extras"
     private static final String SQL_CREATE_TABLE_EXTRAS =

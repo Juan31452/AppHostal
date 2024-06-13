@@ -8,7 +8,7 @@ public class ValorPredeterminado {
     public static void actualizarCampos(String estado, EditText edbajeras, EditText edencimeras,
                                         EditText edfundalomohada, EditText edprotectora, EditText ednordica,
                                         EditText edcolchav, EditText edtoallaD, EditText edtoallaL,
-                                        EditText edalfombrim, EditText edpaid, EditText edprotectC) {
+                                        EditText edalfombrim, EditText edpaid, EditText edprotectC , EditText edrellenoM) {
         switch (estado) {
             case "Salida":
             case "SalidaEntrada":
@@ -23,6 +23,7 @@ public class ValorPredeterminado {
                 edalfombrim.setText("1");
                 edpaid.setText("0");
                 edprotectC.setText("0");
+                edrellenoM.setText("0");
                 break;
 
             case "NoMolestar":
@@ -38,6 +39,7 @@ public class ValorPredeterminado {
                 edalfombrim.setText("0");
                 edpaid.setText("0");
                 edprotectC.setText("0");
+                edrellenoM.setText("0");
                 break;
 
             default:
@@ -52,6 +54,7 @@ public class ValorPredeterminado {
                 edalfombrim.setText("");
                 edpaid.setText("");
                 edprotectC.setText("");
+                edrellenoM.setText("");
                 break;
         }
     }

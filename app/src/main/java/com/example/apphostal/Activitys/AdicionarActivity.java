@@ -22,7 +22,7 @@ import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
 
 public class AdicionarActivity extends AppCompatActivity {
-    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;
+    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC,edrellenoN;
     private Button btnMenu;
     // Declara la variable adicionarRegistros aquí
     private AdicionarRegistros adicionarRegistros;
@@ -48,6 +48,7 @@ public class AdicionarActivity extends AppCompatActivity {
         edalfombrim = findViewById(R.id.edalfombrim);
         edpaid = findViewById(R.id.paid);
         edprotectC = findViewById(R.id.protectC);
+        edrellenoN = findViewById(R.id.edrellenoN);
 
         // Obtiene una referencia al botón btnMenu
         Button btnMenu = findViewById(R.id.btnMenu);
@@ -83,7 +84,7 @@ public class AdicionarActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Verificar si algún EditText está vacío
-                if (EditTextFocusHelper.isAnyEditTextEmpty(editTextFecha,edhabitacion,edestado, edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edtoallaD,edtoallaL, edalfombrim,edpaid,edprotectC/* otros EditText */)) {
+                if (EditTextFocusHelper.isAnyEditTextEmpty(editTextFecha,edhabitacion,edestado, edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edtoallaD,edtoallaL, edalfombrim,edpaid,edprotectC,edrellenoN)) {
                     // Mostrar mensaje de error
                     Toast.makeText(getApplicationContext(), "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
                     // Guardar los datos
@@ -117,6 +118,7 @@ public class AdicionarActivity extends AppCompatActivity {
         EditTextFocusHelper.setupEditTextFocus(edalfombrim);
         EditTextFocusHelper.setupEditTextFocus(edpaid);
         EditTextFocusHelper.setupEditTextFocus(edprotectC);
+        EditTextFocusHelper.setupEditTextFocus(edrellenoN);
 
     }
 
@@ -141,11 +143,12 @@ public class AdicionarActivity extends AppCompatActivity {
         String alfombrin = edalfombrim.getText().toString();
         String paid = edpaid.getText().toString();
         String protectorC = edprotectC.getText().toString();
+        String rellenoN = edrellenoN.getText().toString();
 
 
-        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC);
+        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC,rellenoN);
 
-        adicionarRegistros.insertarRegistro(registro);
+        //adicionarRegistros.insertarRegistro(registro);
 
         // Limpiar los campos después de guardar
         editTextFecha.setText("");
@@ -162,6 +165,7 @@ public class AdicionarActivity extends AppCompatActivity {
         edalfombrim.setText("");
         edpaid.setText("");
         edprotectC.setText("");
+        edrellenoN.setText("");
     }
 
 }

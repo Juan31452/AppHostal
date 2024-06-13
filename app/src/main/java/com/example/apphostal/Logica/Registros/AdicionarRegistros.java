@@ -31,14 +31,15 @@ public class AdicionarRegistros {
                     DatabaseHotel.COLUMN_TOALLA_LAVABO + ", " +
                     DatabaseHotel.COLUMN_ALFOMBRIN + ", " +
                     DatabaseHotel.COLUMN_PAID + ", " +
-                    DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+                    DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ", " +
+                    DatabaseHotel.COLUMN_RELLENO_NORDICO + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             dbHostal.getWritableDatabase().execSQL(query, new String[]{
                     registro.getFecha(), registro.getHabitacion(), registro.getEstado(),
                     registro.getBajera(), registro.getEncimera(), registro.getFundaA(),
                     registro.getProtectorA(), registro.getNordica(), registro.getColchav(), registro.getToallaD(),
                     registro.getToallaL(), registro.getAlfombrin(), registro.getPaid(),
-                    registro.getProtectorC()});
+                    registro.getProtectorC(), registro.getRellenoN()});
 
             mostrarMensaje("Registro guardado correctamente");
         } catch (Exception e) {

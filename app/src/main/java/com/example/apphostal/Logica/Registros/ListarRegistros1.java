@@ -66,7 +66,8 @@ public class ListarRegistros1 {
                             cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_LAVABO)),
                             cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN)),
                             cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON))
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_RELLENO_NORDICO))
                     );
 
                     // Añadir el registro a la lista
@@ -88,6 +89,55 @@ public class ListarRegistros1 {
             }
             db.close();
         }
+    }
+
+    public List<Registro> consultarRegistrosTodo() {
+        List<Registro> registros = new ArrayList<>(); // Asumiendo que 'registros' es tu lista de registros
+
+        SQLiteDatabase db = dbHostal.getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_REGISTROS;
+
+            cursor = db.rawQuery(consulta, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Registro registro = new Registro(
+                            cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ID)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FECHA)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_HABITACION)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ESTADO)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_BAJERAS)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ENCIMERAS)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_FUNDA_ALMOHADA)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_ALMOHADA)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_NORDICA)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_COLCHA_VERANO)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_DUCHA)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_LAVABO)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_RELLENO_NORDICO))
+                    );
+
+                    registros.add(registro);
+                } while (cursor.moveToNext());
+            } else {
+                mostrarMensaje("No se encontraron datos para los registros.");
+            }
+        } catch (Exception e) {
+            mostrarMensaje("Error al consultar datos de los registros: " + e.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+
+        return registros; // Devuelve la lista de registros
     }
 
     public void consultarRegistroPorId(int itemId) {
@@ -118,7 +168,8 @@ public class ListarRegistros1 {
                         cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_LAVABO)),
                         cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN)),
                         cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON))
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_RELLENO_NORDICO))
                 );
                 // Añadir el registro a la lista
                 registros.add(registro);
@@ -173,7 +224,8 @@ public class ListarRegistros1 {
                             cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_TOALLA_LAVABO)),
                             cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_ALFOMBRIN)),
                             cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PAID)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON))
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_PROTECTOR_COLCHON)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.COLUMN_RELLENO_NORDICO))
                     );
 
                     // Añadir el registro a la lista
@@ -215,10 +267,11 @@ public class ListarRegistros1 {
                     "SUM(" + DatabaseHotel.COLUMN_TOALLA_LAVABO + ") AS count_toalla_lavabo, " +
                     "SUM(" + DatabaseHotel.COLUMN_ALFOMBRIN + ") AS count_alfombrin, " +
                     "SUM(" + DatabaseHotel.COLUMN_PAID + ") AS count_paid, " +
-                    "SUM(" + DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") AS count_protector_colchon " +
+                    "SUM(" + DatabaseHotel.COLUMN_PROTECTOR_COLCHON + ") AS count_protector_colchon, " +
+                    "SUM(" + DatabaseHotel.COLUMN_RELLENO_NORDICO + ") AS count_relleno_nordico " +
                     "FROM " + DatabaseHotel.TABLE_REGISTROS +
                     " WHERE " + DatabaseHotel.COLUMN_FECHA + " BETWEEN ? AND ?";
-            cursor = db.rawQuery(consulta, new String[]{fechaInicio, fechaFin});
+
 
             // Verificar si se encontraron resultados
             if (cursor != null && cursor.moveToFirst()) {
@@ -235,6 +288,8 @@ public class ListarRegistros1 {
                 conteoregistros.setCountAlfombrin(cursor.getInt(cursor.getColumnIndex("count_alfombrin")));
                 conteoregistros.setCountPaid(cursor.getInt(cursor.getColumnIndex("count_paid")));
                 conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndex("count_protector_colchon")));
+                conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndex("count_relleno_nordico")));
+
             } else {
                 mostrarMensaje("No se encontraron registros para el rango de fechas.");
             }

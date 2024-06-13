@@ -13,6 +13,7 @@ import com.example.apphostal.Activitys.AdicionarActivity;
 import com.example.apphostal.Activitys.LavanderiaActivity;
 import com.example.apphostal.Activitys.ListarRegistrosActivity;
 import com.example.apphostal.Activitys.RegistrosActivity;
+import com.example.apphostal.Database.DatabaseHotel;
 import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
 import com.example.apphostal.Fragments.UtlidadesFragment;
 
@@ -33,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Crear una instancia de DatabaseHotel para llamar al método borrarBaseDatos
 
-        //DatabaseHotel databaseHotel = new DatabaseHotel(this);
-        //atabaseHotel.borrarBaseDatos(this);
+       // DatabaseHotel databaseHotel = new DatabaseHotel(this);
+       // databaseHotel.borrarBaseDatos(this);
 
         // Configura un OnClickListener para el botón btnAdicionar
         btnAdicionar.setOnClickListener(new View.OnClickListener() {

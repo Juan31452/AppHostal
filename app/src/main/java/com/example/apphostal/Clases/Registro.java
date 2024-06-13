@@ -3,6 +3,7 @@ package com.example.apphostal.Clases;
 import java.io.Serializable;
 
 public class Registro implements Serializable {
+    private int id;
     private String fecha;
     private String habitacion;
     private String estado;
@@ -17,10 +18,10 @@ public class Registro implements Serializable {
     private String alfombrin;
     private String paid;
     private String protectorC;
-    private int id;
+    private String rellenoN;
 
     // Constructor sin ID
-    public Registro(String fecha, String habitacion, String estado, String bajera, String encimera, String fundaA, String protectorA, String nordica, String colchav, String toallaD, String toallaL, String alfombrin, String paid, String protectorC) {
+    public Registro(String fecha, String habitacion, String estado, String bajera, String encimera, String fundaA, String protectorA, String nordica, String colchav, String toallaD, String toallaL, String alfombrin, String paid, String protectorC, String rellenoN) {
         this.fecha = fecha;
         this.habitacion = habitacion;
         this.estado = estado;
@@ -35,10 +36,11 @@ public class Registro implements Serializable {
         this.alfombrin = alfombrin;
         this.paid = paid;
         this.protectorC = protectorC;
+        this.rellenoN = rellenoN;
     }
 
     // Constructor con ID
-    public Registro(int id, String fecha, String habitacion, String estado, String bajera, String encimera, String fundaA, String protectorA, String nordica, String colchav, String toallaD, String toallaL, String alfombrin, String paid, String protectorC) {
+    public Registro(int id, String fecha, String habitacion, String estado, String bajera, String encimera, String fundaA, String protectorA, String nordica, String colchav, String toallaD, String toallaL, String alfombrin, String paid, String protectorC, String rellenoN)  {
         this.id = id;
         this.fecha = fecha;
         this.habitacion = habitacion;
@@ -54,13 +56,17 @@ public class Registro implements Serializable {
         this.alfombrin = alfombrin;
         this.paid = paid;
         this.protectorC = protectorC;
+        this.rellenoN = rellenoN;
     }
 
     public Registro() {
 
     }
 
+
+
     // Getters y Setters
+
     public int getId(){
             return id;
     }
@@ -180,6 +186,13 @@ public class Registro implements Serializable {
 
     public String getProtectorC() {
         return protectorC;
+    }
+
+    public String getRellenoN() {
+        return rellenoN;
+    }
+    public void setRellenoN(String rellenoN) {
+        this.rellenoN = rellenoN;
     }
     @Override
     public String toString() {

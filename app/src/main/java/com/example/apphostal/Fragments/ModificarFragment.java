@@ -30,7 +30,7 @@ public class ModificarFragment extends Fragment {
     private ListarRegistros1 listarRegistros1;
     private Registro registro;
     private List<Registro> dataList;
-    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
+    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro,edrellenoN;
     private Button btnFragmentCerrar,btnEliminar, btnModificar, btnExtras;
 
 
@@ -78,6 +78,7 @@ public class ModificarFragment extends Fragment {
         edalfombrim = view.findViewById(R.id.edalfombrim);
         edpaid = view.findViewById(R.id.paid);
         edprotectC = view.findViewById(R.id.protectC);
+        edrellenoN = view.findViewById(R.id.edrellenoN);
         btnEliminar = view.findViewById(R.id.btnEliminar);
         btnModificar = view.findViewById(R.id.btnModificar);
         btnFragmentCerrar = view.findViewById(R.id.btnFragmentCerrar);
@@ -160,6 +161,7 @@ public class ModificarFragment extends Fragment {
         EditTextFocusHelper.setupEditTextFocus(edalfombrim);
         EditTextFocusHelper.setupEditTextFocus(edpaid);
         EditTextFocusHelper.setupEditTextFocus(edprotectC);
+        EditTextFocusHelper.setupEditTextFocus(edrellenoN);
 
         return view;
     }
@@ -180,6 +182,7 @@ public class ModificarFragment extends Fragment {
         edalfombrim.setText(registro.getAlfombrin());
         edpaid.setText(registro.getPaid());
         edprotectC.setText(registro.getProtectorC());
+        edrellenoN.setText(registro.getRellenoN());
     }
 
     private void modificarRegistro() {
@@ -197,12 +200,13 @@ public class ModificarFragment extends Fragment {
         String alfombrin = edalfombrim.getText().toString().trim();
         String paid = edpaid.getText().toString().trim();
         String protectorColchon = edprotectC.getText().toString().trim();
+        int rellenoN = Integer.parseInt(edrellenoN.getText().toString().trim());
 
         // Crear una instancia de ModificarRegistros
         ModificarRegistros modificarRegistros = new ModificarRegistros(getContext());
 
         // Llamar al método modificarRegistro
-        boolean resultado = modificarRegistros.modificarRegistro(id, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
+        boolean resultado = modificarRegistros.modificarRegistro(id, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon,rellenoN);
 
         // Mostrar un mensaje según el resultado
         if (resultado) {

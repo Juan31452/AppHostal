@@ -12,6 +12,7 @@ public class ConteoRegistros {
     private int countAlfombrin;
     private int countPaid;
     private int countProtectorColchon;
+    private int countRellenoNordico;
 
     public static void add(ConteoRegistros registros) {
     }
@@ -104,6 +105,14 @@ public class ConteoRegistros {
         this.countProtectorColchon = countProtectorColchon;
     }
 
+    public int getCountRellenoNordico() {
+        return countRellenoNordico;
+    }
+
+    public void setCountRellenoNordico(int countRellenoNordico) {
+        this.countRellenoNordico = countRellenoNordico;
+    }
+
     @Override
     public String toString() {
         return "Lista {" +
@@ -118,6 +127,7 @@ public class ConteoRegistros {
                 ", Alfombrin=" + countAlfombrin +
                 ", Paid=" + countPaid +
                 ", ProtectorColchon=" + countProtectorColchon +
+                ", RellenoNordico=" + countRellenoNordico +
                 '}';
     }
 }

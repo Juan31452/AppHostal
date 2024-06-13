@@ -24,7 +24,7 @@ import com.example.apphostal.R;
 
 public class DetalleRegistroActivity extends AppCompatActivity {
 
-    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro;
+    private EditText edhabitacion, edfecha, edestado, edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro,edrellenoN;
     private Button btnMenu,btnEliminar, btnModificar, btnExtras;
 
     @Override
@@ -94,7 +94,7 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                modificarRegistro();
+                //modificarRegistro();
             }
         });
         btnMenu.setOnClickListener(new View.OnClickListener() {
@@ -160,19 +160,20 @@ public class DetalleRegistroActivity extends AppCompatActivity {
         String alfombrin = edalfombrim.getText().toString().trim();
         String paid = edpaid.getText().toString().trim();
         String protectorColchon = edprotectC.getText().toString().trim();
+        //int rellenoN = edrellenoN.getText().toString().trim();
 
         // Crear una instancia de ModificarRegistros
         ModificarRegistros modificarRegistros = new ModificarRegistros(this);
 
         // Llamar al método modificarRegistro
-        boolean resultado = modificarRegistros.modificarRegistro(id, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon);
+        //boolean resultado = modificarRegistros.modificarRegistro(id, estado, bajeras, encimeras, fundaAlmohada, protectorAlmohada, nordica,colchav, toallaDucha, toallaLavabo, alfombrin, paid, protectorColchon,rellenoN);
 
         // Mostrar un mensaje según el resultado
-        if (resultado) {
-            Toast.makeText(this, "Registro modificado con éxito", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Error al modificar el registro", Toast.LENGTH_SHORT).show();
-        }
+       // if (resultado) {
+          //  Toast.makeText(this, "Registro modificado con éxito", Toast.LENGTH_SHORT).show();
+        //} else {
+          //  Toast.makeText(this, "Error al modificar el registro", Toast.LENGTH_SHORT).show();
+        //}
     }
 
     private void confirmarEliminarRegistro() {

@@ -49,31 +49,11 @@ public class ListarRegistrosActivity extends AppCompatActivity {
         // Consultar los registros
         listarRegistros1.consultarRegistros();
         // Obtener la lista de registros
-        List<Registro> registros = listarRegistros1.getRegistros();
+        //String registros = listarRegistros1.getRegistros();
 
 
         String registroId= "";
-        // Log the initial registros data
-        for (Registro registro : registros) {
-            Log.d(TAG, "Registro inicial: " + registro);
-        }
 
-        // Crear un adaptador para mostrar los registros en el ListView
-        ArrayAdapter<Registro> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, registros);
-        listViewRegistros.setAdapter(adapter);
-
-        listViewRegistros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Obtener el objeto Registro en la posición seleccionada
-                Registro registroSeleccionado = registros.get(position);
-
-                Intent intent = new Intent(ListarRegistrosActivity.this, DetalleRegistroActivity.class);
-                intent.putExtra("registro", registroSeleccionado);
-                startActivity(intent);
-            }
-        });
 
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {

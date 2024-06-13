@@ -31,7 +31,7 @@ import com.example.apphostal.R;
 public class AdicionarFragment extends Fragment {
 
     private Button btnSalir,btnGuardar;
-    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC;
+    private EditText editTextFecha,edhabitacion,edestado,edbajeras,edencimeras,edfundalomohada,edprotectora,ednordica,edcolchav,edtoallaD,edtoallaL,edalfombrim,edpaid,edprotectC,edrellenoN;
     // Declara la variable
     private AdicionarRegistros adicionarRegistros;
     @Override
@@ -57,6 +57,7 @@ public class AdicionarFragment extends Fragment {
         edalfombrim = view.findViewById(R.id.edalfombrim);
         edpaid = view.findViewById(R.id.paid);
         edprotectC = view.findViewById(R.id.protectC);
+        edrellenoN = view.findViewById(R.id.edrellenoN);
 
         // Inicializar la clase AdicionarRegistros
         adicionarRegistros = new AdicionarRegistros(requireContext());
@@ -92,7 +93,7 @@ public class AdicionarFragment extends Fragment {
                 String estado = edestado.getText().toString();
                 ValorPredeterminado.actualizarCampos(estado, edbajeras, edencimeras, edfundalomohada,
                         edprotectora, ednordica, edcolchav, edtoallaD, edtoallaL, edalfombrim,
-                        edpaid, edprotectC);
+                        edpaid, edprotectC,edrellenoN);
             }
 
             @Override
@@ -135,6 +136,7 @@ public class AdicionarFragment extends Fragment {
         EditTextFocusHelper.setupEditTextFocus(edalfombrim);
         EditTextFocusHelper.setupEditTextFocus(edpaid);
         EditTextFocusHelper.setupEditTextFocus(edprotectC);
+        EditTextFocusHelper.setupEditTextFocus(edrellenoN);
 
         return view;
 
@@ -166,9 +168,10 @@ public class AdicionarFragment extends Fragment {
         String alfombrin = edalfombrim.getText().toString();
         String paid = edpaid.getText().toString();
         String protectorC = edprotectC.getText().toString();
+        String rellenoN = edrellenoN.getText().toString();
 
 
-        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC);
+        Registro registro = new Registro(fecha, habitacion, estado, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC, rellenoN);
 
         adicionarRegistros.insertarRegistro(registro);
 
@@ -187,6 +190,7 @@ public class AdicionarFragment extends Fragment {
         edalfombrim.setText("");
         edpaid.setText("");
         edprotectC.setText("");
+        edrellenoN.setText("");
     }
 
 }
