@@ -9,7 +9,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
     // Nombre de la base de datos
     private static final String DATABASE_NAME = "hostal.db";
     // Versión de la base de datos
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     // Nombre y columnas de la tabla "registros"
     public static final String TABLE_REGISTROS = "registros";
@@ -135,10 +135,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
         //db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // No se requiere actualización para esta versión
-    }
+
 
     // Método para borrar la base de datos
     public void borrarBaseDatos(Context context) {
@@ -146,9 +143,31 @@ public class DatabaseHotel extends SQLiteOpenHelper {
         context.deleteDatabase(DATABASE_NAME);
     }
 
-
-    public void update(String extras, ContentValues values, String s, String[] strings) {
-
-
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion < 2) {
+            // Agregar el nuevo campo a la tabla registros
+            db.execSQL("ALTER TABLE " + TABLE_REGISTROS + " ADD COLUMN " + COLUMN_RELLENO_NORDICO + " INTEGER DEFAULT 0");
+        }
+        if (oldVersion < 3) {
+            // Crear la nueva tabla lavanderia
+            String SQL_CREATE_TABLE_LAVANDERIA = "CREATE TABLE " + TABLE_LAVANDERIA + " (" +
+                    LAVANDERIA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    LAVANDERIA_FECHA + " TEXT, " +
+                    LAVANDERIA_BAJERAS + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_ENCIMERAS + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_FUNDA_ALMOHADA + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_PROTECTOR_ALMOHADA + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_NORDICA + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_COLCHA_VERANO + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_TOALLA_DUCHA + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_TOALLA_LAVABO + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_ALFOMBRIN + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_PAID + " INTEGER DEFAULT 0, " +
+                    LAVANDERIA_PROTECTOR_COLCHON + " INTEGER DEFAULT 0);";
+            db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
+        }
+        // Puedes manejar futuras actualizaciones incrementales aquí
     }
+
 }
