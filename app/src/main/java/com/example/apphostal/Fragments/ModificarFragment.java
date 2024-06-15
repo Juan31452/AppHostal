@@ -13,12 +13,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Clases.Opciones;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Logica.Registros.EliminarRegistros;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
 import com.example.apphostal.Logica.Registros.ModificarRegistros;

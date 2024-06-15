@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.apphostal.Clases.Estado;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Fragments.ExtrasFragment;
 import com.example.apphostal.Logica.Registros.EliminarRegistros;
 ;

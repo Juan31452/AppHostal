@@ -1,4 +1,4 @@
-package com.example.apphostal.Clases;
+package com.example.apphostal.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.apphostal.Clases.Opciones;
+
+import com.example.apphostal.Clases.OnItemClickListener;
+import com.example.apphostal.Entity.Lavanderia;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.R;
 
 import java.util.List;
 
-public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyViewHolder> {
+public class DetallesAdapterRegistro extends RecyclerView.Adapter<DetallesAdapterRegistro.MyViewHolder> {
 
     private Context context;
     private List<Registro> dataList;
@@ -24,7 +26,7 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
     private int selectedId = -1; // ID seleccionado
 
 
-    public DetallesAdapter(List<Registro> dataList, Context context) {
+    public DetallesAdapterRegistro(List<Registro> dataList, Context context) {
         this.dataList = dataList;
         this.context = context;
 
@@ -47,7 +49,7 @@ public class DetallesAdapter extends RecyclerView.Adapter<DetallesAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout_registros, parent, false);
         return new MyViewHolder(view);
     }
 

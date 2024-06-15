@@ -244,9 +244,29 @@
             <TextView
                 android:id="@+id/item_ProtectorColchon1"
                 style="@style/TextResultadoStyle" />
-
-
         </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineaDetalles5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_RellenoN"
+                    style="@style/TextDetallesStyle"
+                    android:text="Relleno N. "
+                    />
+
+                <TextView
+                    android:id="@+id/item_RellenoN1"
+                    style="@style/TextResultadoStyle" />
+
+
+
+
+            </LinearLayout>
 
 
 

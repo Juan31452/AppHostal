@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.OnItemClickListener;
-import com.example.apphostal.Clases.DetallesAdapter;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Adapters.DetallesAdapterRegistro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Fragments.AdicionarFragment;
 import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
 import com.example.apphostal.Fragments.ExtrasFragment;
@@ -26,13 +26,12 @@ import com.example.apphostal.Fragments.ModificarFragment;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrosActivity extends AppCompatActivity implements OnItemClickListener {
 
     private RecyclerView recyclerView;
-    private DetallesAdapter adapter;
+    private DetallesAdapterRegistro adapter;
     private List<Registro> dataList;
     private ListarRegistros1 listarRegistros1;
     private Button btnMenu, btnNuevo, btnBuscar, btnModificar,btnExtras,btnRopaSucia;
@@ -57,7 +56,7 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
 
 
 
-        adapter = new DetallesAdapter(dataList, this);
+        adapter = new DetallesAdapterRegistro(dataList, this);
         adapter.setOnItemClickListener(this);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -171,7 +170,7 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
         listarRegistros1.consultarRegistrosPorFecha(fecha);
         dataList = listarRegistros1.getRegistros();
 
-        adapter = new DetallesAdapter(dataList, this);
+        adapter = new DetallesAdapterRegistro(dataList, this);
         adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
     }

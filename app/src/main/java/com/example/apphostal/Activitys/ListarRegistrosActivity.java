@@ -2,9 +2,7 @@ package com.example.apphostal.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.apphostal.Clases.Calendario;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Logica.Registros.ListarRegistros;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
 import com.example.apphostal.MainActivity;

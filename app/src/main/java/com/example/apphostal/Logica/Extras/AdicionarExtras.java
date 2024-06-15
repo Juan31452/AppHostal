@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
-import com.example.apphostal.Clases.Extras;
+import com.example.apphostal.Entity.Extras;
 import com.example.apphostal.Database.DatabaseHotel;
 
 public class AdicionarExtras {

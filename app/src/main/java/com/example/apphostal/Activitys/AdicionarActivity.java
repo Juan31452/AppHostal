@@ -1,7 +1,6 @@
 package com.example.apphostal.Activitys;
 
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.EditTextFocusHelper;
-import com.example.apphostal.Clases.Estado;
-import com.example.apphostal.Clases.Habitacion;
 import com.example.apphostal.Clases.Opciones;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Logica.Registros.AdicionarRegistros;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;

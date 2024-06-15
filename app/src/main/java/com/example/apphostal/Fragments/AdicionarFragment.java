@@ -1,16 +1,12 @@
 package com.example.apphostal.Fragments;
 
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +16,8 @@ import android.widget.EditText;
 import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.EditTextFocusHelper;
-import com.example.apphostal.Clases.Estado;
-import com.example.apphostal.Clases.Habitacion;
 import com.example.apphostal.Clases.Opciones;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Clases.ValorPredeterminado;
 import com.example.apphostal.Logica.Registros.AdicionarRegistros;
 import com.example.apphostal.R;

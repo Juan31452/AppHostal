@@ -2,7 +2,10 @@ package com.example.apphostal.Clases;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.example.apphostal.Entity.Registro;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +32,7 @@ public class CrearArchivo {
                         registro.getProtectorA(), registro.getNordica(), registro.getColchav(),
                         registro.getToallaD(), registro.getToallaL(), registro.getAlfombrin(),
                         registro.getPaid(), registro.getProtectorC(), registro.getRellenoN());
-
+                Log.d("Id", registro.getFecha());
                 fos.write(lineaCSV.getBytes());
             }
 

@@ -1,4 +1,4 @@
-package com.example.apphostal.Clases;
+package com.example.apphostal.Entity;
 
 
 import androidx.fragment.app.Fragment;

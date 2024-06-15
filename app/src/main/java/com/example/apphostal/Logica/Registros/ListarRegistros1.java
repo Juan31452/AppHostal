@@ -8,7 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.apphostal.Clases.ConteoRegistros;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Database.DatabaseHotel;
 
 import java.text.SimpleDateFormat;
@@ -129,6 +129,8 @@ public class ListarRegistros1 {
                 mostrarMensaje("No se encontraron datos para los registros.");
             }
         } catch (Exception e) {
+            // Imprime el mensaje completo de la excepción para depuración
+            e.printStackTrace();
             mostrarMensaje("Error al consultar datos de los registros: " + e.getMessage());
         } finally {
             if (cursor != null) {
@@ -272,24 +274,25 @@ public class ListarRegistros1 {
                     "FROM " + DatabaseHotel.TABLE_REGISTROS +
                     " WHERE " + DatabaseHotel.COLUMN_FECHA + " BETWEEN ? AND ?";
 
+            // Ejecutar la consulta
+            cursor = db.rawQuery(consulta, new String[]{fechaInicio, fechaFin});
 
             // Verificar si se encontraron resultados
             if (cursor != null && cursor.moveToFirst()) {
                 // Obtener el recuento de cada columna
                 conteoregistros = new ConteoRegistros();
-                conteoregistros.setCountBajeras(cursor.getInt(cursor.getColumnIndex("count_bajeras")));
-                conteoregistros.setCountEncimeras(cursor.getInt(cursor.getColumnIndex("count_encimeras")));
-                conteoregistros.setCountFundaAlmohada(cursor.getInt(cursor.getColumnIndex("count_funda_alomohada")));
-                conteoregistros.setCountProtectorAlmohada(cursor.getInt(cursor.getColumnIndex("count_protector_alomohada")));
-                conteoregistros.setCountNordica(cursor.getInt(cursor.getColumnIndex("count_nordica")));
-                conteoregistros.setCountColchaVerano(cursor.getInt(cursor.getColumnIndex("count_colcha_verano")));
-                conteoregistros.setCountToallaDucha(cursor.getInt(cursor.getColumnIndex("count_toalla_ducha")));
-                conteoregistros.setCountToallaLavabo(cursor.getInt(cursor.getColumnIndex("count_toalla_lavabo")));
-                conteoregistros.setCountAlfombrin(cursor.getInt(cursor.getColumnIndex("count_alfombrin")));
-                conteoregistros.setCountPaid(cursor.getInt(cursor.getColumnIndex("count_paid")));
-                conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndex("count_protector_colchon")));
-                conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndex("count_relleno_nordico")));
-
+                conteoregistros.setCountBajeras(cursor.getInt(cursor.getColumnIndexOrThrow("count_bajeras")));
+                conteoregistros.setCountEncimeras(cursor.getInt(cursor.getColumnIndexOrThrow("count_encimeras")));
+                conteoregistros.setCountFundaAlmohada(cursor.getInt(cursor.getColumnIndexOrThrow("count_funda_alomohada")));
+                conteoregistros.setCountProtectorAlmohada(cursor.getInt(cursor.getColumnIndexOrThrow("count_protector_alomohada")));
+                conteoregistros.setCountNordica(cursor.getInt(cursor.getColumnIndexOrThrow("count_nordica")));
+                conteoregistros.setCountColchaVerano(cursor.getInt(cursor.getColumnIndexOrThrow("count_colcha_verano")));
+                conteoregistros.setCountToallaDucha(cursor.getInt(cursor.getColumnIndexOrThrow("count_toalla_ducha")));
+                conteoregistros.setCountToallaLavabo(cursor.getInt(cursor.getColumnIndexOrThrow("count_toalla_lavabo")));
+                conteoregistros.setCountAlfombrin(cursor.getInt(cursor.getColumnIndexOrThrow("count_alfombrin")));
+                conteoregistros.setCountPaid(cursor.getInt(cursor.getColumnIndexOrThrow("count_paid")));
+                conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndexOrThrow("count_protector_colchon")));
+                conteoregistros.setCountRellenoNordico(cursor.getInt(cursor.getColumnIndexOrThrow("count_relleno_nordico")));
             } else {
                 mostrarMensaje("No se encontraron registros para el rango de fechas.");
             }
@@ -303,6 +306,7 @@ public class ListarRegistros1 {
         }
         return conteoregistros;
     }
+
 
     public List<Registro> getRegistros() {
 

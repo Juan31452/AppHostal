@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.apphostal.Clases.Extras;
+import com.example.apphostal.Entity.Extras;
 import com.example.apphostal.Database.DatabaseHotel;
 
 public class ModificarExtras {

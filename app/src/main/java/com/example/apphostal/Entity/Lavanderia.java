@@ -1,4 +1,4 @@
-package com.example.apphostal.Clases;
+package com.example.apphostal.Entity;
 
 public class Lavanderia {
     private int id;
@@ -14,10 +14,12 @@ public class Lavanderia {
     private int alfombrin;
     private int paid;
     private int protectorC;
+    private int rellenoN;
 
-    // Constructor con ID
-    public Lavanderia(int id, String fecha,  int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav, int toallaD, int toallaL, int alfombrin, int paid, int protectorC) {
-        this.id = id;
+
+    public Lavanderia( String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav,
+                      int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN) {
+        //this.id = id;
         this.fecha = fecha;
         this.bajera = bajera;
         this.encimera = encimera;
@@ -30,6 +32,30 @@ public class Lavanderia {
         this.alfombrin = alfombrin;
         this.paid = paid;
         this.protectorC = protectorC;
+        this.rellenoN = rellenoN;
+    }
+
+    public Lavanderia( int id,String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav,
+                       int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN) {
+
+    }
+
+
+    public Lavanderia(int id, String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica,
+                      int colchav, int toallaD, int toallaL, int alfombrin, int protectorC, int rellenoN) {
+        this.id = id;
+        this.fecha = fecha;
+        this.bajera = bajera;
+        this.encimera = encimera;
+        this.fundaA = fundaA;
+        this.protectorA = protectorA;
+        this.nordica = nordica;
+        this.colchav = colchav;
+        this.toallaD = toallaD;
+        this.toallaL = toallaL;
+        this.alfombrin = alfombrin;
+        this.protectorC = protectorC;
+        this.rellenoN = rellenoN;
     }
 
     // Getters y Setters
@@ -137,4 +163,13 @@ public class Lavanderia {
     public void setProtectorC(int protectorC) {
         this.protectorC = protectorC;
     }
+
+    public int getRellenoN() {
+        return rellenoN;
+    }
+
+    public void setRellenoN(int rellenoN) {
+        this.rellenoN = rellenoN;
+    }
 }
+

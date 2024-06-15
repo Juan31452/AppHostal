@@ -9,7 +9,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
     // Nombre de la base de datos
     private static final String DATABASE_NAME = "hostal.db";
     // Versión de la base de datos
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     // Nombre y columnas de la tabla "registros"
     public static final String TABLE_REGISTROS = "registros";
@@ -62,7 +62,8 @@ public class DatabaseHotel extends SQLiteOpenHelper {
             LAVANDERIA_TOALLA_LAVABO = "toalla_lavabo_lavanderia",
             LAVANDERIA_ALFOMBRIN = "alfombrin_lavanderia",
             LAVANDERIA_PAID = "paid_lavanderia",
-            LAVANDERIA_PROTECTOR_COLCHON = "protector_colchon_lavanderia";
+            LAVANDERIA_PROTECTOR_COLCHON = "protector_colchon_lavanderia",
+            LAVANDERA_RELLENO_NORDICO = "relleno_nordico_lavanderia";
 
 
     // Sentencia SQL corregida para crear la tabla "registros"
@@ -108,7 +109,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
 
             // Sentencia SQL para crear la tabla "lavanderia"
             private static final String SQL_CREATE_TABLE_LAVANDERIA =
-                    "CREATE TABLE " + TABLE_REGISTROS + " (" +
+                    "CREATE TABLE " + TABLE_LAVANDERIA + " (" +
                             LAVANDERIA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                             LAVANDERIA_FECHA + " TEXT, " +
                             LAVANDERIA_BAJERAS + " INTEGER DEFAULT 0, " +
@@ -121,7 +122,9 @@ public class DatabaseHotel extends SQLiteOpenHelper {
                             LAVANDERIA_TOALLA_LAVABO + " INTEGER DEFAULT 0, " +
                             LAVANDERIA_ALFOMBRIN + " INTEGER DEFAULT 0, " +
                             LAVANDERIA_PAID + " INTEGER DEFAULT 0, " +
-                            LAVANDERIA_PROTECTOR_COLCHON + " INTEGER DEFAULT 0)";
+                            LAVANDERIA_PROTECTOR_COLCHON + " INTEGER DEFAULT 0," +
+                            LAVANDERA_RELLENO_NORDICO + " INTEGER DEFAULT 0 " +");";
+
     // Constructor
     public DatabaseHotel(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -132,7 +135,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
         // Crear las tablas "registros" y "extras"
         db.execSQL(SQL_CREATE_TABLE_REGISTROS);
         db.execSQL(SQL_CREATE_TABLE_EXTRAS);
-        //db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
+        db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
     }
 
 
@@ -149,7 +152,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
             // Agregar el nuevo campo a la tabla registros
             db.execSQL("ALTER TABLE " + TABLE_REGISTROS + " ADD COLUMN " + COLUMN_RELLENO_NORDICO + " INTEGER DEFAULT 0");
         }
-        if (oldVersion < 3) {
+        /*if (oldVersion < 3) {
             // Crear la nueva tabla lavanderia
             String SQL_CREATE_TABLE_LAVANDERIA = "CREATE TABLE " + TABLE_LAVANDERIA + " (" +
                     LAVANDERIA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -164,10 +167,17 @@ public class DatabaseHotel extends SQLiteOpenHelper {
                     LAVANDERIA_TOALLA_LAVABO + " INTEGER DEFAULT 0, " +
                     LAVANDERIA_ALFOMBRIN + " INTEGER DEFAULT 0, " +
                     LAVANDERIA_PAID + " INTEGER DEFAULT 0, " +
-                    LAVANDERIA_PROTECTOR_COLCHON + " INTEGER DEFAULT 0);";
-            db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
-        }
-        // Puedes manejar futuras actualizaciones incrementales aquí
-    }
+                    LAVANDERIA_PROTECTOR_COLCHON + " INTEGER DEFAULT 0," +
+                    LAVANDERA_RELLENO_NORDICO + " INTEGER DEFAULT 0 " +");";
+        }*/
 
+            /*if (oldVersion < 4) {
+                // Agregar el nuevo campo a la tabla registros
+                db.execSQL("ALTER TABLE " + TABLE_LAVANDERIA + " ADD COLUMN " + LAVANDERA_RELLENO_NORDICO + " INTEGER DEFAULT 0");
+
+                db.execSQL(SQL_CREATE_TABLE_LAVANDERIA);
+            }*/
+            // Puedes manejar futuras actualizaciones incrementales aquí
+
+    }
 }

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.example.apphostal.Clases.EditTextFocusHelper;
-import com.example.apphostal.Clases.Extras;
+import com.example.apphostal.Entity.Extras;
 import com.example.apphostal.Logica.AdicionarExtras;
 import com.example.apphostal.Logica.ListarExtras;
 import com.example.apphostal.Logica.ModificarExtras;

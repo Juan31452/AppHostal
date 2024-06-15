@@ -3,8 +3,7 @@ package com.example.apphostal.Logica.Lavanderia;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.apphostal.Clases.Lavanderia;
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Lavanderia;
 import com.example.apphostal.Database.DatabaseHotel;
 
 public class AdicionarLavanderia {

@@ -3,7 +3,7 @@ package com.example.apphostal.Logica.Registros;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.apphostal.Clases.Registro;
+import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Database.DatabaseHotel;
 
 public class AdicionarRegistros {
