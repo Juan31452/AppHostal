@@ -171,5 +171,18 @@ public class Lavanderia {
     public void setRellenoN(int rellenoN) {
         this.rellenoN = rellenoN;
     }
+
+    @Override
+    public String toString() {
+        return "Lavanderia{id=" + id +
+                ", fecha='" + fecha + '\'' +
+                ", bajera=" + bajera +
+                ", encimera=" + encimera +
+                ", fundaA=" + fundaA +
+                ", protectorA=" + protectorA +
+                ", nordica=" + nordica +
+                // Incluir otros campos aquí según sea necesario
+                '}';
+    }
 }
 

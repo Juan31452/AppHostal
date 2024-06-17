@@ -17,8 +17,7 @@ import com.example.apphostal.Adapters.DetallesAdapterLavanderia;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Entity.Lavanderia;
 import com.example.apphostal.Fragments.LavanderiaFragment;
-import com.example.apphostal.Fragments.ModificarFragment;
-import com.example.apphostal.Fragments.UtilidadesMoFragment;
+import com.example.apphostal.Fragments.LavanderiaMoFragment;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
@@ -104,7 +103,7 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
             Log.d("ItemId", String.valueOf(selectedId));
 
             // Crear un nuevo fragmento para modificar el registro
-            UtilidadesMoFragment fragment = UtilidadesMoFragment.newInstance(selectedId);
+           LavanderiaMoFragment fragment = LavanderiaMoFragment.newInstance(selectedId);
 
             // Reemplazar el fragmento actual con el fragmento de modificación
             getSupportFragmentManager().beginTransaction()
