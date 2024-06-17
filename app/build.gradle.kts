@@ -33,6 +33,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
@@ -47,5 +48,8 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+// Dependencia para ActivityResultLauncher
+   // implementation ("androidx.activity:activity-ktx:1.9.0")
+ //   implementation ("androidx.fragment:fragment:1.8.0")
 
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#BB8FCE"
     android:padding="5dp"
-    tools:context=".Fragments.UtlidadesFragment">
+    tools:context=".Fragments.UtilidadesFragment">
 
     <LinearLayout
 
@@ -37,16 +37,16 @@
             android:text="Registros" />
 
         <Button
-            android:id="@+id/btnModificar"
+            android:id="@+id/btnImportar"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            android:enabled="false"
+            android:enabled="true"
             android:textSize="10sp"
             android:padding="1dp"
             android:layout_toStartOf="@id/btnNuevo"
-            android:text="Detalles." />
+            android:text="Importar." />
 
         <Button
             android:id="@+id/btnExtras"

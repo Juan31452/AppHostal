@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apphostal.Adapters.DetallesAdapterLavanderia;
+import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Entity.Lavanderia;
 import com.example.apphostal.Fragments.LavanderiaFragment;
+import com.example.apphostal.Fragments.ModificarFragment;
+import com.example.apphostal.Fragments.UtilidadesMoFragment;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
@@ -28,8 +31,10 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
     private DetallesAdapterLavanderia adapter;
     private ListarLavanderia listarlavanderia;
     private List<Lavanderia> dataList;
-    private Button btnMenu, btnEntrega, btnBuscar;
+    private Button btnMenu, btnEntrega, btnBuscar,btnModificar;
     private EditText editTextFechaConsulta;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,7 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
         btnMenu = findViewById(R.id.btnMenu);
         btnEntrega = findViewById(R.id.btnEntrega);
         btnBuscar = findViewById(R.id.btnBuscar);
+        btnModificar = findViewById(R.id.btnModificar);
 
         // Instanciar la clase ListarLavanderia
         listarlavanderia = new ListarLavanderia(this);
@@ -67,6 +73,13 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
             startActivity(intent);
         });
 
+        editTextFechaConsulta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarCalendario();
+            }
+        });
+
         btnEntrega.setOnClickListener(v -> {
             LavanderiaFragment fragment = LavanderiaFragment.newInstance();
 
@@ -83,6 +96,28 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
             // Commit de la transacción
             fragmentTransaction.commit();
         });
+
+        btnModificar.setOnClickListener(v -> {
+
+            // Obtener el ID del registro seleccionado del adaptador
+            int selectedId = adapter.getSelectedId();
+            Log.d("ItemId", String.valueOf(selectedId));
+
+            // Crear un nuevo fragmento para modificar el registro
+            UtilidadesMoFragment fragment = UtilidadesMoFragment.newInstance(selectedId);
+
+            // Reemplazar el fragmento actual con el fragmento de modificación
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
+        });
+    }
+
+    public void mostrarCalendario() {
+
+        Calendario.mostrarCalendario(this, editTextFechaConsulta);
     }
 
     @Override
@@ -92,4 +127,6 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
         // Realizar acciones con el objeto Lavanderia seleccionado
         Log.d("Lavanderia", "Elemento clicado: " + lavanderia.toString());
     }
+
+
 }

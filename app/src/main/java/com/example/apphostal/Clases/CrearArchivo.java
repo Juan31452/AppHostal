@@ -7,9 +7,12 @@ import android.widget.Toast;
 
 import com.example.apphostal.Entity.Registro;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CrearArchivo {
@@ -44,6 +47,69 @@ public class CrearArchivo {
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(context, "Error al crear el archivo: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.d("Error al crear el archivo: " , e.getMessage());
         }
     }
+
+    public static List<Registro> importarArchivoCSV(Context context) {
+        List<Registro> listaRegistros = new ArrayList<>();
+        File csvFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "registrosImportar.csv");
+
+        if (csvFile.exists()) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(csvFile));
+                String line;
+                // Saltar encabezado
+                br.readLine();
+                while ((line = br.readLine()) != null) {
+                    String[] values = line.split(";");
+                    Registro registro = new Registro(
+                            getValueOrZero(values, 0), // Fecha
+                            getValueOrZeroForHabitacion(values, 1), // Habitación
+                            getValueOrZero(values, 2), // Estado
+                            getValueOrZero(values, 3), // Bajera
+                            getValueOrZero(values, 4), // Encimera
+                            getValueOrZero(values, 5), // Funda Almohada
+                            getValueOrZero(values, 6), // Protector Almohada
+                            getValueOrZero(values, 7), // Nórdica
+                            getValueOrZero(values, 8), // Colcha Verano
+                            getValueOrZero(values, 9), // Toalla Ducha
+                            getValueOrZero(values, 10), // Toalla Lavabo
+                            getValueOrZero(values, 11), // Alfombrín
+                            getValueOrZero(values, 12), // Paid
+                            getValueOrZero(values, 13), // Protector Colchón
+                            getValueOrZero(values, 14)  // Relleno Nórdico
+                    );
+                    listaRegistros.add(registro);
+                    Log.d("ListaRegistros", listaRegistros.toString());
+
+                }
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(context, "Error al importar el archivo: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Error al importar el archivo: " , e.getMessage());
+            }
+        } else {
+            Toast.makeText(context, "El archivo no existe", Toast.LENGTH_SHORT).show();
+        }
+
+        return listaRegistros;
+    }
+
+    private static String getValueOrZero(String[] values, int index) {
+        if (index < values.length && values[index] != null && !values[index].isEmpty()) {
+            return values[index];
+        }
+        return "0";
+    }
+
+    private static String getValueOrZeroForHabitacion(String[] values, int index) {
+        String value = getValueOrZero(values, index);
+        if (value.equals("2")) {
+            return "002";
+        }
+        return value;
+    }
+
 }

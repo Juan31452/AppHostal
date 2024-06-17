@@ -9,7 +9,7 @@ public class DatabaseHotel extends SQLiteOpenHelper {
     // Nombre de la base de datos
     private static final String DATABASE_NAME = "hostal.db";
     // Versión de la base de datos
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 1;
 
     // Nombre y columnas de la tabla "registros"
     public static final String TABLE_REGISTROS = "registros";
@@ -148,10 +148,10 @@ public class DatabaseHotel extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion < 2) {
+    /*    if (oldVersion < 2) {
             // Agregar el nuevo campo a la tabla registros
             db.execSQL("ALTER TABLE " + TABLE_REGISTROS + " ADD COLUMN " + COLUMN_RELLENO_NORDICO + " INTEGER DEFAULT 0");
-        }
+        }*/
         /*if (oldVersion < 3) {
             // Crear la nueva tabla lavanderia
             String SQL_CREATE_TABLE_LAVANDERIA = "CREATE TABLE " + TABLE_LAVANDERIA + " (" +

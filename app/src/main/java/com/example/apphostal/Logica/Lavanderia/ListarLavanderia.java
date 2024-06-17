@@ -36,7 +36,7 @@ public class ListarLavanderia {
 
         try {
 
-            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_LAVANDERIA + " LIMIT 20";
+            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_LAVANDERIA ;
             cursor = db.rawQuery(consulta, null);
 
             if (cursor != null && cursor.moveToFirst()) {
@@ -72,6 +72,59 @@ public class ListarLavanderia {
             e.printStackTrace();
             mostrarMensaje("Error al consultar datos de los registros: " + e.getMessage());
         } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+        return lavanderiaList;
+    }
+
+    public List<Lavanderia> consultarRegistroPorId(int itemId) {
+        SQLiteDatabase db = dbHostal.getReadableDatabase();
+        Cursor cursor = null;
+        List<Lavanderia> lavanderiaList = new ArrayList<>();
+
+
+        try {
+            String consulta = "SELECT * FROM " + DatabaseHotel.TABLE_LAVANDERIA + " WHERE " + DatabaseHotel.LAVANDERIA_ID + " = ?";
+            // Ejecutar la consulta con el ID como argumento
+            cursor = db.rawQuery(consulta, new String[]{String.valueOf(itemId)});
+
+            // Verificar si se encontraron resultados
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_ID));
+                String fecha = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_FECHA));
+                int bajeras = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_BAJERAS));
+                int encimeras = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_ENCIMERAS));
+                int fundaAlmohada = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_FUNDA_ALMOHADA));
+                int protectorAlmohada = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_PROTECTOR_ALMOHADA));
+                int nordica = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_NORDICA));
+                int colchaVerano = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_COLCHA_VERANO));
+                int toallaDucha = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_TOALLA_DUCHA));
+                int toallaLavabo = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_TOALLA_LAVABO));
+                int alfombrin = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_ALFOMBRIN));
+                int protectorColchon = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_PROTECTOR_COLCHON));
+                int rellenoNordico = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERA_RELLENO_NORDICO));
+
+                // Cambia el nombre de la variable para evitar la colisión
+                Lavanderia lavanderiaItem = new Lavanderia(id, fecha, bajeras, encimeras, fundaAlmohada,
+                        protectorAlmohada, nordica, colchaVerano, toallaDucha, toallaLavabo,
+                        alfombrin, protectorColchon, rellenoNordico);
+
+                lavanderiaList.add(lavanderiaItem); // Agrega el objeto a la lista
+                Log.d("Datos del registro", lavanderiaItem.toString());
+                } while (cursor.moveToNext());
+            } else {
+                // No se encontraron resultados
+                mostrarMensaje("No se encontraron datos para el registro con ID: " + itemId);
+            }
+        } catch (Exception e) {
+            mostrarMensaje("Error al consultar datos del registro con ID " + itemId + ": " + e.getMessage());
+        } finally {
+            // Cerrar el cursor y la base de datos
             if (cursor != null) {
                 cursor.close();
             }

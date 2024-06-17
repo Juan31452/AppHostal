@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AppHostal"
 include(":app")
+
+

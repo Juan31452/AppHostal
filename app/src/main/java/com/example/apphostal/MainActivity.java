@@ -11,11 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.apphostal.Activitys.AdicionarActivity;
 import com.example.apphostal.Activitys.LavanderiaActivity;
-import com.example.apphostal.Activitys.ListarRegistrosActivity;
 import com.example.apphostal.Activitys.RegistrosActivity;
-import com.example.apphostal.Database.DatabaseHotel;
-import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
-import com.example.apphostal.Fragments.UtlidadesFragment;
+import com.example.apphostal.Fragments.UtilidadesFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Crear una instancia del Fragment con el valor de edRegistro
-                UtlidadesFragment fragment = UtlidadesFragment.newInstance();
+                UtilidadesFragment fragment = UtilidadesFragment.newInstance();
 
                 // Obtener el FragmentManager y comenzar una transacción
                 FragmentManager fragmentManager = getSupportFragmentManager();
