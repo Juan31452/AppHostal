@@ -8,13 +8,36 @@
     android:background="#E794DD"
     tools:context=".Fragments.ConsultaPorFechasFragment">
 
+    <Button
+        android:id="@+id/btnFragmentCerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Salir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="CONSULTAR POR FECHAS"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFragmentCerrar" />
+
     <LinearLayout
         android:id="@+id/principal"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -26,15 +49,7 @@
             android:layout_marginTop="20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/ttitulo"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:textSize="20dp"
-                android:text="ROPA SUCIA"
-                android:textColor="@android:color/black" />
+
 
             <TextView
                 android:id="@+id/tfechaini"
@@ -77,12 +92,7 @@
                 android:layout_weight="1"
                 android:text="Consultar" />
 
-            <Button
-                android:id="@+id/btnFragmentCerrar"
-                android:layout_width="0dp"
-                android:layout_height="61dp"
-                android:layout_weight="1"
-                android:text="Cerrar" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -268,9 +278,19 @@
 
             </LinearLayout>
 
-
-
-
+        <Button
+            android:id="@+id/btnSalidaLavanderia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Salida a Lavanderia"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/principal" />
 
     </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
