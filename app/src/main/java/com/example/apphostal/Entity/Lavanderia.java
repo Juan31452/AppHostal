@@ -16,10 +16,8 @@ public class Lavanderia {
     private int protectorC;
     private int rellenoN;
 
-
-    public Lavanderia( String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav,
-                      int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN) {
-        //this.id = id;
+    // Constructor para inserción sin id
+    public Lavanderia(String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav, int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN) {
         this.fecha = fecha;
         this.bajera = bajera;
         this.encimera = encimera;
@@ -35,14 +33,7 @@ public class Lavanderia {
         this.rellenoN = rellenoN;
     }
 
-    public Lavanderia( int id,String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav,
-                       int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN) {
-
-    }
-
-
-    public Lavanderia(int id, String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica,
-                      int colchav, int toallaD, int toallaL, int alfombrin, int protectorC, int rellenoN) {
+    public Lavanderia(int id, String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav, int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN) {
         this.id = id;
         this.fecha = fecha;
         this.bajera = bajera;
@@ -54,123 +45,68 @@ public class Lavanderia {
         this.toallaD = toallaD;
         this.toallaL = toallaL;
         this.alfombrin = alfombrin;
+        this.paid = paid;
         this.protectorC = protectorC;
         this.rellenoN = rellenoN;
     }
 
-    // Getters y Setters
-
+    // Getters
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
     public int getBajera() {
         return bajera;
-    }
-
-    public void setBajera(int bajera) {
-        this.bajera = bajera;
     }
 
     public int getEncimera() {
         return encimera;
     }
 
-    public void setEncimera(int encimera) {
-        this.encimera = encimera;
-    }
-
     public int getFundaA() {
         return fundaA;
-    }
-
-    public void setFundaA(int fundaA) {
-        this.fundaA = fundaA;
     }
 
     public int getProtectorA() {
         return protectorA;
     }
 
-    public void setProtectorA(int protectorA) {
-        this.protectorA = protectorA;
-    }
-
     public int getNordica() {
         return nordica;
-    }
-
-    public void setNordica(int nordica) {
-        this.nordica = nordica;
     }
 
     public int getColchav() {
         return colchav;
     }
 
-    public void setColchav(int colchav) {
-        this.colchav = colchav;
-    }
-
     public int getToallaD() {
         return toallaD;
-    }
-
-    public void setToallaD(int toallaD) {
-        this.toallaD = toallaD;
     }
 
     public int getToallaL() {
         return toallaL;
     }
 
-    public void setToallaL(int toallaL) {
-        this.toallaL = toallaL;
-    }
-
     public int getAlfombrin() {
         return alfombrin;
-    }
-
-    public void setAlfombrin(int alfombrin) {
-        this.alfombrin = alfombrin;
     }
 
     public int getPaid() {
         return paid;
     }
 
-    public void setPaid(int paid) {
-        this.paid = paid;
-    }
-
     public int getProtectorC() {
         return protectorC;
-    }
-
-    public void setProtectorC(int protectorC) {
-        this.protectorC = protectorC;
     }
 
     public int getRellenoN() {
         return rellenoN;
     }
 
-    public void setRellenoN(int rellenoN) {
-        this.rellenoN = rellenoN;
-    }
 
     @Override
     public String toString() {

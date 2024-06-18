@@ -52,13 +52,14 @@ public class ListarLavanderia {
                     int toallaDucha = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_TOALLA_DUCHA));
                     int toallaLavabo = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_TOALLA_LAVABO));
                     int alfombrin = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_ALFOMBRIN));
+                    int paid = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_PAID));
                     int protectorColchon = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_PROTECTOR_COLCHON));
                     int rellenoNordico = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERA_RELLENO_NORDICO));
 
                     // Cambia el nombre de la variable para evitar la colisión
                     Lavanderia lavanderiaItem = new Lavanderia(id, fecha, bajeras, encimeras, fundaAlmohada,
                             protectorAlmohada, nordica, colchaVerano, toallaDucha, toallaLavabo,
-                            alfombrin, protectorColchon, rellenoNordico);
+                            alfombrin, paid, protectorColchon, rellenoNordico);
 
                     lavanderiaList.add(lavanderiaItem); // Agrega el objeto a la lista
                     Log.d("Datos del registro", lavanderiaItem.toString());
@@ -106,13 +107,14 @@ public class ListarLavanderia {
                 int toallaDucha = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_TOALLA_DUCHA));
                 int toallaLavabo = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_TOALLA_LAVABO));
                 int alfombrin = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_ALFOMBRIN));
+                int paid = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_PAID));
                 int protectorColchon = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERIA_PROTECTOR_COLCHON));
                 int rellenoNordico = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHotel.LAVANDERA_RELLENO_NORDICO));
 
                 // Cambia el nombre de la variable para evitar la colisión
                 Lavanderia lavanderiaItem = new Lavanderia(id, fecha, bajeras, encimeras, fundaAlmohada,
                         protectorAlmohada, nordica, colchaVerano, toallaDucha, toallaLavabo,
-                        alfombrin, protectorColchon, rellenoNordico);
+                        alfombrin, paid, protectorColchon, rellenoNordico);
 
                 lavanderiaList.add(lavanderiaItem); // Agrega el objeto a la lista
                 Log.d("Datos del registro", lavanderiaItem.toString());

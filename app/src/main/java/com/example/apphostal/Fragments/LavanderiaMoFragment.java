@@ -1,5 +1,7 @@
 package com.example.apphostal.Fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,12 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.apphostal.Activitys.LavanderiaActivity;
+import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Entity.Lavanderia;
 import com.example.apphostal.Entity.Registro;
+import com.example.apphostal.Logica.Lavanderia.EliminarLavanderia;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia;
+import com.example.apphostal.Logica.Lavanderia.ModificarLavanderia;
+import com.example.apphostal.Logica.Registros.EliminarRegistros;
 import com.example.apphostal.R;
 
 import java.util.List;
@@ -76,6 +83,9 @@ public class LavanderiaMoFragment extends Fragment {
         selectedId = getArguments().getInt(ARG_SELECTED_ID);
 
         edRegistro = view.findViewById(R.id.edRegistro);
+        Log.d("Id", "selectedId: " + selectedId);
+        Log.d("Id", "selectedId: " + edRegistro);
+
         edfecha = view.findViewById(R.id.editTextFecha);
         edbajeras = view.findViewById(R.id.edbajeras);
         // Otros EditTexts y Buttons...
@@ -110,6 +120,13 @@ public class LavanderiaMoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 modificarRegistro();
+            }
+        });
+
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmarEliminarRegistro();
             }
         });
 
@@ -156,35 +173,66 @@ public class LavanderiaMoFragment extends Fragment {
     }
 
     private void modificarRegistro() {
-        // Obtener los valores de los EditText
-        int bajera = Integer.parseInt(edbajeras.getText().toString());
-        int encimera = Integer.parseInt(edencimeras.getText().toString());
-        int fundalomohada = Integer.parseInt(edfundalomohada.getText().toString());
-        int protectora = Integer.parseInt(edprotectora.getText().toString());
-        int nordica = Integer.parseInt(ednordica.getText().toString());
-        int colchav = Integer.parseInt(edcolchav.getText().toString());
-        int toallaD = Integer.parseInt(edtoallaD.getText().toString());
-        int toallaL = Integer.parseInt(edtoallaL.getText().toString());
-        int alfombrim = Integer.parseInt(edalfombrim.getText().toString());
-        int paid = Integer.parseInt(edpaid.getText().toString());
-        int protectorC = Integer.parseInt(edprotectC.getText().toString());
-        int rellenoN = Integer.parseInt(edrellenoN.getText().toString());
+        try {
+            String fecha = edfecha.getText().toString();
+            int bajera = Integer.parseInt(edbajeras.getText().toString());
+            int encimera = Integer.parseInt(edencimeras.getText().toString());
+            int fundalomohada = Integer.parseInt(edfundalomohada.getText().toString());
+            int protectora = Integer.parseInt(edprotectora.getText().toString());
+            int nordica = Integer.parseInt(ednordica.getText().toString());
+            int colchav = Integer.parseInt(edcolchav.getText().toString());
+            int toallaD = Integer.parseInt(edtoallaD.getText().toString());
+            int toallaL = Integer.parseInt(edtoallaL.getText().toString());
+            int alfombrim = Integer.parseInt(edalfombrim.getText().toString());
+            int paid = Integer.parseInt(edpaid.getText().toString());
+            int protectorC = Integer.parseInt(edprotectC.getText().toString());
+            int rellenoN = Integer.parseInt(edrellenoN.getText().toString());
 
-        // Crear una instancia de Lavanderia con los valores obtenidos
-        Lavanderia lavanderia = new Lavanderia(selectedId, edfecha.getText().toString(), bajera, encimera, fundalomohada, protectora, nordica, colchav, toallaD, toallaL, alfombrim, paid, protectorC, rellenoN);
-        Log.d("ModificarFragment", "Lavanderia: " + lavanderia);
-/*
-        // Actualizar el registro en la base de datos
-        listaLavanderia.modificarRegistro(lavanderia);
 
-        // Mostrar un mensaje de éxito
-        Toast.makeText(getActivity(), "Registro actualizado correctamente", Toast.LENGTH_SHORT).show();
+            Lavanderia lavanderia = new Lavanderia(selectedId, fecha, bajera, encimera, fundalomohada, protectora, nordica, colchav, toallaD, toallaL, alfombrim, paid, protectorC, rellenoN);
+            Log.d("ModificarFragment", "LavanderiaID: " + lavanderia.toString());
 
+            ModificarLavanderia modificarLavanderia = new ModificarLavanderia(getActivity());
+            Log.d("DESDELavanderiaFragment", "Id Lavanderia: " + lavanderia.getId());
+
+            modificarLavanderia.modificarRegistro(lavanderia);
+        } catch (Exception e) {
+            Log.d("ModificarFragmentID", "Error al modificar el registro: " + e.getMessage());
+        }
         // Opcional: Volver a la actividad anterior o cerrar el fragmento
         getActivity().getSupportFragmentManager().popBackStack();
 
- */
-    }
+   }
 
+    private void confirmarEliminarRegistro() {
+
+        new AlertDialog.Builder(getContext())
+                .setTitle("Confirmar Eliminación")
+                .setMessage("¿Está seguro de que desea eliminar este registro?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        eliminarRegistro();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+    private void eliminarRegistro() {
+        try {
+            int id = Integer.parseInt(edRegistro.getText().toString().trim());
+                EliminarLavanderia eliminarLavanderia = new EliminarLavanderia(getContext());
+                eliminarLavanderia.eliminarRegistro(id);
+
+
+                    //Toast.makeText(getContext(), "Registro eliminado con éxito", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Log.d("EliminarID", "Error al modificar el registro: " + e.getMessage());
+        }
+        // Cerrar la actividad actual y volver a abrirla
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), LavanderiaActivity.class));
+
+    }
 
 }

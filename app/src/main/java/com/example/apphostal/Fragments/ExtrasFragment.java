@@ -16,8 +16,8 @@ import androidx.fragment.app.FragmentManager;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Entity.Extras;
 import com.example.apphostal.Logica.AdicionarExtras;
+import com.example.apphostal.Logica.Extras.ModificarExtras;
 import com.example.apphostal.Logica.ListarExtras;
-import com.example.apphostal.Logica.ModificarExtras;
 import com.example.apphostal.R;
 
 public class ExtrasFragment extends Fragment {

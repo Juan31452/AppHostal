@@ -1,4 +1,4 @@
-package com.example.apphostal.Logica;
+package com.example.apphostal.Logica.Extras;
 
 import android.content.ContentValues;
 import android.content.Context;
