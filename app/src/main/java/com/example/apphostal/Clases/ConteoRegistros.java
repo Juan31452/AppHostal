@@ -14,8 +14,27 @@ public class ConteoRegistros {
     private int countProtectorColchon;
     private int countRellenoNordico;
 
-    public static void add(ConteoRegistros registros) {
+    public ConteoRegistros(int countBajeras, int countEncimeras, int countFundaAlmohada, int countProtectorAlmohada, int countNordica,
+                           int countColchaVerano, int countToallaDucha, int countToallaLavabo, int countAlfombrin,
+                           int countPaid, int countProtectorColchon, int countRellenoNordico)
+    {
+        this.countBajeras = countBajeras;
+        this.countEncimeras = countEncimeras;
+        this.countFundaAlmohada = countFundaAlmohada;
+        this.countProtectorAlmohada = countProtectorAlmohada;
+        this.countNordica = countNordica;
+        this.countColchaVerano = countColchaVerano;
+        this.countToallaDucha = countToallaDucha;
+        this.countToallaLavabo = countToallaLavabo;
+        this.countAlfombrin = countAlfombrin;
+        this.countPaid = countPaid;
+        this.countProtectorColchon = countProtectorColchon;
+        this.countRellenoNordico = countRellenoNordico;
+
     }
+
+
+
 
     public int getCountBajeras() {
         return countBajeras;

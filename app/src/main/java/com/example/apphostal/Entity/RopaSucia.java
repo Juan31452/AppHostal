@@ -2,7 +2,7 @@ package com.example.apphostal.Entity;
 
 public class RopaSucia {
 
-    private long id;
+    private int id;
     private String fecha;
     private int bajeras;
     private int encimeras;
@@ -18,7 +18,46 @@ public class RopaSucia {
     private int rellenoNordico;
     private String entregado;
 
-    // Constructor vacío
+   public RopaSucia(int id, String fecha, int bajeras, int encimeras, int fundaAlmohada, int protectorAlmohada, int nordica, int colchaVerano,
+                    int toallaDucha, int toallaLavabo, int alfombrin, int paid, int protectorColchon, int rellenoNordico, String entregado){
+       this.id = id;
+       this.fecha = fecha;
+       this.bajeras = bajeras;
+       this.encimeras = encimeras;
+       this.fundaAlmohada = fundaAlmohada;
+       this.protectorAlmohada = protectorAlmohada;
+       this.nordica = nordica;
+       this.colchaVerano = colchaVerano;
+       this.toallaDucha = toallaDucha;
+       this.toallaLavabo = toallaLavabo;
+       this.alfombrin = alfombrin;
+       this.paid = paid;
+       this.protectorColchon = protectorColchon;
+       this.rellenoNordico = rellenoNordico;
+       this.entregado = "No";
+
+   }
+
+    public RopaSucia(String fecha, int bajeras, int encimeras, int fundaAlmohada, int protectorAlmohada, int nordica, int colchaVerano,
+                     int toallaDucha, int toallaLavabo, int alfombrin, int paid, int protectorColchon, int rellenoNordico, String entregado){
+        this.fecha = fecha;
+        this.bajeras = bajeras;
+        this.encimeras = encimeras;
+        this.fundaAlmohada = fundaAlmohada;
+        this.protectorAlmohada = protectorAlmohada;
+        this.nordica = nordica;
+        this.colchaVerano = colchaVerano;
+        this.toallaDucha = toallaDucha;
+        this.toallaLavabo = toallaLavabo;
+        this.alfombrin = alfombrin;
+        this.paid = paid;
+        this.protectorColchon = protectorColchon;
+        this.rellenoNordico = rellenoNordico;
+        this.entregado = "No";
+
+    }
+
+
     public RopaSucia() {
     }
 
@@ -27,7 +66,7 @@ public class RopaSucia {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -141,5 +180,14 @@ public class RopaSucia {
 
     public void setEntregado(String entregado) {
         this.entregado = entregado;
+    }
+
+
+@Override
+public String toString() {
+    return "RopaSucia{ID=" + id +
+            ", fecha='" + fecha + '\'' +
+            ",bajeras=" + bajeras +
+            '}';
     }
 }

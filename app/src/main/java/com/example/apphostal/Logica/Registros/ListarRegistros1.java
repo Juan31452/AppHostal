@@ -251,10 +251,10 @@ public class ListarRegistros1 {
         }
     }
     @SuppressLint("Range")
-    public static ConteoRegistros consultarRecuentoPorRangoDeFecha(String fechaInicio, String fechaFin) {
+    public List<ConteoRegistros> consultarRecuentoPorRangoDeFecha(String fechaInicio, String fechaFin) {
         SQLiteDatabase db = dbHostal.getReadableDatabase();
         Cursor cursor = null;
-        ConteoRegistros conteoregistros = null;
+        List<ConteoRegistros> conteoregistrosList = new ArrayList<>();
 
         try {
             // Consulta para obtener el recuento de cada columna dentro del rango de fechas
@@ -280,19 +280,24 @@ public class ListarRegistros1 {
             // Verificar si se encontraron resultados
             if (cursor != null && cursor.moveToFirst()) {
                 // Obtener el recuento de cada columna
-                conteoregistros = new ConteoRegistros();
-                conteoregistros.setCountBajeras(cursor.getInt(cursor.getColumnIndexOrThrow("count_bajeras")));
-                conteoregistros.setCountEncimeras(cursor.getInt(cursor.getColumnIndexOrThrow("count_encimeras")));
-                conteoregistros.setCountFundaAlmohada(cursor.getInt(cursor.getColumnIndexOrThrow("count_funda_alomohada")));
-                conteoregistros.setCountProtectorAlmohada(cursor.getInt(cursor.getColumnIndexOrThrow("count_protector_alomohada")));
-                conteoregistros.setCountNordica(cursor.getInt(cursor.getColumnIndexOrThrow("count_nordica")));
-                conteoregistros.setCountColchaVerano(cursor.getInt(cursor.getColumnIndexOrThrow("count_colcha_verano")));
-                conteoregistros.setCountToallaDucha(cursor.getInt(cursor.getColumnIndexOrThrow("count_toalla_ducha")));
-                conteoregistros.setCountToallaLavabo(cursor.getInt(cursor.getColumnIndexOrThrow("count_toalla_lavabo")));
-                conteoregistros.setCountAlfombrin(cursor.getInt(cursor.getColumnIndexOrThrow("count_alfombrin")));
-                conteoregistros.setCountPaid(cursor.getInt(cursor.getColumnIndexOrThrow("count_paid")));
-                conteoregistros.setCountProtectorColchon(cursor.getInt(cursor.getColumnIndexOrThrow("count_protector_colchon")));
-                conteoregistros.setCountRellenoNordico(cursor.getInt(cursor.getColumnIndexOrThrow("count_relleno_nordico")));
+
+                int bajeras =cursor.getInt(cursor.getColumnIndexOrThrow("count_bajeras"));
+                int encimeras = cursor.getInt(cursor.getColumnIndexOrThrow("count_encimeras"));
+                int funda_alomohada = cursor.getInt(cursor.getColumnIndexOrThrow("count_funda_alomohada"));
+                int protector_alomohada = cursor.getInt(cursor.getColumnIndexOrThrow("count_protector_alomohada"));
+                int nordica = cursor.getInt(cursor.getColumnIndexOrThrow("count_nordica"));
+                int colcha_verano = cursor.getInt(cursor.getColumnIndexOrThrow("count_colcha_verano"));
+                int toalla_ducha = cursor.getInt(cursor.getColumnIndexOrThrow("count_toalla_ducha"));
+                int toalla_lavabo = cursor.getInt(cursor.getColumnIndexOrThrow("count_toalla_lavabo"));
+                int alfombrin = cursor.getInt(cursor.getColumnIndexOrThrow("count_alfombrin"));
+                int paid = cursor.getInt(cursor.getColumnIndexOrThrow("count_paid"));
+                int protector_colchon = cursor.getInt(cursor.getColumnIndexOrThrow("count_protector_colchon"));
+               int relleno_nordico = cursor.getInt(cursor.getColumnIndexOrThrow("count_relleno_nordico"));
+
+                ConteoRegistros conteoRegistrosItem = new ConteoRegistros(bajeras, encimeras, funda_alomohada, protector_alomohada, nordica,
+                        colcha_verano, toalla_ducha, toalla_lavabo, alfombrin, paid, protector_colchon, relleno_nordico);
+
+                conteoregistrosList.add(conteoRegistrosItem);
             } else {
                 mostrarMensaje("No se encontraron registros para el rango de fechas.");
             }
@@ -304,7 +309,7 @@ public class ListarRegistros1 {
             }
             db.close();
         }
-        return conteoregistros;
+        return conteoregistrosList;
     }
 
 

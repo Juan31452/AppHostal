@@ -236,24 +236,26 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/item_Paid"
+                style="@style/TextDetallesStyle"
+                android:text="Paid "
+                 />
+
+            <TextView
+                android:id="@+id/item_Paid1"
+                style="@style/TextResultadoStyle" />
+
+            <TextView
                 android:id="@+id/item_Alfombrin"
                 style="@style/TextDetallesStyle"
                 android:text="Alfombrin "
-                 />
+                />
 
             <TextView
                 android:id="@+id/item_Alfombrin1"
                 style="@style/TextResultadoStyle" />
 
-            <TextView
-                android:id="@+id/item_ProtectorColchon"
-                style="@style/TextDetallesStyle"
-                android:text="Protector C."
-               />
 
-            <TextView
-                android:id="@+id/item_ProtectorColchon1"
-                style="@style/TextResultadoStyle" />
         </LinearLayout>
 
             <LinearLayout
@@ -263,6 +265,15 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/item_ProtectorColchon"
+                    style="@style/TextDetallesStyle"
+                    android:text="Protector C."
+                    />
+
+                <TextView
+                    android:id="@+id/item_ProtectorColchon1"
+                    style="@style/TextResultadoStyle" />
                 <TextView
                     android:id="@+id/item_RellenoN"
                     style="@style/TextDetallesStyle"
