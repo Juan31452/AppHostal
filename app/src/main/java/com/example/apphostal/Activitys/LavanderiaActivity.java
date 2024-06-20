@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.example.apphostal.Adapters.DetallesAdapterLavanderia;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Entity.Lavanderia;
 import com.example.apphostal.Fragments.Lavanderia.LavanderiaFragment;
+import com.example.apphostal.Fragments.Lavanderia.LavanderiaFragment1;
 import com.example.apphostal.Fragments.Lavanderia.LavanderiaMoFragment;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia1;
@@ -87,19 +89,13 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
         });
 
         btnEntrega.setOnClickListener(v -> {
-            LavanderiaFragment fragment = LavanderiaFragment.newInstance();
+            // Crear una instancia del fragment
+            Fragment lavanderiaFragment1 = LavanderiaFragment1.newInstance();
 
-            // Obtener el FragmentManager y comenzar una transacción
+            // Añadir el fragment al contenedor
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-
-            // Añadir la transacción al back stack (opcional)
-            fragmentTransaction.addToBackStack(null);
-
-            // Commit de la transacción
+            fragmentTransaction.add(R.id.fragment_container, lavanderiaFragment1);
             fragmentTransaction.commit();
         });
 
