@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
 
-public abstract class BaseFragments extends Fragment {
+public abstract class BaseFragments<T> extends Fragment {
     protected EditText editTextFecha, edbajeras, edencimeras, edfundalomohada, edprotectora,
             ednordica, edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC, edrellenoN;
 
@@ -44,7 +44,7 @@ public abstract class BaseFragments extends Fragment {
         edprotectC = view.findViewById(R.id.protectC);
         edrellenoN = view.findViewById(R.id.edrellenoN);
 
-        adicionarLavanderia = createAdicionarLavanderia();
+        adicionarLavanderia = new AdicionarLavanderia(getContext());
 
         editTextFecha.setOnClickListener(this::mostrarCalendario);
 
@@ -103,9 +103,9 @@ public abstract class BaseFragments extends Fragment {
 
         String fecha = editTextFecha.getText().toString();
 
-        Lavanderia lavanderia = new Lavanderia(fecha, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC, rellenoN);
+        T entity = createEntity(fecha, bajera, encimera, fundaA, protectorA, nordica, colchav, toallaD, toallaL, alfombrin, paid, protectorC, rellenoN);
 
-        adicionarLavanderia.insertarLavanderia(lavanderia);
+        insertEntity(entity);
 
         limpiarCampos();
     }
@@ -138,5 +138,7 @@ public abstract class BaseFragments extends Fragment {
 
     protected abstract Class<?> getActivityClass();
 
-    protected abstract AdicionarLavanderia createAdicionarLavanderia();
+    protected abstract T createEntity(String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav, int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN);
+
+    protected abstract void insertEntity(T entity);
 }
