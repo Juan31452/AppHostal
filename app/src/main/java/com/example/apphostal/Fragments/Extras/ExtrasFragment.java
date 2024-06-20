@@ -1,5 +1,5 @@
 // ExtrasActivity.java
-package com.example.apphostal.Fragments;
+package com.example.apphostal.Fragments.Extras;
 
 
 import android.content.Context;

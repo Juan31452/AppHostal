@@ -1,4 +1,4 @@
-package com.example.apphostal.Fragments;
+package com.example.apphostal.Fragments.Lavanderia;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,17 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.apphostal.Activitys.LavanderiaActivity;
-import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Entity.Lavanderia;
-import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Logica.Lavanderia.EliminarLavanderia;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia;
+import com.example.apphostal.Logica.Lavanderia.ListarLavanderia1;
 import com.example.apphostal.Logica.Lavanderia.ModificarLavanderia;
-import com.example.apphostal.Logica.Registros.EliminarRegistros;
 import com.example.apphostal.R;
 
 import java.util.List;
@@ -34,7 +31,10 @@ public class LavanderiaMoFragment extends Fragment {
     private EditText  edfecha,edbajeras, edencimeras, edfundalomohada, edprotectora, ednordica,edcolchav, edtoallaD, edtoallaL, edalfombrim, edpaid, edprotectC,edRegistro,edrellenoN;
     private Button btnFragmentCerrar,btnEliminar, btnModificar;
     private ListarLavanderia listaLavanderia;
+    private ListarLavanderia1 listaLavanderia1;
     private List<Lavanderia> dataList;
+    private List<Lavanderia> dataList1;
+
 
     // Constante para la clave del argumento
     private static final String ARG_SELECTED_ID = "selectedId";
@@ -94,16 +94,22 @@ public class LavanderiaMoFragment extends Fragment {
         edfecha.setEnabled(false);
 
         // Crear una instancia de ListarLavanderia si no se ha creado aún
-        if (listaLavanderia == null) {
-            listaLavanderia = new ListarLavanderia(getActivity());
+        //if (listaLavanderia == null) {
+       //     listaLavanderia = new ListarLavanderia(getActivity());
+     //   }
+
+        // Crear una instancia de ListarLavanderia si no se ha creado aún
+        if (listaLavanderia1 == null) {
+            listaLavanderia1 = new ListarLavanderia1(getActivity());
         }
 
         // Consultar el registro por ID
-        dataList = listaLavanderia.consultarRegistroPorId(selectedId);
+        //dataList = listaLavanderia.consultarRegistroPorId(selectedId);
+        dataList1 = listaLavanderia1.consultarRegistroPorId(selectedId);
 
-        if (dataList != null && !dataList.isEmpty()) {
+        if (dataList1 != null && !dataList1.isEmpty()) {
             // Obtener el primer registro de dataList
-            Lavanderia lavanderia = dataList.get(0);
+            Lavanderia lavanderia = dataList1.get(0);
             if (lavanderia != null) {
                 // Actualizar los campos de los EditText con los datos del registro
                 actualizarCampos(lavanderia);

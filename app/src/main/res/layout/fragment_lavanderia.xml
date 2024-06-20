@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:background="#BB8FCE"
-    tools:context=".Fragments.LavanderiaFragment">
+    tools:context=".Fragments.Lavanderia.LavanderiaFragment">
 
     <Button
         android:id="@+id/btnMenu"

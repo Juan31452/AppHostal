@@ -16,9 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apphostal.Adapters.DetallesAdapterLavanderia;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Entity.Lavanderia;
-import com.example.apphostal.Fragments.LavanderiaFragment;
-import com.example.apphostal.Fragments.LavanderiaMoFragment;
+import com.example.apphostal.Fragments.Lavanderia.LavanderiaFragment;
+import com.example.apphostal.Fragments.Lavanderia.LavanderiaMoFragment;
 import com.example.apphostal.Logica.Lavanderia.ListarLavanderia;
+import com.example.apphostal.Logica.Lavanderia.ListarLavanderia1;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
 
@@ -29,7 +30,9 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
     private RecyclerView recyclerView;
     private DetallesAdapterLavanderia adapter;
     private ListarLavanderia listarlavanderia;
+    private ListarLavanderia1 listarlavanderia1;
     private List<Lavanderia> dataList;
+    private List<Lavanderia> dataList1;
     private Button btnMenu, btnEntrega, btnBuscar,btnModificar;
     private EditText editTextFechaConsulta;
 
@@ -47,14 +50,18 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
         btnModificar = findViewById(R.id.btnModificar);
 
         // Instanciar la clase ListarLavanderia
-        listarlavanderia = new ListarLavanderia(this);
+       // listarlavanderia = new ListarLavanderia(this);
+        listarlavanderia1 = new ListarLavanderia1(this);
 
         // Llamar al método consultarLavanderia()
-        dataList = listarlavanderia.consultarLavanderia();
-        Log.d("Lista", "Elemento clicado: " + dataList.toString());
+        //dataList = listarlavanderia.consultarLavanderia();
+        dataList1 = listarlavanderia1.consultarLavanderia();
 
-        if (dataList != null && !dataList.isEmpty()) {
-            adapter = new DetallesAdapterLavanderia(dataList, this);
+       // Log.d("Lista", "Elemento clicado: " + dataList.toString());
+        Log.d("Lista1", "Elemento clicado: " + dataList1.toString());
+
+        if (dataList1 != null && !dataList1.isEmpty()) {
+            adapter = new DetallesAdapterLavanderia(dataList1, this);
             adapter.setOnItemClickListener(this);
 
             recyclerView = findViewById(R.id.recyclerView);
@@ -122,7 +129,7 @@ public class LavanderiaActivity extends AppCompatActivity implements DetallesAda
     @Override
     public void onItemClick(int position) {
         // Manejar los clics en los ítems del RecyclerView
-        Lavanderia lavanderia = dataList.get(position);
+        Lavanderia lavanderia = dataList1.get(position);
         // Realizar acciones con el objeto Lavanderia seleccionado
         Log.d("Lavanderia", "Elemento clicado: " + lavanderia.toString());
     }

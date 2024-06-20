@@ -18,11 +18,12 @@ import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.OnItemClickListener;
 import com.example.apphostal.Adapters.DetallesAdapterRegistro;
 import com.example.apphostal.Entity.Registro;
-import com.example.apphostal.Fragments.AdicionarFragment;
-import com.example.apphostal.Fragments.ConsultaPorFechasFragment;
-import com.example.apphostal.Fragments.ExtrasFragment;
+import com.example.apphostal.Fragments.Registros.AdicionarFragment;
+import com.example.apphostal.Fragments.Registros.ConsultaPorFechasFragment;
+import com.example.apphostal.Fragments.Extras.ExtrasFragment;
+import com.example.apphostal.Fragments.RopaSucia.RopaSuciaFragment;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
-import com.example.apphostal.Fragments.ModificarFragment;
+import com.example.apphostal.Fragments.Registros.ModificarFragment;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
 
@@ -34,7 +35,7 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
     private DetallesAdapterRegistro adapter;
     private List<Registro> dataList;
     private ListarRegistros1 listarRegistros1;
-    private Button btnMenu, btnNuevo, btnBuscar, btnModificar,btnExtras,btnRopaSucia;
+    private Button btnMenu, btnNuevo, btnBuscar, btnModificar,btnExtras,btnRopaSucia,btnVerRopaSucia;
     private EditText editTextFechaConsulta;
 
     @Override
@@ -49,6 +50,7 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
         btnModificar = findViewById(R.id.btnModificar);
         btnExtras = findViewById(R.id.btnExtras);
         btnRopaSucia = findViewById(R.id.btnRopaSucia);
+        btnVerRopaSucia = findViewById(R.id.btnVerRopaSucia);
 
         listarRegistros1 = new ListarRegistros1(this);
         listarRegistros1.consultarRegistros();
@@ -151,7 +153,26 @@ public class RegistrosActivity extends AppCompatActivity implements OnItemClickL
                 fragmentTransaction.commit();
             }
         });
+        btnVerRopaSucia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear una instancia del Fragment con el valor de edRegistro
+                RopaSuciaFragment fragment = RopaSuciaFragment.newInstance();
 
+                // Obtener el FragmentManager y comenzar una transacción
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // Reemplazar el contenido del contenedor de fragmentos con este nuevo Fragment
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                // Añadir la transacción al back stack (opcional)
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit de la transacción
+                fragmentTransaction.commit();
+            }
+        });
 
     }
 

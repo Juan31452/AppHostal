@@ -1,10 +1,9 @@
-package com.example.apphostal.Fragments;
+package com.example.apphostal.Fragments.Lavanderia;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.apphostal.Activitys.LavanderiaActivity;
-import com.example.apphostal.Activitys.RegistrosActivity;
 import com.example.apphostal.Clases.Calendario;
 import com.example.apphostal.Clases.EditTextFocusHelper;
 import com.example.apphostal.Entity.Lavanderia;
-import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Logica.Lavanderia.AdicionarLavanderia;
 import com.example.apphostal.R;
 

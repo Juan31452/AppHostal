@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BB8FCE"
-    tools:context=".Fragments.ModificarFragment">
+    tools:context=".Fragments.Registros.ModificarFragment">
 
     <Button
         android:id="@+id/btnFragmentCerrar"

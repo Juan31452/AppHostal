@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#BB8FCE"
     android:padding="5dp"
-    tools:context=".Fragments.UtilidadesFragment">
+    tools:context=".Fragments.Utilidades.UtilidadesFragment">
 
     <LinearLayout
 

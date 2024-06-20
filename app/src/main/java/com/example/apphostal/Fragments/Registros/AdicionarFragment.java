@@ -1,4 +1,4 @@
-package com.example.apphostal.Fragments;
+package com.example.apphostal.Fragments.Registros;
 
 import android.content.Intent;
 import android.os.Bundle;

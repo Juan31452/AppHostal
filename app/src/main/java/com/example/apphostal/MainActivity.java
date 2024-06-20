@@ -12,8 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.apphostal.Activitys.AdicionarActivity;
 import com.example.apphostal.Activitys.LavanderiaActivity;
 import com.example.apphostal.Activitys.RegistrosActivity;
-import com.example.apphostal.Database.DatabaseHotel;
-import com.example.apphostal.Fragments.UtilidadesFragment;
+import com.example.apphostal.Fragments.Utilidades.UtilidadesFragment;
 
 
 public class MainActivity extends AppCompatActivity {

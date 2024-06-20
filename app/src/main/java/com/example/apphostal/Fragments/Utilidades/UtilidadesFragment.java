@@ -1,11 +1,9 @@
-package com.example.apphostal.Fragments;
+package com.example.apphostal.Fragments.Utilidades;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,23 +12,17 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.apphostal.Activitys.DetalleRegistroActivity;
 import com.example.apphostal.Clases.CrearArchivo;
 import com.example.apphostal.Entity.Registro;
 import com.example.apphostal.Logica.Registros.AdicionarRegistros;
 import com.example.apphostal.Logica.Registros.ListarRegistros1;
 import com.example.apphostal.MainActivity;
 import com.example.apphostal.R;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class UtilidadesFragment extends Fragment {
 
