@@ -1,53 +1,121 @@
 package com.example.apphostal.Clases;
 
+import static android.content.ContentValues.TAG;
+
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 
 import com.example.apphostal.Entity.Registro;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class CrearArchivo {
 
-    public static void crearArchivoCSV(Context context, List<Registro> listaRegistros) {
-        // Crear un archivo CSV en la memoria externa pública (directorio de descargas)
-        File csvFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "registros.csv");
+
+    public static void guardarCSV(Context context, List<Registro> listaRegistros) {
+        StringBuilder csvContent = new StringBuilder();
+        csvContent.append("Fecha,Habitacion,Estado,Bajeras,Encimeras,FundaAlmohada,ProtectorAlmohada,Nordica,ColchaVerano,ToallaDucha,ToallaLavabo," +
+                "Alfombrin,Paid,ProtectorColchon,RellenoNordico\n"); // Encabezados
+
+        for (Registro registro : listaRegistros) {
+            csvContent.append(registro.getFecha()).append(",")
+                    .append(registro.getHabitacion()).append(",")
+                    .append(registro.getEstado()).append(",")
+                    .append(registro.getBajera()).append(",")
+                    .append(registro.getEncimera()).append(",")
+                    .append(registro.getFundaA()).append(",")
+                    .append(registro.getProtectorA()).append(",")
+                    .append(registro.getNordica()).append(",")
+                    .append(registro.getColchav()).append(",")
+                    .append(registro.getToallaD()).append(",")
+                    .append(registro.getToallaL()).append(",")
+                    .append(registro.getAlfombrin()).append(",")
+                    .append(registro.getPaid()).append(",")
+                    .append(registro.getProtectorC()).append(",")
+                    .append(registro.getRellenoN()).append(",")
+                    .append("\n"); // Añade un salto de línea al final de cada registro
+
+              }
+
+        String fileName = "registros.csv";
 
         try {
-            FileOutputStream fos = new FileOutputStream(csvFile);
-
-            // Escribir encabezados CSV (opcional)
-            fos.write("Fecha,Habitacion,Estado,Bajeras,Encimeras,FundaAlmohada,ProtectorAlmohada,Nordica,ColchaVerano,ToallaDucha,ToallaLavabo,Alfombrin,Paid,ProtectorColchon,RellenoNordico\n".getBytes());
-
-            // Iterar sobre la lista de Registros y escribir cada registro como línea CSV
-            for (Registro registro : listaRegistros) {
-                String lineaCSV = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
-                        registro.getFecha(), registro.getHabitacion(), registro.getEstado(),
-                        registro.getBajera(), registro.getEncimera(), registro.getFundaA(),
-                        registro.getProtectorA(), registro.getNordica(), registro.getColchav(),
-                        registro.getToallaD(), registro.getToallaL(), registro.getAlfombrin(),
-                        registro.getPaid(), registro.getProtectorC(), registro.getRellenoN());
-                Log.d("Id", registro.getFecha());
-                fos.write(lineaCSV.getBytes());
-            }
-
-            fos.close();
-
-            // Mostrar mensaje de éxito usando Toast
-            Toast.makeText(context, "Archivo creado con éxito", Toast.LENGTH_SHORT).show();
-
+            FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+            fileOutputStream.write(csvContent.toString().getBytes());
+            fileOutputStream.close();
+            // Obtener y mostrar la ruta del archivo
+            File file = context.getFileStreamPath(fileName);
+            String filePath = file.getAbsolutePath();
+            Log.d("CSV", "Archivo guardado correctamente en: " + filePath);
         } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(context, "Error al crear el archivo: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.d("Error al crear el archivo: " , e.getMessage());
+            Log.e("CSV", "Error al guardar el archivo: " + e.getMessage());
+        }
+    }
+
+    public static String leerCSV(Context context) {
+        // Leer el archivo CSV
+        String fileName = "registros.csv";
+        StringBuilder contenido = new StringBuilder();
+        try {
+            FileInputStream fis = context.openFileInput(fileName);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                contenido.append(line).append("\n");
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            Log.e("CSV", "Error al leer el archivo: " + e.getMessage());
+        }
+        return contenido.toString();
+    }
+
+    public static void abrirCSVConAppExterna(Context context) {
+        String fileName = "registros.csv";
+        File file = new File(context.getFilesDir(), fileName);
+        Uri uri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", file);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, "text/csv");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        // Crear un intent para mostrar el selector de aplicaciones
+        Intent chooserIntent = Intent.createChooser(intent, "Selecciona una aplicación para abrir el CSV");
+
+        // Asegurarse de que el intent se pueda resolver a una actividad
+        if (chooserIntent.resolveActivity(context.getPackageManager()) != null) {
+            try {
+                context.startActivity(chooserIntent);
+            } catch (ActivityNotFoundException e) {
+                Log.e("CSV", "No se pudo abrir el selector de aplicaciones", e);
+                Toast.makeText(context, "No se pudo abrir el selector de aplicaciones", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Log.e("CSV", "No se encontró una aplicación para abrir CSV");
+            Toast.makeText(context, "No se encontró una aplicación para abrir archivos CSV", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -37,6 +37,14 @@ android {
 }
 
 dependencies {
+    // Dependencia para ActivityResultLauncher
+    //implementation ("androidx.activity:activity-ktx:1.9.0")
+    //implementation ("androidx.fragment:fragment:1.8.0")
+
+    var fragment_version = "1.8.0"
+
+    // Java language implementation
+    implementation ("androidx.fragment:fragment:$fragment_version")
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -48,8 +56,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-// Dependencia para ActivityResultLauncher
-   // implementation ("androidx.activity:activity-ktx:1.9.0")
- //   implementation ("androidx.fragment:fragment:1.8.0")
 
 }

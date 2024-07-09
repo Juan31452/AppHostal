@@ -1,9 +1,8 @@
 package com.example.apphostal.Fragments.Utilidades;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.apphostal.Clases.CrearArchivo;
@@ -26,34 +24,17 @@ import java.util.List;
 
 public class UtilidadesFragment extends Fragment {
 
-    private static final int CodigodePermisoAlmacenamiento = 1;
-
     private Button btnExportar;
     private Button btnImportar;
     private Button btnMenu;
     private ListarRegistros1 listarRegistros1;
     private AdicionarRegistros adicionarRegistros;
-
-    private ActivityResultLauncher<String> requestPermissionLauncher;
+    private static final int REQUEST_WRITE_STORAGE = 112;
 
     public static UtilidadesFragment newInstance() {
         return new UtilidadesFragment();
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-            if (isGranted) {
-                // Permiso concedido
-                permisoDeAlmacenamientoConcedido();
-            } else {
-                // Permiso denegado
-                permisoDeAlmacenamientoDenegado();
-            }
-        });
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,11 +48,18 @@ public class UtilidadesFragment extends Fragment {
         adicionarRegistros = new AdicionarRegistros(requireContext());
 
         btnExportar.setOnClickListener(v -> {
-            verificarYPedirPermisosDeAlmacenamiento(() -> exportarArchivo());
+
+                    exportarArchivo();
+                    AbrirArchivo();
+                    //String contenidoCSV = LeerArchivo();
+                    //Log.d("CSV", "Contenido del archivo:\n" + contenidoCSV);
+
         });
 
+
         btnImportar.setOnClickListener(v -> {
-            verificarYPedirPermisosDeAlmacenamiento(() -> importarArchivo());
+           // verificarYPedirPermisosDeAlmacenamiento();
+            importarArchivo();
         });
 
         btnMenu.setOnClickListener(v -> {
@@ -79,35 +67,32 @@ public class UtilidadesFragment extends Fragment {
             startActivity(intent);
         });
 
+
+
         return view;
     }
 
-    private void verificarYPedirPermisosDeAlmacenamiento(Runnable onPermissionGranted) {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Si no tiene permisos, pedimos permisos
-            requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        } else {
-            // Si ya tiene permisos, ejecutar lo necesario
-            onPermissionGranted.run();
-        }
-    }
 
-    private void permisoDeAlmacenamientoConcedido() {
-        // Aquí puedes colocar cualquier acción que requiera el permiso
-        Toast.makeText(requireContext(), "Permiso concedido", Toast.LENGTH_SHORT).show();
-        importarArchivo();
-    }
-
-    private void permisoDeAlmacenamientoDenegado() {
-        // Aquí puedes colocar cualquier acción que necesites tomar si el permiso es denegado
-        Toast.makeText(requireContext(), "Permiso denegado", Toast.LENGTH_SHORT).show();
-    }
+    private final ActivityResultLauncher<String[]> requestPermissionLauncher = registerForActivityResult(
+            new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+                boolean allGranted = true;
+                for (Boolean granted : result.values()) {
+                    allGranted &= granted;
+                }
+                if (allGranted) {
+                    // Permisos concedidos, procede a leer/escribir archivos
+                    exportarArchivo();
+                } else {
+                    // Permisos denegados, maneja la situación
+                    Toast.makeText(getContext(), "Permisos denegados para leer/escribir en el almacenamiento externo", Toast.LENGTH_SHORT).show();
+                    Log.d("Permisos denegados", "Permisos denegados para leer/escribir en el almacenamiento externo");
+                }
+            });
 
     private void exportarArchivo() {
         List<Registro> listaRegistros = listarRegistros1.consultarRegistrosTodo();
         if (listaRegistros != null && !listaRegistros.isEmpty()) {
-            CrearArchivo.crearArchivoCSV(requireContext(), listaRegistros);
+            CrearArchivo.guardarCSV(requireContext(),listaRegistros);
         } else {
             Toast.makeText(requireContext(), "No hay registros para exportar", Toast.LENGTH_SHORT).show();
         }
@@ -123,5 +108,14 @@ public class UtilidadesFragment extends Fragment {
         } else {
             Toast.makeText(requireContext(), "No se encontraron registros para importar", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void AbrirArchivo(){
+        CrearArchivo.abrirCSVConAppExterna(requireContext());
+    }
+    private String LeerArchivo(){
+        String contenidoCSV = CrearArchivo.leerCSV(requireContext());
+        Log.d("CSV", "Contenido del archivo: " + contenidoCSV);
+        return contenidoCSV;
     }
 }

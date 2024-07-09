@@ -44,7 +44,7 @@ public abstract class BaseFragments<T> extends Fragment {
         edprotectC = view.findViewById(R.id.protectC);
         edrellenoN = view.findViewById(R.id.edrellenoN);
 
-        adicionarLavanderia = new AdicionarLavanderia(getContext());
+        //adicionarLavanderia = new AdicionarLavanderia(getContext());
 
         editTextFecha.setOnClickListener(this::mostrarCalendario);
 
@@ -141,4 +141,6 @@ public abstract class BaseFragments<T> extends Fragment {
     protected abstract T createEntity(String fecha, int bajera, int encimera, int fundaA, int protectorA, int nordica, int colchav, int toallaD, int toallaL, int alfombrin, int paid, int protectorC, int rellenoN);
 
     protected abstract void insertEntity(T entity);
+
+
 }
